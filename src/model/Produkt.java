@@ -1,3 +1,6 @@
-package model;public class Produkt {
+package model;
 
+public class Produkt {
+
+    //test Mads
 }
