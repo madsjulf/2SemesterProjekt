@@ -5,10 +5,15 @@ import java.util.ArrayList;
 public class PrisListe {
     private String navn;
 
-    public String PrisListe(String navn) {
-        ProduktPris produktPris;
-        Produkt produkt;
+    public PrisListe(String navn) {
+        this.navn = navn;
 
+    }
 
+    @Override
+    public String toString() {
+        return "PrisListe{" +
+                "navn='" + navn + '\'' +
+                '}';
     }
 }
