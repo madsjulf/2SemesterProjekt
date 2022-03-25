@@ -5,16 +5,14 @@ import java.util.ArrayList;
 public class Produkt {
 
     private String navn;
-    private String beskrivelse;
     private ProduktGruppe produktGruppe;
     PrisListe prisListe;
     private ArrayList<PrisListe> prislister = new ArrayList<>();
 
 
 
-    public Produkt(String navn, String beskrivelse, ProduktGruppe produktGruppe) {
+    public Produkt(String navn, ProduktGruppe produktGruppe) {
         this.navn = navn;
-        this.beskrivelse = beskrivelse;
         this.produktGruppe = produktGruppe;
     }
 
@@ -35,11 +33,4 @@ public class Produkt {
         this.navn = navn;
     }
 
-    public String getBeskrivelse() {
-        return beskrivelse;
-    }
-
-    public void setBeskrivelse(String beskrivelse) {
-        this.beskrivelse = beskrivelse;
-    }
 }
