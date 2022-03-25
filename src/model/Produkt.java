@@ -32,4 +32,12 @@ public class Produkt {
         this.navn = navn;
     }
 
+    @Override
+    public String toString() {
+        return "Produkt{" +
+                "navn='" + navn + '\'' +
+                ", produktGruppe=" + produktGruppe +
+                ", prislister=" + prislister +
+                '}';
+    }
 }
