@@ -6,8 +6,6 @@ public class Produkt {
 
     private String navn;
     private ProduktGruppe produktGruppe;
-    private ArrayList<PrisListe> prislister = new ArrayList<>();
-
 
 
     public Produkt(String navn, ProduktGruppe produktGruppe) {
@@ -16,9 +14,6 @@ public class Produkt {
     }
 
 
-    public ArrayList<PrisListe> getPrislister() {
-        return new ArrayList<>(prislister);
-    }
 
     public ProduktGruppe getProduktGruppe() {
         return produktGruppe;
@@ -37,7 +32,7 @@ public class Produkt {
         return "Produkt{" +
                 "navn='" + navn + '\'' +
                 ", produktGruppe=" + produktGruppe +
-                ", prislister=" + prislister +
+                ", prislister=" +
                 '}';
     }
 }
