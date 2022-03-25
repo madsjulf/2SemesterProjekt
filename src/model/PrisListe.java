@@ -9,13 +9,9 @@ public class PrisListe {
     Produkt produkt;
     ProduktPris produktPris;
 
-    public String PrisListe(String navn) {
+    public HashMap PrisListe(String navn) {
         HashMap<String, Integer> produkter = new HashMap<String, Integer>();
 
-
-
-        ProduktPris produktPris;
-        Produkt produkt;
 
 
     }
