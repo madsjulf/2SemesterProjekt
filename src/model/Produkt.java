@@ -6,7 +6,6 @@ public class Produkt {
 
     private String navn;
     private ProduktGruppe produktGruppe;
-    PrisListe prisListe;
     private ArrayList<PrisListe> prislister = new ArrayList<>();
 
 
@@ -33,4 +32,12 @@ public class Produkt {
         this.navn = navn;
     }
 
+    @Override
+    public String toString() {
+        return "Produkt{" +
+                "navn='" + navn + '\'' +
+                ", produktGruppe=" + produktGruppe +
+                ", prislister=" + prislister +
+                '}';
+    }
 }

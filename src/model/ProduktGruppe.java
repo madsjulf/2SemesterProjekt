@@ -25,4 +25,12 @@ public class ProduktGruppe {
     public String getNavn() {
         return navn;
     }
+
+    @Override
+    public String toString() {
+        return "ProduktGruppe{" +
+                "produkter=" + produkter +
+                ", navn='" + navn + '\'' +
+                '}';
+    }
 }
