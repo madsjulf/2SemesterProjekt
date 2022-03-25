@@ -7,7 +7,7 @@ public class Produkt {
     private String navn;
     private String beskrivelse;
     private ProduktGruppe produktGruppe;
-    private ArrayList<Prisliste> prislister = new ArrayList<>();
+    private ArrayList<PrisListe> prislister = new ArrayList<>();
 
 
 
@@ -18,7 +18,7 @@ public class Produkt {
     }
 
 
-    public list<Prisliste> getPrislister() {
+    public ArrayList<PrisListe> getPrislister() {
         return new ArrayList<>(prislister);
     }
 
