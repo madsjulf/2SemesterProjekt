@@ -1,5 +1,6 @@
 package GUI;
 
+import Storage.Storage;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -50,12 +51,14 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
         Label lblProduktGruppe = new Label("ProduktGrupper");
         pane.add(lblProduktGruppe, 1, 1);
         pane.add(comboBoxProduktGruppe, 1, 2);
+        comboBoxProduktGruppe.getItems().addAll(Storage.getproduktGruppe());
 
 
         //Label og combobox til liste af Prislister
         Label lblPrisListe = new Label("PrisLister");
         pane.add(lblPrisListe, 2, 3);
         pane.add(comboBoxPrisListe, 2, 4);
+        comboBoxPrisListe.getItems().addAll(Storage.getprisLister());
 
 
         // error besked

@@ -30,6 +30,7 @@ public class ProduktPane extends GridPane {
         lvwProdukter.setPrefHeight(200);
         ChangeListener<Produkt> listener = (ov, o, n) -> this.selectedProduktChanged();
         lvwProdukter.getSelectionModel().selectedItemProperty().addListener(listener);
+        lvwProdukter.getItems().addAll(Storage.getProdukter);
 
 
         // Knap til oprettelse af produkter
@@ -42,6 +43,11 @@ public class ProduktPane extends GridPane {
         this.add(btnCreate, 0, 8);
         hbxButtons.getChildren().add(btnCreate);
         btnCreate.setOnAction(event -> this.createAction());
+
+
+//        lvwProdukter.getItems().setAll(Controller.getProdukter());
+        if (!lvwProdukter.getItems().isEmpty())
+            lvwProdukter.getSelectionModel().select(0);
 
     }
 
