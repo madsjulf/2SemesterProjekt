@@ -51,6 +51,7 @@ public class ProduktGruppePane extends GridPane {
         ProduktGruppeWindow dialog = new ProduktGruppeWindow("Opret ProduktGruppe", null);
         dialog.showAndWait();
 
+        lvwProduktGrupper.getItems().clear();
         lvwProduktGrupper.getItems().addAll(Storage.getProduktGruppe());
     }
 

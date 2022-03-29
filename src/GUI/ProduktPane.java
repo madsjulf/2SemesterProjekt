@@ -54,6 +54,7 @@ public class ProduktPane extends GridPane {
         ProduktWindow dialog = new ProduktWindow("Opret Produkt", null, null);
         dialog.showAndWait();
 
+        lvwProdukter.getItems().clear();
         lvwProdukter.getItems().setAll(Storage.getProdukter());
     }
     //---------------------------------------------- --------------------
