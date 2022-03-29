@@ -12,6 +12,7 @@ public class ProduktGruppe {
     }
 
 
+
     public Produkt createProdukt(String navn){
         Produkt produkt = new Produkt(navn, this);
         produkter.add(produkt);
