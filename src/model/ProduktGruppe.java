@@ -19,7 +19,7 @@ public class ProduktGruppe {
     }
 
     public ArrayList<Produkt> getProdukter() {
-        return produkter;
+        return new ArrayList<>(produkter);
     }
 
     public String getNavn() {
