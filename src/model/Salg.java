@@ -9,7 +9,10 @@ public class Salg {
     // Komposition --> 0..* SalgsLinjer
     private ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
 
-
+    public Salg(int salgsNr, LocalDate salgsDato) {
+        this.salgsNr = salgsNr;
+        this.salgsDato = salgsDato;
+    }
 
     public ArrayList<SalgsLinje> getSalgsLinjer(){
         return new ArrayList<>(salgsLinjer);
