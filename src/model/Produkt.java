@@ -13,8 +13,6 @@ public class Produkt {
         this.produktGruppe = produktGruppe;
     }
 
-
-
     public ProduktGruppe getProduktGruppe() {
         return produktGruppe;
     }

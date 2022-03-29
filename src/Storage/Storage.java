@@ -3,6 +3,7 @@ package Storage;
 import model.PrisListe;
 import model.Produkt;
 import model.ProduktGruppe;
+import model.ProduktPris;
 
 import java.util.ArrayList;
 
@@ -36,5 +37,8 @@ public class Storage {
     }
 
     //----------------------------------------------------------------------------------------------------------------------
-
+    public static ArrayList<ProduktPris> produktPriser = new ArrayList<>();
+    public static ArrayList<ProduktPris> getProduktPriser(){return produktPriser;}
+    public static void storeProduktpriser(ProduktPris produktPris){produktPriser.add(produktPris);}
+    public static void deleteProduktPriser(ProduktPris produktPris){produktPriser.remove(produktPris);}
 }
