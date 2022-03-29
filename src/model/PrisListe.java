@@ -19,6 +19,10 @@ public class PrisListe {
         return pp;
     }
 
+    public ArrayList<ProduktPris> getProduktPriser() {
+        return new ArrayList<>(produktPriser);
+    }
+
     @Override
     public String toString() {
         return "PrisListe{" +
