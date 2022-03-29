@@ -36,12 +36,4 @@ public class ProduktPris {
                 " " + prisListe;
     }
 
-    public static void main(String[] args) {
-        ProduktGruppe pg = new ProduktGruppe("Øller");
-        Produkt p = new Produkt("Øl",pg );
-        PrisListe pl = new PrisListe("Fredagsbar");
-        ProduktPris pp = new ProduktPris(12,p, pl);
-
-        System.out.println(pp);
-    }
 }
