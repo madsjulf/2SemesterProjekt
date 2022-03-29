@@ -1,6 +1,5 @@
 package GUI;
 
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import model.Produkt;
 import Storage.Storage;
 
@@ -47,9 +45,6 @@ public class ProduktPane extends GridPane {
 
     }
 
-    private void selectedProduktChanged() {
-        this.updateControls();
-    }
 
 
     //---------------------------------------------------------------------------------------
@@ -65,6 +60,5 @@ public class ProduktPane extends GridPane {
 
     public void updateControls() {
         Produkt produkt = lvwProdukter.getSelectionModel().getSelectedItem();
-
     }
 }

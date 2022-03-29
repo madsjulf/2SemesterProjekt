@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.Produkt;
 import model.ProduktGruppe;
 import Storage.Storage;
 
@@ -40,10 +39,6 @@ public class ProduktGruppePane extends GridPane {
         this.add(btnCreate, 0, 8);
         hbxButtons.getChildren().add(btnCreate);
         btnCreate.setOnAction(event -> this.createAction());
-
-        //        lvwProduktGrupper.getItems().setAll(Controller.getProduktGrupper());
-        if (!lvwProduktGrupper.getItems().isEmpty())
-            lvwProduktGrupper.getSelectionModel().select(0);
 
 
     }
