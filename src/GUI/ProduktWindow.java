@@ -40,7 +40,7 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
 
         // Label og textfeldt til navn på produkt
-        Label lblName = new Label("Name");
+        Label lblName = new Label("Navn");
         pane.add(lblName, 0, 0);
         pane.add(txfName, 0, 1);
         txfName.setPrefWidth(200);
