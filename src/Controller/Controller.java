@@ -26,7 +26,6 @@ public class Controller {
         return new Controller();
     }
 
-
     public static Produkt createProdukt(String navn, ProduktGruppe produktGruppe) {
         Produkt produkt = new Produkt(navn, produktGruppe);
         Storage.storeProdukter(produkt);
@@ -45,18 +44,23 @@ public class Controller {
         return produktPris;
     }
 
+    public static PrisListe createPrisListe(String navn){
+        PrisListe prisListe = new PrisListe(navn);
+        Storage.storeprisListe(prisListe);
+        return prisListe;
+    }
 
     public static void createSomeObjects() {
         //Opretter produktgrupper
-        ProduktGruppe flaskeøl = new ProduktGruppe("Flaske");
-        ProduktGruppe fadøl = new ProduktGruppe("Fadøl");
-        ProduktGruppe spiritus = new ProduktGruppe("Spiritus");
-        ProduktGruppe fustage = new ProduktGruppe("Fustage");
-        ProduktGruppe kulsyre = new ProduktGruppe("Kulsyre");
-        ProduktGruppe malt = new ProduktGruppe("Malt");
-        ProduktGruppe beklædning = new ProduktGruppe("Malt");
-        ProduktGruppe anlæg = new ProduktGruppe("Anlæg");
-        ProduktGruppe glas = new ProduktGruppe("Glas");
+        ProduktGruppe flaskeøl = createProduktGruppe("Flaske");
+        ProduktGruppe fadøl = createProduktGruppe("Fadøl");
+        ProduktGruppe spiritus = createProduktGruppe("Spiritus");
+        ProduktGruppe fustage = createProduktGruppe("Fustage");
+        ProduktGruppe kulsyre = createProduktGruppe("Kulsyre");
+        ProduktGruppe malt = createProduktGruppe("Malt");
+        ProduktGruppe beklædning = createProduktGruppe("Malt");
+        ProduktGruppe anlæg = createProduktGruppe("Anlæg");
+        ProduktGruppe glas = createProduktGruppe("Glas");
 
         //Opretter flaskeøl
         Produkt flaskeKlosterbryg = createProdukt("Klosterbryg",flaskeøl);
@@ -142,8 +146,8 @@ public class Controller {
 
 
         //Opretter prisliste
-        PrisListe fredagsbar = new PrisListe("Fredagsbar");
-        PrisListe butik = new PrisListe("Butik");
+        PrisListe fredagsbar = createPrisListe("Fredagsbar");
+        PrisListe butik = createPrisListe("Butik");
 
         //Tildeler fredagsbarspris til flaskeøl
         fredagsbar.createProduktPris(70,flaskeKlosterbryg);
