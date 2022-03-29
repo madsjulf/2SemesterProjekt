@@ -13,9 +13,6 @@ public class ProduktPris {
         this.produkt = produkt;
         this.prisListe = prisListe;
 
-
-
-
     }
 
     public int getPris() {
