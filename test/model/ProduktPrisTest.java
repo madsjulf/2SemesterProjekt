@@ -30,7 +30,7 @@ class ProduktPrisTest {
     //Arrange
 
     //Act
-    ProduktPris pp = new ProduktPris(12, produkt, prisListe);
+    ProduktPris pp = new ProduktPris(12, produkt);
 
     //Assert
     assertTrue(pp.getProdukt().getNavn().contains(produkt.getNavn()));
