@@ -29,8 +29,6 @@ public class ProduktPane extends GridPane {
         this.add(lvwProdukter, 0, 1, 1, 5);
         lvwProdukter.setPrefWidth(200);
         lvwProdukter.setPrefHeight(200);
-        ChangeListener<Produkt> listener = (ov, o, n) -> this.selectedProduktChanged();
-        lvwProdukter.getSelectionModel().selectedItemProperty().addListener(listener);
         lvwProdukter.getItems().addAll(Storage.getProdukter());
 
 
@@ -46,9 +44,6 @@ public class ProduktPane extends GridPane {
         btnCreate.setOnAction(event -> this.createAction());
 
 
-//        lvwProdukter.getItems().setAll(Controller.getProdukter());
-        if (!lvwProdukter.getItems().isEmpty())
-            lvwProdukter.getSelectionModel().select(0);
 
     }
 
@@ -64,9 +59,7 @@ public class ProduktPane extends GridPane {
         ProduktWindow dialog = new ProduktWindow("Opret Produkt", null, null);
         dialog.showAndWait();
 
-//        lvwProdukter.getItems().setAll(Controller.getProdukter());
-        this.updateControls();
-
+        lvwProdukter.getItems().setAll(Storage.getProdukter());
     }
     //---------------------------------------------- --------------------
 

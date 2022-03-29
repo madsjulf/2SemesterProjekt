@@ -9,6 +9,7 @@ public class ProduktGruppe {
 
     public ProduktGruppe(String navn) {
         this.navn = navn;
+
     }
 
 

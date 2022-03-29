@@ -27,8 +27,6 @@ public class ProduktGruppePane extends GridPane {
         this.add(lvwProduktGrupper, 0, 0);
         lvwProduktGrupper.setPrefWidth(200);
         lvwProduktGrupper.setPrefHeight(200);
-        ChangeListener<Produkt> listener = (ov, o, n) -> this.selectedProduktGruppeChanged();
-        lvwProduktGrupper.getSelectionModel().selectedItemProperty().addListener(listener);
         lvwProduktGrupper.getItems().addAll(Storage.getProduktGruppe());
 
 
@@ -50,9 +48,7 @@ public class ProduktGruppePane extends GridPane {
 
     }
 
-    private void selectedProduktGruppeChanged() {
-        this.updateControls();
-    }
+
 
 //-------------------------------------------------------------------------
 
@@ -60,6 +56,7 @@ public class ProduktGruppePane extends GridPane {
         ProduktGruppeWindow dialog = new ProduktGruppeWindow("Opret ProduktGruppe", null);
         dialog.showAndWait();
 
+        lvwProduktGrupper.getItems().addAll(Storage.getProduktGruppe());
     }
 
 

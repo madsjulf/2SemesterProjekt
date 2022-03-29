@@ -46,7 +46,7 @@ public class Controller {
     }
 
 
-    public void createSomeObjects() {
+    public static void createSomeObjects() {
         //Opretter produktgrupper
         ProduktGruppe flaskeøl = new ProduktGruppe("Flaske");
         ProduktGruppe fadøl = new ProduktGruppe("Fadøl");

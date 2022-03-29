@@ -1,5 +1,6 @@
 package GUI;
 
+import Controller.Controller;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
@@ -9,12 +10,12 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import javafx.scene.control.Label;
+import Controller.Controller;
 
 import java.awt.*;
 
 public class ProduktGruppeWindow extends Stage {
     private final TextField txfName = new TextField();
-    private final ComboBox comboBoxPrisListe = new ComboBox();
     private final Label lblError = new Label();
 
 
@@ -71,12 +72,11 @@ public class ProduktGruppeWindow extends Stage {
             lblError.setText("Gruppenavn er tomt!");
             return;
         }
-
-
-
+        Controller.createProduktGruppe(name);
 
         this.hide();
     }
+
 
 
 
