@@ -1,4 +1,4 @@
-package controller;
+package Controller;
 
 import Storage.Storage;
 import model.PrisListe;
@@ -29,6 +29,7 @@ public class Controller {
 
     public Produkt createProdukt(String navn, ProduktGruppe produktGruppe) {
         Produkt produkt = new Produkt(navn, produktGruppe);
+        Storage.storeProdukter(produkt);
         return produkt;
     }
 
@@ -52,121 +53,123 @@ public class Controller {
         ProduktGruppe glas = new ProduktGruppe("Glas");
 
         //Opretter flaskeøl
-        Produkt flaskeKlosterbryg = createProdukt("Klosterbryg", flaskeøl);
-        Produkt flaskeSweetGeorgiaBrown = createProdukt("Sweet Georgia Brown", flaskeøl);
-        Produkt flaskeEkstraPilsner = createProdukt("Ekstra Pilsner", flaskeøl);
-        Produkt flaskeCelebration = createProdukt("Celebration", flaskeøl);
-        Produkt flaskeBlondie = createProdukt(flaskeøl, "Blondie", 6.2, 0.66);
-        Produkt flaskeForårsbryg = createProdukt(flaskeøl, "Forårsbryg", 6.2, 0.66);
-        Produkt flaskeIndiaPaleAle = createProdukt(flaskeøl, "India Pale Ale", 6.2, 0.66);
-        Produkt flaskeJulebryg = createProdukt(flaskeøl, "Julebryg", 6.2, 0.66);
-        Produkt flaskeJuletønden = createProdukt(flaskeøl, "Jultønden", 6.2, 0.66);
-        Produkt flaskeOldStrongAle = createProdukt(flaskeøl, "Old Strong Ale", 6.2, 0.66);
-        Produkt flaskeFregattenJylland = createProdukt(flaskeøl, "Fregatten Jylland", 6.2, 0.66);
-        Produkt flaskeImperialStout = createProdukt(flaskeøl, "Imperial Stout", 6.2, 0.66);
-        Produkt flaskeTribute = createProdukt(flaskeøl, "Tribute", 6.2, 0.66);
-        Produkt flaskeBlackMonster = createProdukt(flaskeøl, "Black Monster", 7.1, 0.66);
+        Produkt flaskeKlosterbryg = createProdukt("Klosterbryg",flaskeøl);
+        Produkt flaskeSweetGeorgiaBrown = createProdukt("Sweet Georgia Brown",flaskeøl);
+        Produkt flaskeEkstraPilsner = createProdukt("Ekstra Pilsner",flaskeøl);
+        Produkt flaskeCelebration = createProdukt("Celebration",flaskeøl);
+        Produkt flaskeBlondie = createProdukt("Blondie",flaskeøl);
+        Produkt flaskeForårsbryg = createProdukt("Blondie",flaskeøl);
+        Produkt flaskeIndiaPaleAle = createProdukt("India Pale Ale",flaskeøl);
+        Produkt flaskeJulebryg = createProdukt("Julebryg",flaskeøl);
+        Produkt flaskeJuletønden = createProdukt("Jultønden",flaskeøl);
+        Produkt flaskeOldStrongAle = createProdukt("Old Strong Ale",flaskeøl);
+        Produkt flaskeFregattenJylland = createProdukt("Fregatten Jylland",flaskeøl);
+        Produkt flaskeImperialStout = createProdukt("Imperial Stout",flaskeøl);
+        Produkt flaskeTribute = createProdukt("Tribute",flaskeøl);
+        Produkt flaskeBlackMonster = createProdukt("Black Monster",flaskeøl);
 
         //Opretter fadøl
-        Produkt fadKlosterbryg = createProdukt(fadøl, "Klosterbryg", 5.6, 0.40);
-        Produkt fadJazzClassic = createProdukt(fadøl, "Jazz Classic", 5.8, 0.40);
-        Produkt fadEkstraPilsner = createProdukt(fadøl, "Ekstra Pilsner", 6.2, 0.40);
-        Produkt fadCelebration = createProdukt(fadøl, "Celebration", 6.2, 0.40);
-        Produkt fadBlondie = createProdukt(fadøl, "Blondie", 6.2, 0.40);
-        Produkt fadForårsbryg = createProdukt(fadøl, "Forårsbryg", 6.2, 0.40);
-        Produkt fadIndiaPaleAle = createProdukt(fadøl, "India Pale Ale", 6.2, 0.40);
-        Produkt fadJulebryg = createProdukt(fadøl, "Julebryg", 6.2, 0.40);
-        Produkt fadImperialStout = createProdukt(fadøl, "Imperial Stout", 6.2, 0.40);
-        Produkt fadSpecial = createProdukt(fadøl, "Imperial Stout", 6.3, 0.40);
-        Produkt Æblebrus = createProdukt(fadøl, "Æblebrus", 0, 0.40);
-        Produkt chips = createProdukt(fadøl, "Chips");
-        Produkt peanuts = createProdukt(fadøl, "Peanuts");
-        Produkt cola = createProdukt(fadøl, "Cola", 0, 0.40);
-        Produkt nikoline = createProdukt(fadøl, "Nikoline", 0, 0.40);
-        Produkt sevenUp = createProdukt(fadøl, "7-up", 0, 0.40);
-        Produkt vand = createProdukt(fadøl, "vand", 0, 0.40);
-        Produkt ølpølser = createProdukt(fadøl, "Ølpølser");
+        Produkt fadKlosterbryg = createProdukt("Klosterbryg",fadøl);
+        Produkt fadJazzClassic = createProdukt("Jazz Classic",fadøl);
+        Produkt fadEkstraPilsner = createProdukt("Ekstra Pilsner",fadøl);
+        Produkt fadCelebration = createProdukt("Celebration",fadøl);
+        Produkt fadBlondie = createProdukt("Blondie",fadøl);
+        Produkt fadForårsbryg = createProdukt("Forårsbryg",fadøl);
+        Produkt fadIndiaPaleAle = createProdukt("India Pale Ale",fadøl);
+        Produkt fadJulebryg = createProdukt("Julebryg",fadøl);
+        Produkt fadImperialStout = createProdukt("Imperial Stout",fadøl);
+        Produkt fadSpecial = createProdukt("Imperial Stout",fadøl);
+        Produkt Æblebrus = createProdukt("Æblebrus",fadøl);
+        Produkt chips = createProdukt("Chips",fadøl);
+        Produkt peanuts = createProdukt("Peanuts",fadøl);
+        Produkt cola = createProdukt("Cola",fadøl);
+        Produkt nikoline = createProdukt("Nikoline",fadøl);
+        Produkt sevenUp = createProdukt("7-up",fadøl);
+        Produkt vand = createProdukt("vand",fadøl);
+        Produkt ølpølser = createProdukt("Ølpølser",fadøl);
 
         //Opretter spiritus
-        Produkt whiskey50cl45Procent = createProdukt(spiritus, "Whisky 45% 50cl rør", 45, 0.50);
-        Produkt whiskey4cl45Procent = createProdukt(spiritus, "Whisky 4cl", 45, 0.04);
-        Produkt whiskey50cl43Procent = createProdukt(spiritus, "Whisky 43% 50cl rør", 43, 0.50);
-        Produkt udenEgesplint = createProdukt(spiritus, "Whisky 40% 50cl u/ egesplint", 40, 0.50);
-        Produkt medEgesplint = createProdukt(spiritus, "Whisky 40% 50cl m/ egesplint", 40, 0.50);
-        Produkt toWhiskyGlasMedBrikker = createProdukt(spiritus, "2*whisky glas + brikker");
-        Produkt liquorOfAarhus = createProdukt(spiritus, "Liquor of Aarhus", 30, 0.35);
-        Produkt lyngGin50cl = createProdukt(spiritus, "Lyng gin 50 cl", 45, 0.50);
-        Produkt lyngGin4cl = createProdukt(spiritus, "Lyng gin 4 cl", 45, 0.04);
+        Produkt whiskey50cl45Procent = createProdukt("Whisky 45% 50cl rør", spiritus);
+        Produkt whiskey4cl45Procent = createProdukt("Whisky 4cl", spiritus);
+        Produkt whiskey50cl43Procent = createProdukt("Whisky 43% 50cl rør", spiritus);
+        Produkt udenEgesplint = createProdukt("Whisky 40% 50cl u/ egesplint", spiritus);
+        Produkt medEgesplint = createProdukt("Whisky 40% 50cl m/ egesplint", spiritus);
+        Produkt toWhiskyGlasMedBrikker = createProdukt("2*whisky glas + brikker",spiritus);
+        Produkt liquorOfAarhus = createProdukt("Liquor of Aarhus", spiritus);
+        Produkt lyngGin50cl = createProdukt("Lyng gin 50 cl", spiritus);
+        Produkt lyngGin4cl = createProdukt("Lyng gin 4 cl", spiritus);
 
         //Opretter fustage
-        Produkt fustageKlosterbryg = createProdukt(fustage, "Klosterbryg", 5.6, 20, 200);
-        Produkt fustageJazzClassic = createProdukt(fustage, "Jazz Classic", 5.8, 25, 200);
-        Produkt fustageEkstraPilsner = createProdukt(fustage, "Ekstra Pilsner", 6.2, 25, 200);
-        Produkt fustageCelebration = createProdukt(fustage, "Celebration", 6.2, 20, 200);
-        Produkt fustageBlondie = createProdukt(fustage, "Blondie", 6.2, 25, 200);
-        Produkt fustageForårsbryg = createProdukt(fustage, "Forårsbryg", 6.2, 20, 200);
-        Produkt fustageIndiaPaleAle = createProdukt(fustage, "India Pale Ale", 6.2, 20, 200);
-        Produkt fustageJulebryg = createProdukt(fustage, "Julebryg", 6.2, 20, 200);
-        Produkt fustageImperialStout = createProdukt(fustage, "Imperial Stout", 6.2, 20, 200);
+        Produkt fustageKlosterbryg = createProdukt("Klosterbryg",fustage);
+        Produkt fustageJazzClassic = createProdukt("Jazz Classic",fustage);
+        Produkt fustageEkstraPilsner = createProdukt("Ekstra Pilsner",fustage);
+        Produkt fustageCelebration = createProdukt("Celebration",fustage);
+        Produkt fustageBlondie = createProdukt("Blondie",fustage);
+        Produkt fustageForårsbryg = createProdukt("Forårsbryg",fustage);
+        Produkt fustageIndiaPaleAle = createProdukt("India Pale Ale",fustage);
+        Produkt fustageJulebryg = createProdukt("Julebryg",fustage);
+        Produkt fustageImperialStout = createProdukt("Imperial Stout",fustage);
 
 
         //Opretter kulsyre
-        Produkt sekskg = createProdukt(kulsyre, "6 kg", 1000);
+        Produkt sekskg = createProdukt("6 kg",kulsyre);
 
 
         //Opretter malt
-        Produkt femOgTyveKg = createProdukt(malt, "25 kg sæk");
+        Produkt femOgTyveKg = createProdukt("25 kg sæk",malt);
 
         //Opretter beklædning
-        Produkt tShirt = createProdukt(beklædning, "t-shirt");
-        Produkt polo = createProdukt(beklædning, "polo");
-        Produkt cap = createProdukt(beklædning, "cap");
+        Produkt tShirt = createProdukt("t-shirt",beklædning);
+        Produkt polo = createProdukt("polo",beklædning);
+        Produkt cap = createProdukt("cap",beklædning);
 
         //Opretter anlæg
-        Produkt énHane = createProdukt(anlæg, "1- hane");
-        Produkt toHaner = createProdukt(anlæg, "2- haner");
-        Produkt barMedFlereHaner = createProdukt(anlæg, "Bar med flere haner");
-        Produkt Levering = createProdukt(anlæg, "Levering");
-        Produkt Krus = createProdukt(anlæg, "Krus");
+        Produkt énHane = createProdukt("1- hane",anlæg);
+        Produkt toHaner = createProdukt("2- haner",anlæg);
+        Produkt barMedFlereHaner = createProdukt("Bar med flere haner",anlæg);
+        Produkt Levering = createProdukt("Levering",anlæg);
+        Produkt Krus = createProdukt("Krus",anlæg);
 
         //Opretter glas
-        Produkt glasAlleStørrelser = createProdukt(glas, "uanset størrelse");
+        Produkt glasAlleStørrelser = createProdukt("uanset størrelse",glas);
+
+
 
         //Opretter prisliste
-        PrisListe fredagsbar = new Prisliste("Fredagsbar");
-        PrisListe butik = new Prisliste("Butik");
+        PrisListe fredagsbar = new PrisListe("Fredagsbar");
+        PrisListe butik = new PrisListe("Butik");
 
         //Tildeler fredagsbarspris til flaskeøl
-        fredagsbar.createProduktPris(70, flaskeKlosterbryg, 2);
-        fredagsbar.createProduktPris(70, flaskeSweetGeorgiaBrown, 2);
-        fredagsbar.createProduktPris(70, flaskeEkstraPilsner, 2);
-        fredagsbar.createProduktPris(70, flaskeCelebration, 2);
-        fredagsbar.createProduktPris(70, flaskeBlondie, 2);
-        fredagsbar.createProduktPris(70, flaskeForårsbryg, 2);
-        fredagsbar.createProduktPris(70, flaskeIndiaPaleAle, 2);
-        fredagsbar.createProduktPris(70, flaskeJulebryg, 2);
-        fredagsbar.createProduktPris(70, flaskeJuletønden, 2);
-        fredagsbar.createProduktPris(70, flaskeOldStrongAle, 2);
-        fredagsbar.createProduktPris(70, flaskeFregattenJylland, 2);
-        fredagsbar.createProduktPris(70, flaskeImperialStout, 2);
-        fredagsbar.createProduktPris(70, flaskeTribute, 2);
-        fredagsbar.createProduktPris(100, flaskeBlackMonster, 3);
+        fredagsbar.createProduktPris(70,flaskeKlosterbryg);
+        fredagsbar.createProduktPris(70,flaskeSweetGeorgiaBrown);
+        fredagsbar.createProduktPris(70,flaskeEkstraPilsner);
+        fredagsbar.createProduktPris(70,flaskeCelebration);
+        fredagsbar.createProduktPris(70,flaskeBlondie);
+        fredagsbar.createProduktPris(70,flaskeForårsbryg);
+        fredagsbar.createProduktPris(70,flaskeIndiaPaleAle);
+        fredagsbar.createProduktPris(70,flaskeJulebryg);
+        fredagsbar.createProduktPris(70,flaskeJuletønden);
+        fredagsbar.createProduktPris(70,flaskeOldStrongAle);
+        fredagsbar.createProduktPris(70,flaskeFregattenJylland);
+        fredagsbar.createProduktPris(70,flaskeImperialStout);
+        fredagsbar.createProduktPris(70,flaskeTribute);
+        fredagsbar.createProduktPris(100,flaskeBlackMonster);
 
         //Tildeler fredagsbarspris til fadøl
-        fredagsbar.createProduktPris(38, fadKlosterbryg, 1);
-        fredagsbar.createProduktPris(38, fadJazzClassic, 1);
-        fredagsbar.createProduktPris(38, fadEkstraPilsner, 1);
-        fredagsbar.createProduktPris(38, fadCelebration, 1);
-        fredagsbar.createProduktPris(38, fadBlondie, 1);
-        fredagsbar.createProduktPris(38, fadForårsbryg, 1);
-        fredagsbar.createProduktPris(38, fadIndiaPaleAle, 1);
-        fredagsbar.createProduktPris(38, fadJulebryg, 1);
-        fredagsbar.createProduktPris(38, fadImperialStout, 1);
-        fredagsbar.createProduktPris(38, fadSpecial, 1);
-        fredagsbar.createProduktPris(15, Æblebrus, 0);
-        fredagsbar.createProduktPris(10, chips, 0);
-        fredagsbar.createProduktPris(15, peanuts, 0);
-        fredagsbar.createProduktPris(15, cola, 0);
+        fredagsbar.createProduktPris(38,fadKlosterbryg);
+        fredagsbar.createProduktPris(38,fadJazzClassic);
+        fredagsbar.createProduktPris(38,fadEkstraPilsner);
+        fredagsbar.createProduktPris(38,fadCelebration);
+        fredagsbar.createProduktPris(38,fadBlondie);
+        fredagsbar.createProduktPris(38,fadForårsbryg);
+        fredagsbar.createProduktPris(38,fadIndiaPaleAle);
+        fredagsbar.createProduktPris(38,fadJulebryg);
+        fredagsbar.createProduktPris(38,fadImperialStout);
+        fredagsbar.createProduktPris(38,fadSpecial);
+        fredagsbar.createProduktPris(15,Æblebrus);
+        fredagsbar.createProduktPris(10,chips);
+        fredagsbar.createProduktPris(15,peanuts);
+        fredagsbar.createProduktPris(15,cola);
         fredagsbar.createProduktPris(15, nikoline);
         fredagsbar.createProduktPris(15, sevenUp);
         fredagsbar.createProduktPris(10, vand);
