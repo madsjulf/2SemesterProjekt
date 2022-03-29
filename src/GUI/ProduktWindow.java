@@ -16,7 +16,7 @@ import model.ProduktGruppe;
 import Controller.Controller;
 
 public class ProduktWindow extends Stage {
-    private final TextField txfName = new TextField();
+    private final TextField txfNavn = new TextField();
     private final ComboBox comboBoxProduktGruppe = new ComboBox();
     private final ComboBox comboBoxPrisListe = new ComboBox();
     private final Label lblError = new Label();
@@ -42,10 +42,10 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
 
         // Label og textfeldt til navn på produkt
-        Label lblName = new Label("Navn");
-        pane.add(lblName, 0, 0);
-        pane.add(txfName, 0, 1);
-        txfName.setPrefWidth(200);
+        Label lblNavn = new Label("Navn");
+        pane.add(lblNavn, 0, 0);
+        pane.add(txfNavn, 0, 1);
+        txfNavn.setPrefWidth(200);
 
 
 
@@ -87,7 +87,7 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
     }
 
     private void okAction() {
-        String name = txfName.getText().trim();
+        String name = txfNavn.getText().trim();
         if (name.length() == 0) {
             lblError.setText("Navn er tomt!");
             return;
