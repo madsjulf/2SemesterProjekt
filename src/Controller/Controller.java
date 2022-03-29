@@ -27,13 +27,19 @@ public class Controller {
     }
 
 
-    public Produkt createProdukt(String navn, ProduktGruppe produktGruppe) {
+    public static Produkt createProdukt(String navn, ProduktGruppe produktGruppe) {
         Produkt produkt = new Produkt(navn, produktGruppe);
         Storage.storeProdukter(produkt);
         return produkt;
     }
 
-    public ProduktPris createProduktPris(int pris, Produkt produkt) {
+    public static ProduktGruppe createProduktGruppe(String name) {
+        ProduktGruppe produktGruppe = new ProduktGruppe(name);
+        Storage.storeProduktGruppe(produktGruppe);
+        return produktGruppe;
+    }
+
+    public static ProduktPris createProduktPris(int pris, Produkt produkt) {
         ProduktPris produktPris = new ProduktPris(pris, produkt);
         Storage.storeProduktpriser(produktPris);
         return produktPris;

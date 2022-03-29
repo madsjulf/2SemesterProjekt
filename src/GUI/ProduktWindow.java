@@ -1,5 +1,6 @@
 package GUI;
 
+import Controller.Controller;
 import Storage.Storage;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
@@ -12,6 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.PrisListe;
 import model.ProduktGruppe;
+import Controller.Controller;
 
 public class ProduktWindow extends Stage {
     private final TextField txfName = new TextField();
@@ -40,7 +42,7 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
 
         // Label og textfeldt til navn på produkt
-        Label lblName = new Label("Name");
+        Label lblName = new Label("Navn");
         pane.add(lblName, 0, 0);
         pane.add(txfName, 0, 1);
         txfName.setPrefWidth(200);
@@ -101,6 +103,7 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
         PrisListe prisListe = (PrisListe) comboBoxPrisListe.getSelectionModel().getSelectedItem();
 
 
+        Controller.createProdukt(name, produktGruppe);
 
         this.hide();
     }
