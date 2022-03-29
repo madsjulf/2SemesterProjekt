@@ -9,10 +9,9 @@ public class ProduktPris {
     private Produkt produkt;
     private PrisListe prisListe;
 
-    public ProduktPris(int pris, Produkt produkt, PrisListe prisListe) {
+    public ProduktPris(int pris, Produkt produkt) {
         this.pris = pris;
         this.produkt = produkt;
-        this.prisListe = prisListe;
     }
 
 

@@ -13,8 +13,8 @@ public class PrisListe {
 
     }
 
-    public ProduktPris createProduktPris(int pris, Produkt produkt, PrisListe prisListe){
-        ProduktPris pp = new ProduktPris(pris,produkt,prisListe);
+    public ProduktPris createProduktPris(int pris, Produkt produkt){
+        ProduktPris pp = new ProduktPris(pris,produkt);
         produktPriser.add(pp);
         return pp;
     }
