@@ -19,16 +19,16 @@ public class Storage {
         produkter.remove(produkt);
     }
     //----------------------------------------------------------------------------------------------------------------------
-    private static ArrayList<ProduktGruppe>produktGrupper = new ArrayList<>();
-    public static ArrayList<ProduktGruppe>getproduktGruppe(){
+    private static ArrayList<ProduktGruppe> produktGrupper = new ArrayList<>();
+    public static ArrayList<ProduktGruppe> getProduktGruppe(){
         return produktGrupper;
     }
     public static void storeProduktGruppe(ProduktGruppe produktGruppe){
         produktGrupper.add(produktGruppe);
     }
     //----------------------------------------------------------------------------------------------------------------------
-    private static ArrayList<PrisListe>prisLister = new ArrayList<>();
-    public static ArrayList<PrisListe>getprisLister(){
+    private static ArrayList<PrisListe> prisLister = new ArrayList<>();
+    public static ArrayList<PrisListe> getprisLister(){
         return prisLister;
     }
     public static void storeprisListe(PrisListe prisListe) {

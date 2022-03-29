@@ -10,6 +10,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import model.Produkt;
+import Storage.Storage;
 
 public class ProduktPane extends GridPane {
     private final ListView<Produkt> lvwProdukter = new ListView<>();
@@ -30,7 +31,7 @@ public class ProduktPane extends GridPane {
         lvwProdukter.setPrefHeight(200);
         ChangeListener<Produkt> listener = (ov, o, n) -> this.selectedProduktChanged();
         lvwProdukter.getSelectionModel().selectedItemProperty().addListener(listener);
-        lvwProdukter.getItems().addAll(Storage.getProdukter);
+        lvwProdukter.getItems().addAll(Storage.getProdukter());
 
 
         // Knap til oprettelse af produkter

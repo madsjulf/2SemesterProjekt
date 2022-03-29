@@ -51,7 +51,7 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
         Label lblProduktGruppe = new Label("ProduktGrupper");
         pane.add(lblProduktGruppe, 1, 1);
         pane.add(comboBoxProduktGruppe, 1, 2);
-        comboBoxProduktGruppe.getItems().addAll(Storage.getproduktGruppe());
+        comboBoxProduktGruppe.getItems().addAll(Storage.getProduktGruppe());
 
 
         //Label og combobox til liste af Prislister
