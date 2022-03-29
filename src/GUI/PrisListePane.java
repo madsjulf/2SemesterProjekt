@@ -7,12 +7,6 @@ import model.PrisListe;
 public class PrisListePane extends GridPane {
     private final ListView lvwPrisLister = new ListView();
 
-
-
-
-
-
-
     public void updateControls() {
         PrisListe prisListe = (PrisListe) lvwPrisLister.getSelectionModel().getSelectedItem();
 
