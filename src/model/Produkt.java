@@ -8,7 +8,7 @@ public class Produkt {
     private ProduktGruppe produktGruppe;
 
 
-    public Produkt(String navn, ProduktGruppe produktGruppe) {
+    public Produkt(String navn,ProduktGruppe produktGruppe) {
         this.navn = navn;
         this.produktGruppe = produktGruppe;
     }
