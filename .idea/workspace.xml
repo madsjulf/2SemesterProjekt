@@ -52,18 +52,16 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="JUnit.SalgTest">
-    <configuration name="SalgTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="GUI.Main" />
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="GUI.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="TEST_OBJECT" value="class" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -134,9 +132,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SalgTest" />
-        <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinjer" />
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SalgTest.salgKorrektOprettet" />
+        <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinjer" />
         <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinje" />
         <item itemvalue="JUnit.SalgTest.getSamletPris" />
       </list>
