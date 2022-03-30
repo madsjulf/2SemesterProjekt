@@ -8,11 +8,14 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
+import model.PrisListe;
+import model.Produkt;
 import model.ProduktGruppe;
 import Storage.Storage;
 
 public class ProduktGruppePane extends GridPane {
     private final ListView lvwProduktGrupper = new ListView();
+    private final ListView lvwProdukterIGruppe = new ListView();
 
     public ProduktGruppePane() {
         this.setPadding(new Insets(20));
@@ -27,6 +30,14 @@ public class ProduktGruppePane extends GridPane {
         lvwProduktGrupper.setPrefWidth(200);
         lvwProduktGrupper.setPrefHeight(200);
         lvwProduktGrupper.getItems().addAll(Storage.getProduktGruppe());
+        ChangeListener<ProduktGruppe> listener = (ov, o, n) -> this.selectedGruppeChanged();
+        lvwProduktGrupper.getSelectionModel().selectedItemProperty().addListener(listener);
+
+
+        this.add(lvwProdukterIGruppe, 1, 0);
+        lvwProdukterIGruppe.setPrefWidth(200);
+        lvwProdukterIGruppe.setPrefHeight(200);
+        lvwProdukterIGruppe.getSelectionModel().getSelectedItem();
 
 
         // Knap til oprettelse af produktGrupper
@@ -40,12 +51,19 @@ public class ProduktGruppePane extends GridPane {
         hbxButtons.getChildren().add(btnCreate);
         btnCreate.setOnAction(event -> this.createAction());
 
+        if (!lvwProduktGrupper.getItems().isEmpty())
+            lvwProduktGrupper.getSelectionModel().select(0);
 
     }
 
 
 
 //-------------------------------------------------------------------------
+
+    private void selectedGruppeChanged() {
+        this.updateControls();
+    }
+
 
     private void createAction() {
         ProduktGruppeWindow dialog = new ProduktGruppeWindow("Opret ProduktGruppe", null);
@@ -59,6 +77,18 @@ public class ProduktGruppePane extends GridPane {
 
     public void updateControls() {
         ProduktGruppe produktGruppe = (ProduktGruppe) lvwProduktGrupper.getSelectionModel().getSelectedItem();
+
+        lvwProdukterIGruppe.getItems().clear();
+        if (produktGruppe != null) {
+            for (int i = 0; i < Storage.getProdukter().size(); i++) {
+                if (Storage.getProdukter().get(i).getProduktGruppe().equals(produktGruppe)) {
+                    Produkt produktIProduktGruppe = Storage.getProdukter().get(i);
+                    lvwProdukterIGruppe.getItems().add(produktIProduktGruppe);
+                }
+            }
+        } else {
+            lvwProdukterIGruppe.getItems().clear();
+        }
 
     }
 }
