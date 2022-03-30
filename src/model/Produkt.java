@@ -11,6 +11,7 @@ public class Produkt {
     public Produkt(String navn,ProduktGruppe produktGruppe) {
         this.navn = navn;
         this.produktGruppe = produktGruppe;
+
     }
 
     public ProduktGruppe getProduktGruppe() {

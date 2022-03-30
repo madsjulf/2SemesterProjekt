@@ -51,7 +51,7 @@ public class Controller {
         return prisListe;
     }
 
-    public void createSomeObjects() {
+    public static void createSomeObjects() {
         //Opretter produktgrupper
         ProduktGruppe flaskeøl = createProduktGruppe("Flaske");
         ProduktGruppe fadøl = createProduktGruppe("Fadøl");

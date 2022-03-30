@@ -8,7 +8,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.Produkt;
 import model.ProduktGruppe;
 import Storage.Storage;
 
@@ -27,8 +26,6 @@ public class ProduktGruppePane extends GridPane {
         this.add(lvwProduktGrupper, 0, 0);
         lvwProduktGrupper.setPrefWidth(200);
         lvwProduktGrupper.setPrefHeight(200);
-        ChangeListener<Produkt> listener = (ov, o, n) -> this.selectedProduktGruppeChanged();
-        lvwProduktGrupper.getSelectionModel().selectedItemProperty().addListener(listener);
         lvwProduktGrupper.getItems().addAll(Storage.getProduktGruppe());
 
 
@@ -43,16 +40,10 @@ public class ProduktGruppePane extends GridPane {
         hbxButtons.getChildren().add(btnCreate);
         btnCreate.setOnAction(event -> this.createAction());
 
-        //        lvwProduktGrupper.getItems().setAll(Controller.getProduktGrupper());
-        if (!lvwProduktGrupper.getItems().isEmpty())
-            lvwProduktGrupper.getSelectionModel().select(0);
-
 
     }
 
-    private void selectedProduktGruppeChanged() {
-        this.updateControls();
-    }
+
 
 //-------------------------------------------------------------------------
 
@@ -60,6 +51,8 @@ public class ProduktGruppePane extends GridPane {
         ProduktGruppeWindow dialog = new ProduktGruppeWindow("Opret ProduktGruppe", null);
         dialog.showAndWait();
 
+        lvwProduktGrupper.getItems().clear();
+        lvwProduktGrupper.getItems().addAll(Storage.getProduktGruppe());
     }
 
 
