@@ -28,7 +28,7 @@ class SalgTest {
     void salgKorrektOprettet() {
         //Arrange
         this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
-        this.salgsLinje = new SalgsLinje(2, produktPris,salg );
+        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
 
         //Arrange Act
         assertTrue(salg.getSalgsLinjer().contains(salgsLinje));
@@ -38,10 +38,26 @@ class SalgTest {
 
 
     @Test
-    void getSamletPris() {
+    void getSamletPris1SalgsLinje1Antal() {
         //Arrange
         this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
-        this.salgsLinje = new SalgsLinje(2, produktPris,salg );
+        this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
+
+        //Act
+        int actual = salg.getSamletPris();
+        int expected = 10;
+
+        //Assert
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    void getSamletPris1SalgsLinje2Antal() {
+        //Arrange
+        this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
+        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
+
 
         //Act
         int actual = salg.getSamletPris();
@@ -50,7 +66,25 @@ class SalgTest {
         //Assert
         assertEquals(expected,actual);
 
+    }
 
+
+    @Test
+    void getSamletPris2SalgsLinjer() {
+        //Arrange
+        this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
+        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
+        ProduktPris produktPris = new ProduktPris(5, produkt);
+        SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
+
+
+        //Act
+        int actual = salg.getSamletPris();
+        int expected = 25;
+
+        //Assert
+        assertEquals(expected,actual);
 
     }
+
 }
