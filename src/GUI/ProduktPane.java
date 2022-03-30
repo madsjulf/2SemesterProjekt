@@ -1,6 +1,5 @@
 package GUI;
 
-import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,7 +7,6 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import javafx.stage.Stage;
 import model.Produkt;
 import Storage.Storage;
 
@@ -29,8 +27,6 @@ public class ProduktPane extends GridPane {
         this.add(lvwProdukter, 0, 1, 1, 5);
         lvwProdukter.setPrefWidth(200);
         lvwProdukter.setPrefHeight(200);
-        ChangeListener<Produkt> listener = (ov, o, n) -> this.selectedProduktChanged();
-        lvwProdukter.getSelectionModel().selectedItemProperty().addListener(listener);
         lvwProdukter.getItems().addAll(Storage.getProdukter());
 
 
@@ -46,15 +42,9 @@ public class ProduktPane extends GridPane {
         btnCreate.setOnAction(event -> this.createAction());
 
 
-//        lvwProdukter.getItems().setAll(Controller.getProdukter());
-        if (!lvwProdukter.getItems().isEmpty())
-            lvwProdukter.getSelectionModel().select(0);
 
     }
 
-    private void selectedProduktChanged() {
-        this.updateControls();
-    }
 
 
     //---------------------------------------------------------------------------------------
@@ -64,14 +54,12 @@ public class ProduktPane extends GridPane {
         ProduktWindow dialog = new ProduktWindow("Opret Produkt", null, null);
         dialog.showAndWait();
 
-//        lvwProdukter.getItems().setAll(Controller.getProdukter());
-        this.updateControls();
-
+        lvwProdukter.getItems().clear();
+        lvwProdukter.getItems().setAll(Storage.getProdukter());
     }
     //---------------------------------------------- --------------------
 
     public void updateControls() {
         Produkt produkt = lvwProdukter.getSelectionModel().getSelectedItem();
-
     }
 }
