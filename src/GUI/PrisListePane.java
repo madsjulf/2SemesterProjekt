@@ -10,6 +10,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import model.PrisListe;
+import model.Produkt;
 import model.ProduktPris;
 
 public class PrisListePane extends GridPane {
@@ -74,15 +75,17 @@ public class PrisListePane extends GridPane {
     public void updateControls() {
         PrisListe prisListe = (PrisListe) lvwPrisLister.getSelectionModel().getSelectedItem();
 
+        lvwProdukterIPrisLister.getItems().clear();
         if (prisListe != null) {
             for (int i = 0; i< Storage.getProduktPriser().size(); i++) {
-                if (Storage.getProduktPriser().equals(prisListe)) {
+                if (Storage.getProduktPriser().get(i).getPrisListe().equals(prisListe)) {
+                    Produkt produktTilPrisListe = Storage.getProduktPriser().get(i).getProdukt();
+                    lvwProdukterIPrisLister.getItems().add(produktTilPrisListe);
 
                 }
             }
-
-
-
+        } else {
+            lvwProdukterIPrisLister.getItems().clear();
         }
     }
 }
