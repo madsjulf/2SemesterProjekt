@@ -22,6 +22,7 @@ public class Controller {
         return controller;
     }
 
+
     public static Controller getTestController() {
         return new Controller();
     }
@@ -68,7 +69,7 @@ public class Controller {
         Produkt flaskeEkstraPilsner = createProdukt("Ekstra Pilsner",flaskeøl);
         Produkt flaskeCelebration = createProdukt("Celebration",flaskeøl);
         Produkt flaskeBlondie = createProdukt("Blondie",flaskeøl);
-        Produkt flaskeForårsbryg = createProdukt("Blondie",flaskeøl);
+        Produkt flaskeForårsbryg = createProdukt("Forårs Bryg",flaskeøl);
         Produkt flaskeIndiaPaleAle = createProdukt("India Pale Ale",flaskeøl);
         Produkt flaskeJulebryg = createProdukt("Julebryg",flaskeøl);
         Produkt flaskeJuletønden = createProdukt("Jultønden",flaskeøl);
@@ -88,7 +89,7 @@ public class Controller {
         Produkt fadIndiaPaleAle = createProdukt("India Pale Ale",fadøl);
         Produkt fadJulebryg = createProdukt("Julebryg",fadøl);
         Produkt fadImperialStout = createProdukt("Imperial Stout",fadøl);
-        Produkt fadSpecial = createProdukt("Imperial Stout",fadøl);
+        Produkt fadSpecial = createProdukt("Special",fadøl);
         Produkt Æblebrus = createProdukt("Æblebrus",fadøl);
         Produkt chips = createProdukt("Chips",fadøl);
         Produkt peanuts = createProdukt("Peanuts",fadøl);

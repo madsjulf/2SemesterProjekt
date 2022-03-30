@@ -18,6 +18,7 @@ public class SalgsLinje {
         this.antal = antal;
         this.produktPris = produktPris;
         this.salg = salg;
+        addProduktPris(produktPris);
 
     }
 
@@ -37,5 +38,9 @@ public class SalgsLinje {
         if (produktPriser.contains(produktPris)){
             produktPriser.remove(produktPris);
         }
+    }
+
+    public ProduktPris getProduktPris() {
+        return produktPris;
     }
 }
