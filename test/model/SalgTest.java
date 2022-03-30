@@ -20,7 +20,7 @@ class SalgTest {
         this.produktGruppe = new ProduktGruppe("Flaskeøl");
         this.produkt = new Produkt("Øl", produktGruppe);
         this.prisListe = new PrisListe("Julefest");
-        this.produktPris = new ProduktPris(10, produkt);
+        this.produktPris = new ProduktPris(10, produkt,prisListe);
 
     }
 
@@ -55,7 +55,7 @@ class SalgTest {
         this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
         this.produkt = new Produkt("øl", produktGruppe);
-        this.produktPris = new ProduktPris(5, produkt);
+        this.produktPris = new ProduktPris(5, produkt,prisListe);
         this.salgsLinje = salg.opretSalgsLinje(1,produktPris , salg);
 
         //Act
