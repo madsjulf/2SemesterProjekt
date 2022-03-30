@@ -58,7 +58,7 @@ public class Controller {
         ProduktGruppe fustage = createProduktGruppe("Fustage");
         ProduktGruppe kulsyre = createProduktGruppe("Kulsyre");
         ProduktGruppe malt = createProduktGruppe("Malt");
-        ProduktGruppe beklædning = createProduktGruppe("Malt");
+        ProduktGruppe beklædning = createProduktGruppe("Beklædning");
         ProduktGruppe anlæg = createProduktGruppe("Anlæg");
         ProduktGruppe glas = createProduktGruppe("Glas");
 
