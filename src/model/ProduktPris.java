@@ -30,6 +30,8 @@ public class ProduktPris {
         return prisListe;
     }
 
+
+
     @Override
     public String toString() {
         return  " " +"Pris " + pris +
