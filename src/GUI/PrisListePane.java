@@ -1,6 +1,7 @@
 package GUI;
 
 import Storage.Storage;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -9,9 +10,11 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import model.PrisListe;
+import model.ProduktPris;
 
 public class PrisListePane extends GridPane {
     private final ListView lvwPrisLister = new ListView();
+    private final ListView lvwProdukterIPrisLister = new ListView();
 
     public PrisListePane() {
         this.setPadding(new Insets(20));
@@ -26,6 +29,13 @@ public class PrisListePane extends GridPane {
         lvwPrisLister.setPrefWidth(200);
         lvwPrisLister.setPrefHeight(200);
         lvwPrisLister.getItems().addAll(Storage.getprisLister());
+        ChangeListener<PrisListe> listener = (ov, o, n) -> this.selectedPrisListeChanged();
+        lvwPrisLister.getSelectionModel().selectedItemProperty().addListener(listener);
+
+        this.add(lvwProdukterIPrisLister, 1, 0);
+        lvwProdukterIPrisLister.setPrefHeight(200);
+        lvwProdukterIPrisLister.setPrefWidth(200);
+        lvwProdukterIPrisLister.getSelectionModel().getSelectedItem();
 
 
         // Knap til oprettelse af prislister
@@ -40,8 +50,15 @@ public class PrisListePane extends GridPane {
         btnCreate.setOnAction(event -> this.createAction());
 
 
+        if (!lvwPrisLister.getItems().isEmpty())
+            lvwPrisLister.getSelectionModel().select(0);
 
 
+
+    }
+
+    private void selectedPrisListeChanged() {
+        this.updateControls();
     }
 
     private void createAction() {
@@ -57,5 +74,15 @@ public class PrisListePane extends GridPane {
     public void updateControls() {
         PrisListe prisListe = (PrisListe) lvwPrisLister.getSelectionModel().getSelectedItem();
 
+        if (prisListe != null) {
+            for (int i = 0; i< Storage.getProduktPriser().size(); i++) {
+                if (Storage.getProduktPriser().equals(prisListe)) {
+
+                }
+            }
+
+
+
+        }
     }
 }
