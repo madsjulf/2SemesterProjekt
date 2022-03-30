@@ -43,4 +43,8 @@ public class SalgsLinje {
     public ProduktPris getProduktPris() {
         return produktPris;
     }
+
+    public int getAntal() {
+        return antal;
+    }
 }

@@ -28,20 +28,18 @@ class SalgTest {
     void salgKorrektOprettet() {
         //Arrange
         this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
-        this.salgsLinje = new SalgsLinje(2, produktPris,salg );
+        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
 
         //Arrange Act
         assertTrue(salg.getSalgsLinjer().contains(salgsLinje));
 
     }
 
-
-
     @Test
-    void getSamletPris() {
+    void getSamletPris1salgsLinje2Antal() {
         //Arrange
         this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
-        this.salgsLinje = new SalgsLinje(2, produktPris,salg );
+        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
 
         //Act
         int actual = salg.getSamletPris();
@@ -49,8 +47,24 @@ class SalgTest {
 
         //Assert
         assertEquals(expected,actual);
-
-
-
     }
+
+    @Test
+    void getSamletPris2salgsLinjer() {
+        //Arrange
+        this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
+        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
+        this.produkt = new Produkt("øl", produktGruppe);
+        this.produktPris = new ProduktPris(5, produkt);
+        this.salgsLinje = salg.opretSalgsLinje(1,produktPris , salg);
+
+        //Act
+        int actual = salg.getSamletPris();
+        int expected = 25;
+
+        //Assert
+        assertEquals(expected,actual);
+    }
+
+
 }
