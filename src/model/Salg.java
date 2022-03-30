@@ -14,16 +14,15 @@ public class Salg {
         this.salgsDato = salgsDato;
     }
 
-    public ArrayList<SalgsLinje> getSalgsLinjer(){
+    public ArrayList<SalgsLinje> getSalgsLinjer() {
         return new ArrayList<>(salgsLinjer);
     }
 
-    public SalgsLinje opretSalgsLinje(int antal, ProduktPris produktPris, Salg salg){
+    public SalgsLinje opretSalgsLinje(int antal, ProduktPris produktPris, Salg salg) {
         SalgsLinje salgsLinje = new SalgsLinje(antal, produktPris, salg);
         salgsLinjer.add(salgsLinje);
         return salgsLinje;
     }
-
 
 
     public int getSalgsNr() {
@@ -32,5 +31,14 @@ public class Salg {
 
     public LocalDate getSalgsDato() {
         return salgsDato;
+    }
+
+
+    public int getSamletPris() {
+        int samletPris = 0;
+        for (SalgsLinje salgsLinje : salgsLinjer)
+            samletPris += salgsLinje.getProduktPris().getPris();
+            return samletPris;
+
     }
 }
