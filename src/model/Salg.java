@@ -36,8 +36,11 @@ public class Salg {
 
     public int getSamletPris() {
         int samletPris = 0;
-        for (SalgsLinje salgsLinje : salgsLinjer)
-            samletPris += salgsLinje.getProduktPris().getPris();
+        for (SalgsLinje salgsLinje : salgsLinjer) {
+            int antal = 0;
+            antal += salgsLinje.getAntal();
+            samletPris += salgsLinje.getProduktPris().getPris()*antal;
+        }
             return samletPris;
 
     }
