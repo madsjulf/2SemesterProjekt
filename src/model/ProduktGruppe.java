@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ProduktGruppe {
 
-    private final ArrayList<Produkt>produkter = new ArrayList<>();
+    private final ArrayList<Produkt> produkter = new ArrayList<>();
     private final String navn;
 
     public ProduktGruppe(String navn) {
@@ -13,8 +13,7 @@ public class ProduktGruppe {
     }
 
 
-
-    public Produkt createProdukt(String navn){
+    public Produkt createProdukt(String navn) {
         Produkt produkt = new Produkt(navn, this);
         produkter.add(produkt);
         return produkt;
@@ -30,9 +29,6 @@ public class ProduktGruppe {
 
     @Override
     public String toString() {
-        return "ProduktGruppe{" +
-                "produkter=" + produkter +
-                ", navn='" + navn + '\'' +
-                '}';
+        return "ProduktGruppe: " + navn;
     }
 }

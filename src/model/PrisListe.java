@@ -25,9 +25,7 @@ public class PrisListe {
 
     @Override
     public String toString() {
-        return "PrisListe{" +
-                "navn='" + navn + '\'' +
-                '}';
+        return "PrisListe: " + navn;
     }
 
 }
