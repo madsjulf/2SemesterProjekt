@@ -81,7 +81,6 @@ public class PrisListePane extends GridPane {
                 if (Storage.getProduktPriser().get(i).getPrisListe().equals(prisListe)) {
                     Produkt produktTilPrisListe = Storage.getProduktPriser().get(i).getProdukt();
                     lvwProdukterIPrisLister.getItems().add(produktTilPrisListe);
-
                 }
             }
         } else {

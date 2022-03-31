@@ -54,9 +54,16 @@ public class MainApp extends Application {
             Tab tabPrisListe = new Tab("PrisLister");
             tabPane.getTabs().add(tabPrisListe);
 
-        PrisListePane prisListePane = new PrisListePane();
+            PrisListePane prisListePane = new PrisListePane();
             tabPrisListe.setContent(prisListePane);
             tabPrisListe.setOnSelectionChanged(event -> prisListePane.updateControls());
+
+            Tab tabSalg = new Tab("Salg");
+            tabPane.getTabs().add(tabSalg);
+
+            SalgPane salgPane = new SalgPane();
+            tabSalg.setContent(salgPane);
+            tabSalg.setOnSelectionChanged(event -> salgPane.updateControls());
         }
 
 
