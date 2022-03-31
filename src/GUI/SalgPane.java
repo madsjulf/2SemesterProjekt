@@ -46,6 +46,7 @@ public class SalgPane extends GridPane {
         lvwGrupperIPrisListe.setPrefWidth(200);
         lvwGrupperIPrisListe.setPrefHeight(200);
         lvwGrupperIPrisListe.getItems().addAll(Storage.getProduktGruppe());
+        lvwGrupperIPrisListe.getSelectionModel().selectFirst();
         ChangeListener<ProduktGruppe> listener1 = (ov, o, n) -> this.selectedProduktGruppeChanged();
         lvwGrupperIPrisListe.getSelectionModel().selectedItemProperty().addListener(listener1);
 
@@ -88,6 +89,7 @@ public class SalgPane extends GridPane {
 
         comboBoxPrisListe.getSelectionModel().select(0);
 
+        lvwGrupperIPrisListe.getSelectionModel().select(0);
 
 
     }
@@ -136,12 +138,12 @@ public class SalgPane extends GridPane {
 
         ArrayList<ProduktPris> produktPrisestemp = new ArrayList<>();
 
-        if (valgtProduktGruppe != null) {
-            for (ProduktPris aa : prisListe.getProduktPriser())
-                if (valgtProduktGruppe.getProdukter().contains(aa.getProdukt())) {
-                    produktPrisestemp.add(aa);
-                }
-        }
+//        if (valgtProduktGruppe != null) {
+//            for (ProduktPris aa : prisListe.getProduktPriser())
+//                if (valgtProduktGruppe.getProdukter().contains(aa.getProdukt())) {
+//                    produktPrisestemp.add(aa);
+//                }
+//        }
         this.lvwProdukterIGrupper.getItems().setAll(produktPrisestemp);
     }
 
