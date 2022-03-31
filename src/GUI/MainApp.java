@@ -63,7 +63,7 @@ public class MainApp extends Application {
 
             SalgPane salgPane = new SalgPane();
             tabSalg.setContent(salgPane);
-            tabSalg.setOnSelectionChanged(event -> salgPane.updateControls());
+            tabSalg.setOnSelectionChanged(event -> salgPane.updateControlsProduktGruppe());
         }
 
 
