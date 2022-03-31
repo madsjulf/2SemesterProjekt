@@ -27,7 +27,7 @@ class SalgTest {
     @Test
     void salgKorrektOprettet() {
         //Arrange
-        this.salg = new Salg(1, LocalDate.of(2022, 12, 12),"Mobilepay");
+        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Mobilepay");
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
 
         //Arrange Act
@@ -38,7 +38,7 @@ class SalgTest {
     @Test
     void getSamletPris1salgsLinje2Antal() {
         //Arrange
-        this.salg = new Salg(1, LocalDate.of(2022, 12, 12),"Mobileplay");
+        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobileplay");
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
 
         //Act
@@ -52,7 +52,7 @@ class SalgTest {
     @Test
     void getSamletPris2salgsLinjer() {
         //Arrange
-        this.salg = new Salg(1, LocalDate.of(2022, 12, 12),"Mobilepay");
+        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Mobilepay");
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
         this.produkt = new Produkt("øl", produktGruppe);
         this.produktPris = new ProduktPris(5, produkt,prisListe);
@@ -69,17 +69,21 @@ class SalgTest {
 
 
     @Test
-    void getsalgsnr() {
+    void getsalgsnr1Salg() {
         //Arrange
-        this.salg = new Salg(0, LocalDate.of(2022, 12, 12),"Mobilepay");
-        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
-        this.produkt = new Produkt("øl", produktGruppe);
-        this.produktPris = new ProduktPris(5, produkt,prisListe);
-        this.salgsLinje = salg.opretSalgsLinje(1,produktPris , salg);
+        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay");
 
+        assertEquals(1,salg.getSalgsNr());
 
-        assertEquals(salg.getSalgsNr(),1);
+    }
 
+    @Test
+    void getsalgsnr2Salg() {
+        //Arrange
+        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay");
+        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay");
+
+        assertEquals(2,salg.getSalgsNr());
 
     }
 
