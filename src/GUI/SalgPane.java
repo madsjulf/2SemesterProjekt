@@ -1,9 +1,13 @@
 package GUI;
 
 import javafx.geometry.Insets;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 
 public class SalgPane extends GridPane {
+    private final TextField txfPris = new TextField();
+    private final TextField txfProcentRabat = new TextField();
+
 
 
 
