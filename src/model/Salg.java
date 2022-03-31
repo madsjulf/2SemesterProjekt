@@ -4,14 +4,18 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Salg {
+    private static int nrCounter = 1;
     private int salgsNr;
     private LocalDate salgsDato;
+    private String betalingsForm;
     // Komposition --> 0..* SalgsLinjer
     private ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
 
-    public Salg(int salgsNr, LocalDate salgsDato) {
-        this.salgsNr = salgsNr;
+    public Salg(LocalDate salgsDato, String betalingsForm) {
         this.salgsDato = salgsDato;
+        this.betalingsForm = betalingsForm;
+        salgsNr = nrCounter;
+        updateNr();
     }
 
     public ArrayList<SalgsLinje> getSalgsLinjer() {
@@ -29,6 +33,8 @@ public class Salg {
         return salgsNr;
     }
 
+
+
     public LocalDate getSalgsDato() {
         return salgsDato;
     }
@@ -43,5 +49,10 @@ public class Salg {
         }
             return samletPris;
 
+
+    }
+
+    public int updateNr(){
+        return nrCounter++;
     }
 }
