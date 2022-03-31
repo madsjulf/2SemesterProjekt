@@ -13,7 +13,6 @@ public class SalgsLinje {
         this.antal = antal;
         this.produktPris = produktPris;
         this.salg = salg;
-
     }
 
     public ProduktPris getProduktPris() {

@@ -67,4 +67,21 @@ class SalgTest {
     }
 
 
+
+    @Test
+    void getsalgsnr() {
+        //Arrange
+        this.salg = new Salg(0, LocalDate.of(2022, 12, 12),"Mobilepay");
+        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
+        this.produkt = new Produkt("øl", produktGruppe);
+        this.produktPris = new ProduktPris(5, produkt,prisListe);
+        this.salgsLinje = salg.opretSalgsLinje(1,produktPris , salg);
+
+
+        assertEquals(salg.getSalgsNr(),1);
+
+
+    }
+
+
 }
