@@ -142,9 +142,10 @@ public class SalgPane extends GridPane {
         if (valgtProduktGruppe != null) {
             System.out.println("hej");
             System.out.println(Storage.getProduktPriser().size());
-            for (ProduktPris aa : Storage.getProduktPriser()){
-                if (valgtProduktGruppe.getNavn().contains(aa.getProdukt().getNavn())) {
-                    System.out.println(Storage.getProduktPriser().size());
+            for (ProduktPris aa : prisListe.getProduktPriser()){
+                System.out.println("med");
+                if (valgtProduktGruppe.getProdukter().contains(aa.getProdukt())) {
+                    System.out.println("dig");
                     produktPrisestemp.add(aa);
                 }
                 }
