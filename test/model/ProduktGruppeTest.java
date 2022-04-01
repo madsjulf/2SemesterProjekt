@@ -23,7 +23,7 @@ class ProduktGruppeTest {
         this.produktGruppe = new ProduktGruppe("Flaskeøl");
 
         //Act
-        Produkt tuborg = produktGruppe.createProdukt("Tuborg");
+        Produkt tuborg = produktGruppe.createProdukt("Tuborg", produktGruppe);
 
         //Assert
         assertTrue(produktGruppe.getProdukter().contains(tuborg));
@@ -36,7 +36,7 @@ class ProduktGruppeTest {
 
         //Act&Assert
         Exception exception = assertThrows(NullPointerException.class, () -> {
-            Produkt tuborg = produktGruppe.createProdukt("Tuborg");
+            Produkt tuborg = produktGruppe.createProdukt("Tuborg", produktGruppe);
         });
         assertEquals(exception.getCause(), exception);
     }
