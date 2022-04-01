@@ -23,7 +23,7 @@ public class ProduktGruppePane extends GridPane {
         this.setVgap(10);
         this.setGridLinesVisible(false);
 
-        Label lblProduktGrupper = new Label();
+        Label lblProduktGrupper = new Label("Produktgrupper");
         this.add(lblProduktGrupper, 0, 1);
 
         this.add(lvwProduktGrupper, 0, 0);

@@ -25,15 +25,23 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="master" />
+    <option name="BRANCH" value="Morten_commit" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Morten_commit" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="ProjectId" id="26rvTgT2CPJDKStyWb9xwZveuln" />
   <component name="ProjectViewState">
@@ -71,38 +79,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.getSamletPris" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="2SemesterProjekt" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getSamletPris" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SalgTest.getSamletPris2salgsLinje" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="2SemesterProjekt" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getSamletPris2salgsLinje" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SalgTest.getSamletPris2salgsLinjer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
@@ -114,6 +90,38 @@
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
       <option name="METHOD_NAME" value="getSamletPris2salgsLinjer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalgTest.getsalgsnr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2SemesterProjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
+      <option name="METHOD_NAME" value="getsalgsnr" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalgTest.getsalgsnr2Salg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2SemesterProjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
+      <option name="METHOD_NAME" value="getsalgsnr2Salg" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -140,8 +148,8 @@
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SalgTest.salgKorrektOprettet" />
         <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinjer" />
-        <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinje" />
-        <item itemvalue="JUnit.SalgTest.getSamletPris" />
+        <item itemvalue="JUnit.SalgTest.getsalgsnr2Salg" />
+        <item itemvalue="JUnit.SalgTest.getsalgsnr" />
       </list>
     </recent_temporary>
   </component>
@@ -164,7 +172,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test" />
     <MESSAGE value="Commit" />
-    <MESSAGE value="MortenCommit" />
-    <option name="LAST_COMMIT_MESSAGE" value="MortenCommit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit" />
   </component>
 </project>
