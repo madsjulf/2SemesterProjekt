@@ -15,6 +15,8 @@ public class SalgsLinje {
         this.salg = salg;
     }
 
+
+
     public ProduktPris getProduktPris() {
         return produktPris;
     }

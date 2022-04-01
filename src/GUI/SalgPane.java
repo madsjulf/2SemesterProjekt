@@ -8,11 +8,9 @@ import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.PrisListe;
-import model.Produkt;
-import model.ProduktGruppe;
-import model.ProduktPris;
+import model.*;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class SalgPane extends GridPane {
@@ -23,6 +21,7 @@ public class SalgPane extends GridPane {
     private final ListView<ProduktGruppe> lvwGrupperIPrisListe = new ListView();
     private final ListView<ProduktPris> lvwProdukterIGrupper = new ListView();
     private final ListView<Produkt> lvwIndkøbsListe = new ListView();
+    private final ComboBox comboBoxBetalingsform = new ComboBox();
 
 
 
@@ -43,6 +42,8 @@ public class SalgPane extends GridPane {
         comboBoxPrisListe.getSelectionModel().selectedItemProperty().addListener(listener);
 
 
+//        this.add(comboBoxBetalingsform, 3, 1);
+//        comboBoxBetalingsform.getItems().addAll()
 
         Label lblProduktGrupper = new Label("ProuktGrupper: ");
         this.add(lblProduktGrupper, 0, 2);
@@ -110,7 +111,7 @@ public class SalgPane extends GridPane {
         Button btnTilføj = new Button("Tilføj til Kurv");
         this.add(btnTilføj, 0, 8);
         hbxButtons.getChildren().add(btnTilføj);
-        btnTilføj.setOnAction(event -> this.createAction());
+        btnTilføj.setOnAction(event -> this.tilføjAction());
 
 
         comboBoxPrisListe.getSelectionModel().select(0);
@@ -139,6 +140,19 @@ public class SalgPane extends GridPane {
     private void createAction() {
         SalgWindow dialog = new SalgWindow("Opret Salg");
         dialog.showAndWait();
+    }
+
+    private void tilføjAction() {
+        ProduktPris produktPris = lvwProdukterIGrupper.getSelectionModel().getSelectedItem();
+
+        int antal = Integer.parseInt(txfAntal.getText());
+
+        int pris = Integer.parseInt(txfPris.getText());
+
+//        Salg salg = new Salg(LocalDate.now(),);
+//
+//        SalgsLinje salgsLinje = new SalgsLinje(antal, produktPris, salg);
+
 
     }
 

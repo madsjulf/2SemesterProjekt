@@ -29,6 +29,8 @@ public class Salg {
     }
 
 
+
+
     public int getSalgsNr() {
         return salgsNr;
     }
