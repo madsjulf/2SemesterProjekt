@@ -6,17 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="eedddd2a-6240-4d67-aefb-dd007fc1f402" name="Changes" comment="MortenCommit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/Controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/Controller/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/MainApp.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/PrisListePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/PrisListePane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktGruppePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktGruppePane.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/Storage/Storage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/Storage/Storage.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/PrisListe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/PrisListe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/Produkt.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/Produkt.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/ProduktGruppe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/ProduktGruppe.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/PrisListe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/PrisListe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Produkt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Produkt.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/ProduktGruppe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ProduktGruppe.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -31,12 +20,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="master" />
+    <option name="BRANCH" value="Morten_commit" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="Morten_commit" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -77,38 +66,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.getSamletPris" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="2SemesterProjekt" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getSamletPris" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SalgTest.getSamletPris2salgsLinje" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="2SemesterProjekt" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getSamletPris2salgsLinje" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="SalgTest.getSamletPris2salgsLinjer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
@@ -120,6 +77,38 @@
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
       <option name="METHOD_NAME" value="getSamletPris2salgsLinjer" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalgTest.getsalgsnr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2SemesterProjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
+      <option name="METHOD_NAME" value="getsalgsnr" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SalgTest.getsalgsnr2Salg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2SemesterProjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
+      <option name="METHOD_NAME" value="getsalgsnr2Salg" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -146,8 +135,8 @@
         <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SalgTest.salgKorrektOprettet" />
         <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinjer" />
-        <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinje" />
-        <item itemvalue="JUnit.SalgTest.getSamletPris" />
+        <item itemvalue="JUnit.SalgTest.getsalgsnr2Salg" />
+        <item itemvalue="JUnit.SalgTest.getsalgsnr" />
       </list>
     </recent_temporary>
   </component>
