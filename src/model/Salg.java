@@ -8,8 +8,11 @@ public class Salg {
     private int salgsNr;
     private LocalDate salgsDato;
     private String betalingsForm;
+    // Association --> 0..1 Kunde
+    private Kunde kunde; //nullable
     // Komposition --> 0..* SalgsLinjer
     private ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
+    private ArrayList<SalgsLinje>returSalgsLinjer = new ArrayList<>();
 
     public Salg(LocalDate salgsDato, String betalingsForm) {
         this.salgsDato = salgsDato;
@@ -27,6 +30,10 @@ public class Salg {
         salgsLinjer.add(salgsLinje);
         return salgsLinje;
     }
+
+  //  public SalgsLinje opretReturSalgsLinje(int antal, ProduktPris produktPris, Salg salg){
+     //   SalgsLinje salgsLinje = new SalgsLinje()
+    // }
 
 
     public int getSalgsNr() {
@@ -54,5 +61,16 @@ public class Salg {
 
     public int updateNr(){
         return nrCounter++;
+    }
+
+    public Kunde getKunde() {
+        return kunde;
+    }
+
+    public void setKunde(Kunde kunde) {
+        this.kunde = kunde;
+        if(kunde != null){
+            kunde.addSalg(this);
+        }
     }
 }
