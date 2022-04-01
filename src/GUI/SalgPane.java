@@ -111,27 +111,6 @@ public class SalgPane extends GridPane {
 
     }
 
-
-
-//    public void updateControlsPrisListe() {
-//        PrisListe prisListe = (PrisListe) comboBoxPrisListe.getSelectionModel().getSelectedItem();
-//
-//        lvwGrupperIPrisListe.getItems().clear();
-//        if (prisListe != null) {
-//            for (int i = 0; i < Storage.getprisLister().size(); i++) {
-//                if (Storage.getprisLister().get(i).equals(prisListe)) {
-//                    for (int j = 0; j < Storage.getProduktGruppe().size(); j++) {
-//                        ProduktGruppe produktGruppeIPrisListe = Storage.getProduktGruppe().get(j);
-//                        lvwGrupperIPrisListe.getItems().add(produktGruppeIPrisListe);
-//                    }
-//            }
-//            }
-//        } else {
-//            lvwGrupperIPrisListe.getItems().clear();
-//        }
-//    }
-
-
     public void updateControlsProduktGruppe() {
         PrisListe prisListe = (PrisListe) comboBoxPrisListe.getSelectionModel().getSelectedItem();
         ProduktGruppe valgtProduktGruppe = lvwGrupperIPrisListe.getSelectionModel().getSelectedItem();
