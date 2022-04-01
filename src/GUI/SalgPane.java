@@ -150,7 +150,7 @@ public class SalgPane extends GridPane {
 
 
     public void updateControlsProdukt() {
-        
+
 
 
     }
