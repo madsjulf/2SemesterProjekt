@@ -1,6 +1,7 @@
 package GUI;
 
 import Storage.Storage;
+import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,6 +18,7 @@ import java.util.ArrayList;
 public class SalgPane extends GridPane {
     private final TextField txfPris = new TextField();
     private final TextField txfProcentRabat = new TextField();
+    private final TextField txfAntal = new TextField();
     private final ComboBox comboBoxPrisListe = new ComboBox();
     private final ListView<ProduktGruppe> lvwGrupperIPrisListe = new ListView();
     private final ListView<ProduktPris> lvwProdukterIGrupper = new ListView();
@@ -42,7 +44,10 @@ public class SalgPane extends GridPane {
 
 
 
-        this.add(lvwGrupperIPrisListe, 0, 2);
+        Label lblProduktGrupper = new Label("ProuktGrupper: ");
+        this.add(lblProduktGrupper, 0, 2);
+
+        this.add(lvwGrupperIPrisListe, 0, 3);
         lvwGrupperIPrisListe.setPrefWidth(200);
         lvwGrupperIPrisListe.setPrefHeight(200);
         lvwGrupperIPrisListe.getItems().addAll(Storage.getProduktGruppe());
@@ -51,20 +56,41 @@ public class SalgPane extends GridPane {
         lvwGrupperIPrisListe.getSelectionModel().selectedItemProperty().addListener(listener1);
 
 
+        Label lblProdukter = new Label("Produkter: ");
+        this.add(lblProdukter, 2, 2);
 
-        this.add(lvwProdukterIGrupper, 2, 2);
+        this.add(lvwProdukterIGrupper, 2, 3);
         lvwProdukterIGrupper.setPrefWidth(200);
         lvwProdukterIGrupper.setPrefHeight(200);
         ChangeListener<ProduktPris> listener2 = (ov, o, n) -> this.selectedProduktChanged();
         lvwProdukterIGrupper.getSelectionModel().selectedItemProperty().addListener(listener2);
 
 
+        Label lblIndkøb = new Label("SalgsListe: ");
+        this.add(lblIndkøb, 4, 2);
 
-
-
-        this.add(lvwIndkøbsListe, 4, 2);
+        this.add(lvwIndkøbsListe, 4, 3);
         lvwIndkøbsListe.setPrefWidth(200);
         lvwIndkøbsListe.setPrefHeight(200);
+
+
+        Label lblPris = new Label("Produkt Pris: ");
+        this.add(lblPris, 4, 4);
+        this.add(txfPris, 4, 5);
+
+        Label lblProcentRabat = new Label("Procent Rabat: ");
+        this.add(lblProcentRabat, 4, 6);
+        this.add(txfProcentRabat, 4, 7);
+        txfProcentRabat.textProperty().addListener((ov, o, n) -> this.selectedAntalChanged());
+
+
+        Label lblAntal = new Label("Antal: ");
+        this.add(lblAntal, 2, 4);
+        this.add(txfAntal, 2, 5);
+        txfAntal.textProperty().addListener((ov, o, n) -> this.selectedAntalChanged());
+
+
+
 
 
 
@@ -105,6 +131,11 @@ public class SalgPane extends GridPane {
         this.updateControlsProdukt();
     }
 
+    private void selectedAntalChanged() {
+        this.updateControlsAntal();
+    }
+
+
     private void createAction() {
         SalgWindow dialog = new SalgWindow("Opret Salg");
         dialog.showAndWait();
@@ -129,10 +160,42 @@ public class SalgPane extends GridPane {
 
 
     public void updateControlsProdukt() {
+        ProduktPris produktPris = lvwProdukterIGrupper.getSelectionModel().getSelectedItem();
+
+        int antal = 1;
+        int rabat = 0;
+        txfAntal.setText(antal + "");
+
+
+        txfProcentRabat.setText(rabat + "");
+
+        txfPris.setText(produktPris.getPris()*antal + "");
+
+    }
+
+    public void updateControlsAntal() {
+        ProduktPris produktPris = lvwProdukterIGrupper.getSelectionModel().getSelectedItem();
+        int rabat = 0;
+        int antal = 1;
+
+        if (!txfProcentRabat.getText().isBlank()) {
+            rabat = Integer.parseInt(txfProcentRabat.getText());
+        }
+
+        if (!txfAntal.getText().isBlank()) {
+            antal = Integer.parseInt(txfAntal.getText());
+        }
+            if (rabat == 0) {
+                txfPris.setText(String.valueOf((produktPris.getPris() * antal)));
+            } else {
+                txfPris.setText(String.valueOf((produktPris.getPris() * antal) * (100 - rabat) / 100));
+            }
+
 
 
 
     }
+
 
 
 }
