@@ -13,7 +13,6 @@ public class ProduktGruppe {
     }
 
 
-
     public Produkt createProdukt(String navn, ProduktGruppe produktGruppe){
         Produkt produkt = new Produkt(navn, produktGruppe);
         produkter.add(produkt);
