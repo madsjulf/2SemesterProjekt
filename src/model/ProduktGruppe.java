@@ -14,8 +14,8 @@ public class ProduktGruppe {
 
 
 
-    public Produkt createProdukt(String navn){
-        Produkt produkt = new Produkt(navn, this);
+    public Produkt createProdukt(String navn, ProduktGruppe produktGruppe){
+        Produkt produkt = new Produkt(navn, produktGruppe);
         produkter.add(produkt);
         return produkt;
     }

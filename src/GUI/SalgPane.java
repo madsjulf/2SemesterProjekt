@@ -136,14 +136,19 @@ public class SalgPane extends GridPane {
         PrisListe prisListe = (PrisListe) comboBoxPrisListe.getSelectionModel().getSelectedItem();
         ProduktGruppe valgtProduktGruppe = lvwGrupperIPrisListe.getSelectionModel().getSelectedItem();
 
+        System.out.println(valgtProduktGruppe.getProdukter().size());
         ArrayList<ProduktPris> produktPrisestemp = new ArrayList<>();
 
-//        if (valgtProduktGruppe != null) {
-//            for (ProduktPris aa : prisListe.getProduktPriser())
-//                if (valgtProduktGruppe.getProdukter().contains(aa.getProdukt())) {
-//                    produktPrisestemp.add(aa);
-//                }
-//        }
+        if (valgtProduktGruppe != null) {
+            System.out.println("hej");
+            System.out.println(Storage.getProduktPriser().size());
+            for (ProduktPris aa : Storage.getProduktPriser()){
+                if (valgtProduktGruppe.getNavn().contains(aa.getProdukt().getNavn())) {
+                    System.out.println(Storage.getProduktPriser().size());
+                    produktPrisestemp.add(aa);
+                }
+                }
+        }
         this.lvwProdukterIGrupper.getItems().setAll(produktPrisestemp);
     }
 

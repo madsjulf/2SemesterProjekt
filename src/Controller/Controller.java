@@ -27,7 +27,7 @@ public class Controller {
     }
 
     public static Produkt createProdukt(String navn, ProduktGruppe produktGruppe) {
-        Produkt produkt = new Produkt(navn, produktGruppe);
+        Produkt produkt = produktGruppe.createProdukt(navn, produktGruppe);
         Storage.storeProdukter(produkt);
         return produkt;
     }
@@ -39,7 +39,7 @@ public class Controller {
     }
 
     public static ProduktPris createProduktPris(int pris, Produkt produkt, PrisListe prisListe) {
-        ProduktPris produktPris = new ProduktPris(pris, produkt,prisListe);
+        ProduktPris produktPris = prisListe.createProduktPris(pris, produkt,prisListe);
         Storage.storeProduktpriser(produktPris);
         return produktPris;
     }
