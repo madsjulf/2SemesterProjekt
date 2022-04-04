@@ -25,6 +25,10 @@ public class SalgsLinje {
         return antal;
     }
 
+    public void setAntal(int antal) {
+        this.antal = antal;
+    }
+
     public Salg getSalg() {
         return salg;
     }

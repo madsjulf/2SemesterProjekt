@@ -1,15 +1,18 @@
 package GUI;
 
+import Controller.Controller;
 import Storage.Storage;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextField;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
+import model.Kunde;
 import model.Salg;
 
 import java.awt.*;
@@ -21,6 +24,8 @@ public class SalgWindow extends Stage {
     private final CheckBox checkboxBetalt = new CheckBox();
     private ArrayList<String> betalingsformer = new ArrayList<>();
     private final CheckBox checkBoxUdlejning = new CheckBox();
+    private final TextField txfKundeNavn = new TextField();
+    private final Label lblKundeNavn = new Label("Kunde Navn:");
 
 
     public SalgWindow(String title) {
@@ -58,6 +63,25 @@ public class SalgWindow extends Stage {
         pane.add(checkboxBetalt, 2, 1);
 
 
+        Label lblUdlejning = new Label("Udlejning");
+        pane.add(lblUdlejning, 0, 2);
+        pane.add(checkBoxUdlejning, 0, 3);
+        checkBoxUdlejning.selectedProperty().addListener((ov, o, n) -> this.selectedUdlejningChanged());
+
+
+        pane.add(lblKundeNavn, 0, 4);
+        lblKundeNavn.setVisible(false);
+
+        pane.add(txfKundeNavn, 0, 5);
+        txfKundeNavn.setEditable(false);
+        txfKundeNavn.setVisible(false);
+
+
+        // error besked
+        pane.add(lblError, 0, 22);
+        lblError.setStyle("-fx-text-fill: red");
+
+
 
 
         // cancel knap
@@ -78,6 +102,12 @@ public class SalgWindow extends Stage {
 
     //-------------------------------------------------------------
 
+
+    private void selectedUdlejningChanged() {
+        this.updateControlsUdlejning();
+    }
+
+
     private void cancelAction() {
         this.hide();
     }
@@ -90,11 +120,28 @@ public class SalgWindow extends Stage {
 
         salg.setBetalingsForm(betalingsform);
 
+
+        if (checkBoxUdlejning.isSelected()) {
+            Kunde kunde = Controller.createKunde(txfKundeNavn.getText());
+            salg.setKunde(kunde);
+        }
+
+        if (!checkboxBetalt.isSelected()) {
+            lblError.setText("Betaling mangler!");
+            return;
+        }
+
         this.hide();
         }
 
 
-
+    public void updateControlsUdlejning() {
+        if (checkBoxUdlejning.isSelected()) {
+            txfKundeNavn.setEditable(true);
+            txfKundeNavn.setVisible(true);
+            lblKundeNavn.setVisible(true);
+        }
+    }
 
 
 
