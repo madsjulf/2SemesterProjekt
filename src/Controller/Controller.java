@@ -1,10 +1,9 @@
 package Controller;
 
 import Storage.Storage;
-import model.PrisListe;
-import model.Produkt;
-import model.ProduktGruppe;
-import model.ProduktPris;
+import model.*;
+
+import java.time.LocalDate;
 
 
 public class Controller {
@@ -48,6 +47,18 @@ public class Controller {
         PrisListe prisListe = new PrisListe(navn);
         Storage.storeprisListe(prisListe);
         return prisListe;
+    }
+
+    public static Salg createSalg(LocalDate salgsDato, String betalingsform) {
+        Salg salg = new Salg(salgsDato, betalingsform);
+        Storage.storeSalgs(salg);
+        return salg;
+    }
+
+    public static SalgsLinje createSalgsLinje(int antal, ProduktPris produktPris, Salg salg) {
+        SalgsLinje salgsLinje = salg.opretSalgsLinje(antal,produktPris,salg);
+        Storage.storeSalgsLinjer(salgsLinje);
+        return salgsLinje;
     }
 
     public static void createSomeObjects() {

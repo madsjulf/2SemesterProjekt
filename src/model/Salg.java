@@ -1,5 +1,7 @@
 package model;
 
+import Storage.Storage;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -20,6 +22,7 @@ public class Salg {
         this.betalingsForm = betalingsForm;
         salgsNr = nrCounter;
         updateNr();
+
     }
 
     public ArrayList<SalgsLinje> getSalgsLinjer() {
@@ -38,6 +41,10 @@ public class Salg {
         return returSalgsLinje;
      }
 
+
+    public void setBetalingsForm(String betalingsForm) {
+        this.betalingsForm = betalingsForm;
+    }
 
     public int getSalgsNr() {
         return salgsNr;
