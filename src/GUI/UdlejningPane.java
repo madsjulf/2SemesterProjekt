@@ -7,6 +7,7 @@ import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import model.Kunde;
@@ -19,6 +20,7 @@ import java.util.ArrayList;
 public class UdlejningPane extends GridPane {
     private final ListView lvwUdlejninger = new ListView();
     private final ListView lvwProdukterIUdlejning = new ListView();
+    private final TextField txfReturMængde = new TextField();
 
 
     public UdlejningPane() {
@@ -42,6 +44,11 @@ public class UdlejningPane extends GridPane {
         this.add(lvwProdukterIUdlejning, 2, 1);
 
 
+        Label lblReturMængde = new Label("Antal retur:");
+        this.add(lblReturMængde, 3, 1);
+
+        this.add(txfReturMængde, 3, 2);
+
 
         lvwUdlejninger.getSelectionModel().select(0);
 
@@ -52,16 +59,31 @@ public class UdlejningPane extends GridPane {
         hbxButtons.setPadding(new Insets(10, 0, 0, 0));
         hbxButtons.setAlignment(Pos.BASELINE_CENTER);
 
-        Button btnCreate = new Button("Afregn Udlejning");
-        this.add(btnCreate, 0, 8);
-        hbxButtons.getChildren().add(btnCreate);
-        btnCreate.setOnAction(event -> this.AfregnAction());
+        Button btnAfregn = new Button("Afregn Udlejning");
+        this.add(btnAfregn, 0, 8);
+        hbxButtons.getChildren().add(btnAfregn);
+        btnAfregn.setOnAction(event -> this.AfregnAction());
+
+        Button btnReturner = new Button("Returner");
+        this.add(btnReturner, 0, 8);
+        hbxButtons.getChildren().add(btnReturner);
+        btnReturner.setOnAction(event -> this.ReturnerAction());
 
 
 
     }
 
+    private void ReturnerAction() {
+        SalgsLinje salgsLinje = (SalgsLinje) lvwProdukterIUdlejning.getSelectionModel().getSelectedItem();
+        int antal = Integer.parseInt(txfReturMængde.getText());
+        int reelleAntal = salgsLinje.getAntal();
+        salgsLinje.setAntal(reelleAntal - antal);
+
+    }
+
     private void AfregnAction() {
+        UdlejningWindow dialog = new UdlejningWindow("Afregn");
+        dialog.showAndWait();
 
     }
 
