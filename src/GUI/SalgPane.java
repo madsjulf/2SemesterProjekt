@@ -1,5 +1,6 @@
 package GUI;
 
+import Controller.Controller;
 import Storage.Storage;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
@@ -20,8 +21,9 @@ public class SalgPane extends GridPane {
     private final ComboBox comboBoxPrisListe = new ComboBox();
     private final ListView<ProduktGruppe> lvwGrupperIPrisListe = new ListView();
     private final ListView<ProduktPris> lvwProdukterIGrupper = new ListView();
-    private final ListView<Produkt> lvwIndkøbsListe = new ListView();
-    private final ComboBox comboBoxBetalingsform = new ComboBox();
+    private final ListView<SalgsLinje> lvwIndkøbsListe = new ListView();
+    private final CheckBox checkBoxStartSalg = new CheckBox();
+
 
 
 
@@ -41,9 +43,11 @@ public class SalgPane extends GridPane {
         ChangeListener<PrisListe> listener = (ov, o, n) -> this.selectedProduktGruppeChanged();
         comboBoxPrisListe.getSelectionModel().selectedItemProperty().addListener(listener);
 
+        Label lblStartSalg = new Label("Start Salg");
+        this.add(lblStartSalg, 2, 0);
 
-//        this.add(comboBoxBetalingsform, 3, 1);
-//        comboBoxBetalingsform.getItems().addAll()
+        this.add(checkBoxStartSalg, 2, 1);
+        checkBoxStartSalg.selectedProperty().addListener((ov, o, n) -> this.selectedCheckChanged());
 
         Label lblProduktGrupper = new Label("ProuktGrupper: ");
         this.add(lblProduktGrupper, 0, 2);
@@ -136,6 +140,10 @@ public class SalgPane extends GridPane {
         this.updateControlsAntal();
     }
 
+    private void selectedCheckChanged() {
+        this.updateControlsCheck();
+    }
+
 
     private void createAction() {
         SalgWindow dialog = new SalgWindow("Opret Salg");
@@ -145,14 +153,36 @@ public class SalgPane extends GridPane {
     private void tilføjAction() {
         ProduktPris produktPris = lvwProdukterIGrupper.getSelectionModel().getSelectedItem();
 
+        int actualPris = produktPris.getPris();
         int antal = Integer.parseInt(txfAntal.getText());
 
         int pris = Integer.parseInt(txfPris.getText());
 
-//        Salg salg = new Salg(LocalDate.now(),);
-//
-//        SalgsLinje salgsLinje = new SalgsLinje(antal, produktPris, salg);
+        int i = Storage.getSalgs().size()-1;
 
+        Salg salg = Storage.getSalgs().get(i);
+
+        produktPris.setPris(pris);
+
+        SalgsLinje salgsLinje =  Controller.createSalgsLinje(antal, produktPris, salg);
+
+//        salgsLinje.getProduktPris().setPris(pris);
+
+        ArrayList<SalgsLinje> salgslinjeIndkøb = new ArrayList<>();
+
+
+        if (produktPris != null){
+            for (SalgsLinje sl : Storage.getSalgsLinjer()) {
+                if (Storage.getSalgs().contains(sl.getSalg())) {
+                    salgslinjeIndkøb.add(sl);
+                }
+            }
+        }
+
+
+        this.lvwIndkøbsListe.getItems().setAll(salgslinjeIndkøb);
+
+        produktPris.setPris(actualPris);
 
     }
 
@@ -199,7 +229,7 @@ public class SalgPane extends GridPane {
         if (!txfAntal.getText().isBlank()) {
             antal = Integer.parseInt(txfAntal.getText());
         }
-            if (rabat == 0) {
+            if (rabat == 0 || rabat > 100 || rabat < 0) {
                 txfPris.setText(String.valueOf((produktPris.getPris() * antal)));
             } else {
                 txfPris.setText(String.valueOf((produktPris.getPris() * antal) * (100 - rabat) / 100));
@@ -208,6 +238,10 @@ public class SalgPane extends GridPane {
 
 
 
+    }
+
+    public void updateControlsCheck() {
+        Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort");
     }
 
 

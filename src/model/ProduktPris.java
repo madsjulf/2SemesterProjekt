@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class ProduktPris {
 
-    private final int pris;
+    private int pris;
     // Tvungen assosiering --> 1 Produkt
     private Produkt produkt;
     private PrisListe prisListe;
@@ -16,7 +16,9 @@ public class ProduktPris {
     }
 
 
-
+    public void setPris(int pris) {
+        this.pris = pris;
+    }
 
     public int getPris() {
         return pris;

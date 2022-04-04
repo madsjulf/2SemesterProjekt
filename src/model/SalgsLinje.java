@@ -24,4 +24,16 @@ public class SalgsLinje {
     public int getAntal() {
         return antal;
     }
+
+    public Salg getSalg() {
+        return salg;
+    }
+
+    @Override
+    public String toString() {
+        return "SalgsLinje{" +
+                "antal=" + antal +
+                ", produktPris=" + produktPris +
+                '}';
+    }
 }
