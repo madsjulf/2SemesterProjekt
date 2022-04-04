@@ -14,10 +14,11 @@ class SalgTest {
     private ProduktPris produktPris;
     private SalgsLinje salgsLinje;
     private Salg salg;
+    private Kunde kunde;
 
     @BeforeEach
     public void setUpBeforeEach_SalgData(){
-        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Mobilepay");
+        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
         this.produktGruppe = new ProduktGruppe("Flaskeøl");
         this.produkt = new Produkt("Øl", produktGruppe);
         this.prisListe = new PrisListe("Julefest");
@@ -69,7 +70,7 @@ class SalgTest {
     @Test
     void getsalgsnr1Salg() {
         //Arrange
-        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay");
+        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
 
         assertEquals(1,salg.getSalgsNr());
 
@@ -78,8 +79,8 @@ class SalgTest {
     @Test
     void getsalgsnr2Salg() {
         //Arrange
-        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay");
-        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay");
+        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
+        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
 
         assertEquals(2,salg.getSalgsNr());
 

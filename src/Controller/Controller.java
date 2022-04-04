@@ -49,8 +49,8 @@ public class Controller {
         return prisListe;
     }
 
-    public static Salg createSalg(LocalDate salgsDato, String betalingsform) {
-        Salg salg = new Salg(salgsDato, betalingsform);
+    public static Salg createSalg(LocalDate salgsDato, String betalingsform, Kunde kunde) {
+        Salg salg = new Salg(salgsDato, betalingsform, kunde);
         Storage.storeSalgs(salg);
         return salg;
     }
@@ -59,6 +59,12 @@ public class Controller {
         SalgsLinje salgsLinje = salg.opretSalgsLinje(antal,produktPris,salg);
         Storage.storeSalgsLinjer(salgsLinje);
         return salgsLinje;
+    }
+
+    public static Kunde createKunde(String navn) {
+        Kunde kunde = new Kunde(navn);
+        Storage.storeKunder(kunde);
+        return kunde;
     }
 
     public static void createSomeObjects() {

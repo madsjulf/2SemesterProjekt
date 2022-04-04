@@ -241,7 +241,7 @@ public class SalgPane extends GridPane {
     }
 
     public void updateControlsCheck() {
-        Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort");
+        Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null);
     }
 
 
