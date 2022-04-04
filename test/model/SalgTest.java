@@ -17,6 +17,7 @@ class SalgTest {
 
     @BeforeEach
     public void setUpBeforeEach_SalgData(){
+        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Mobilepay");
         this.produktGruppe = new ProduktGruppe("Flaskeøl");
         this.produkt = new Produkt("Øl", produktGruppe);
         this.prisListe = new PrisListe("Julefest");
@@ -27,7 +28,6 @@ class SalgTest {
     @Test
     void salgKorrektOprettet() {
         //Arrange
-        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Mobilepay");
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
 
         //Arrange Act
@@ -38,7 +38,6 @@ class SalgTest {
     @Test
     void getSamletPris1salgsLinje2Antal() {
         //Arrange
-        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobileplay");
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
 
         //Act
@@ -52,7 +51,6 @@ class SalgTest {
     @Test
     void getSamletPris2salgsLinjer() {
         //Arrange
-        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Mobilepay");
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
         this.produkt = new Produkt("øl", produktGruppe);
         this.produktPris = new ProduktPris(5, produkt,prisListe);
@@ -84,6 +82,26 @@ class SalgTest {
         this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay");
 
         assertEquals(2,salg.getSalgsNr());
+
+    }
+
+
+    @Test
+    void getSamletReturPris(){
+        Produkt produkt1 =  new Produkt("mad",produktGruppe);
+        ProduktPris produktPris1 = new ProduktPris(5, produkt1, prisListe);
+        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
+        this.salgsLinje = salg.opretSalgsLinje(2,produktPris1,salg);
+
+        this.salgsLinje = salg.opretReturSalgsLinje(1, produktPris, salg);
+        SalgsLinje salgsLinje1 = salg.opretReturSalgsLinje(1, produktPris1, salg);
+
+
+        int expected = 2*5+2*10-10-5;
+        int actual = salg.getSamletReturPris();
+
+
+        assertEquals(expected, actual);
 
     }
 

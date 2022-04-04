@@ -9,13 +9,14 @@ public class Salg {
     private LocalDate salgsDato;
     private String betalingsForm;
     // Association --> 0..1 Kunde
-    private Kunde kunde; //nullable
+    private Kunde kunde; // nullable
     // Komposition --> 0..* SalgsLinjer
     private ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
     private ArrayList<SalgsLinje>returSalgsLinjer = new ArrayList<>();
 
-    public Salg(LocalDate salgsDato, String betalingsForm) {
+    public Salg(LocalDate salgsDato, String betalingsForm, Kunde kunde) {
         this.salgsDato = salgsDato;
+        this.kunde = kunde;
         this.betalingsForm = betalingsForm;
         salgsNr = nrCounter;
         updateNr();
@@ -31,9 +32,11 @@ public class Salg {
         return salgsLinje;
     }
 
-  //  public SalgsLinje opretReturSalgsLinje(int antal, ProduktPris produktPris, Salg salg){
-     //   SalgsLinje salgsLinje = new SalgsLinje()
-    // }
+    public SalgsLinje opretReturSalgsLinje(int antal, ProduktPris produktPris, Salg salg){
+        SalgsLinje returSalgsLinje = new SalgsLinje(antal, produktPris, salg);
+        returSalgsLinjer.add(returSalgsLinje);
+        return returSalgsLinje;
+     }
 
 
     public int getSalgsNr() {
@@ -47,6 +50,18 @@ public class Salg {
     }
 
 
+    public Kunde getKunde(){
+        return kunde;
+    }
+
+    public void setKunde(Kunde kunde){
+        this.kunde = kunde;
+        if(kunde != null){
+            kunde.addSalg(this);
+
+        }
+    }
+
     public int getSamletPris() {
         int samletPris = 0;
         for (SalgsLinje salgsLinje : salgsLinjer) {
@@ -59,18 +74,27 @@ public class Salg {
 
     }
 
+    public int getSamletReturPris() {
+        int pris = 0;
+        int samletPris = 0;
+        for (SalgsLinje salgsLinje : salgsLinjer) {
+            int antal = 0;
+            antal += salgsLinje.getAntal();
+            samletPris += salgsLinje.getProduktPris().getPris() * antal;
+        }
+        int samletReturPris = 0;
+        for (SalgsLinje returSalgsLinje : returSalgsLinjer) {
+            int antal = 0;
+            antal += returSalgsLinje.getAntal();
+            samletReturPris += returSalgsLinje.getProduktPris().getPris() * antal;
+        }
+        return pris = samletPris - samletReturPris;
+    }
+
+
+
+
     public int updateNr(){
         return nrCounter++;
-    }
-
-    public Kunde getKunde() {
-        return kunde;
-    }
-
-    public void setKunde(Kunde kunde) {
-        this.kunde = kunde;
-        if(kunde != null){
-            kunde.addSalg(this);
-        }
     }
 }
