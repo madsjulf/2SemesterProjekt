@@ -81,6 +81,18 @@ public class Salg {
 
     }
 
+    public int getSamletPrisPant(){
+        int samletPris = 0;
+        for (SalgsLinje salgsLinje : salgsLinjer){
+            int antal = 0;
+            if (salgsLinje.getProduktPris().getProdukt().getNavn()=="Pant"){
+                antal += salgsLinje.getAntal();
+                samletPris += salgsLinje.getProduktPris().getPris()*antal;
+            }
+        }
+        return samletPris;
+    }
+
     public int getSamletReturPris() {
         int pris = 0;
         int samletPris = 0;

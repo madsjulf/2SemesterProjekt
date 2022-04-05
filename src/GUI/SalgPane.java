@@ -174,10 +174,25 @@ public class SalgPane extends GridPane {
 
 
         if (produktPris != null){
-            for (SalgsLinje sl : Storage.getSalgsLinjer()) {
-                if (!lvwIndkøbsListe.getItems().contains(sl))
-                if (Storage.getSalgs().contains(sl.getSalg())) {
+            for (SalgsLinje sl : salg.getSalgsLinjer()) {
+                if (!lvwIndkøbsListe.getItems().contains(sl)) {
                     lvwIndkøbsListe.getItems().add(sl);
+                    if(sl.getProduktPris().getProdukt().getProduktGruppe().getNavn()=="Fustage"){
+                        ProduktGruppe valgtProduktGruppe = lvwGrupperIPrisListe.getSelectionModel().getSelectedItem();
+                        i = valgtProduktGruppe.getProdukter().size()-1;
+                        ProduktPris produktPris2 = lvwProdukterIGrupper.getItems().get(i);
+                        produktPris2.setPris(200);
+                       SalgsLinje salgsLinje1 = Controller.createSalgsLinje(antal, produktPris2, salg);
+                        lvwIndkøbsListe.getItems().add(salgsLinje1);
+                    }
+                    if(sl.getProduktPris().getProdukt().getProduktGruppe().getNavn()=="Kulsyre"){
+                        ProduktGruppe valgtProduktGruppe = lvwGrupperIPrisListe.getSelectionModel().getSelectedItem();
+                        i = valgtProduktGruppe.getProdukter().size()-1;
+                        ProduktPris produktPris3 = lvwProdukterIGrupper.getItems().get(i);
+                        produktPris3.setPris(1000);
+                        SalgsLinje salgsLinje1 = Controller.createSalgsLinje(antal, produktPris3, salg);
+                        lvwIndkøbsListe.getItems().add(salgsLinje1);
+                    }
 
                 }
             }
