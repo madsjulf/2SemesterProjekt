@@ -1,10 +1,9 @@
 package Controller;
 
 import Storage.Storage;
-import model.PrisListe;
-import model.Produkt;
-import model.ProduktGruppe;
-import model.ProduktPris;
+import model.*;
+
+import java.time.LocalDate;
 
 
 public class Controller {
@@ -48,6 +47,24 @@ public class Controller {
         PrisListe prisListe = new PrisListe(navn);
         Storage.storeprisListe(prisListe);
         return prisListe;
+    }
+
+    public static Salg createSalg(LocalDate salgsDato, String betalingsform, Kunde kunde) {
+        Salg salg = new Salg(salgsDato, betalingsform, kunde);
+        Storage.storeSalgs(salg);
+        return salg;
+    }
+
+    public static SalgsLinje createSalgsLinje(int antal, ProduktPris produktPris, Salg salg) {
+        SalgsLinje salgsLinje = salg.opretSalgsLinje(antal,produktPris,salg);
+        Storage.storeSalgsLinjer(salgsLinje);
+        return salgsLinje;
+    }
+
+    public static Kunde createKunde(String navn) {
+        Kunde kunde = new Kunde(navn);
+        Storage.storeKunder(kunde);
+        return kunde;
     }
 
     public static void createSomeObjects() {
@@ -150,8 +167,8 @@ public class Controller {
         PrisListe butik = createPrisListe("Butik");
 
         //Tildeler fredagsbarspris til flaskeøl
-        createProduktPris(70,flaskeKlosterbryg,fredagsbar);
-        createProduktPris(70,flaskeSweetGeorgiaBrown,fredagsbar);
+        ProduktPris flaskeKlosterBryg = createProduktPris(70,flaskeKlosterbryg,fredagsbar);
+        ProduktPris flaskeSweetGeorgiaBrow = createProduktPris(70,flaskeSweetGeorgiaBrown,fredagsbar);
         createProduktPris(70,flaskeEkstraPilsner,fredagsbar);
         createProduktPris(70,flaskeCelebration,fredagsbar);
         createProduktPris(70,flaskeBlondie,fredagsbar);
@@ -262,5 +279,13 @@ public class Controller {
         createProduktPris(15, glasAlleStørrelser,butik);
 
 
+        //Opretter Kunde
+       Kunde morten = createKunde("Morten");
+        //Opretter salg
+        Salg salg = createSalg(LocalDate.of(2022, 12, 12), "Kreditkort",morten );
+
+        //Tilføjer salgslinjer til salg
+        createSalgsLinje(2, flaskeKlosterBryg, salg);
+        createSalgsLinje(1, flaskeSweetGeorgiaBrow, salg);
     }
 }

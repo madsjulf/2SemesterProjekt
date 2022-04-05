@@ -4,8 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eedddd2a-6240-4d67-aefb-dd007fc1f402" name="Changes" comment="MortenCommit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="eedddd2a-6240-4d67-aefb-dd007fc1f402" name="Changes" comment="Commit">
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/PrisListePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/PrisListePane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktGruppePane.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktGruppePane.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktGruppeWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktGruppeWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktWindow.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,12 +23,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="Morten_commit" />
+    <option name="BRANCH" value="MadsBranchNew" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="master" />
+        <entry key="$PROJECT_DIR$" value="MadsBranchNew" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -37,6 +40,9 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp__PrisListePane.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="26rvTgT2CPJDKStyWb9xwZveuln" />
   <component name="ProjectViewState">
@@ -140,11 +146,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SalgTest.salgKorrektOprettet" />
         <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinjer" />
         <item itemvalue="JUnit.SalgTest.getsalgsnr2Salg" />
         <item itemvalue="JUnit.SalgTest.getsalgsnr" />
-        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>

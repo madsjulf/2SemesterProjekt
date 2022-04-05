@@ -50,4 +50,9 @@ public class Storage {
     public static ArrayList<SalgsLinje> getSalgsLinjer(){return salgsLinjer;}
     public static void storeSalgsLinjer(SalgsLinje salgsLinje){salgsLinjer.add(salgsLinje);}
     public static void deleteSalgsLinjer(SalgsLinje salgsLinje){salgsLinjer.remove(salgsLinje);}
+
+    //------------------------------------------------------------------------------------------------------------------
+    public static ArrayList<Kunde> kunder = new ArrayList<>();
+    public static ArrayList<Kunde> getKunder(){return kunder;}
+    public static void storeKunder(Kunde kunde){kunder.add(kunde);}
 }

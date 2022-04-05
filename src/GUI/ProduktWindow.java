@@ -12,6 +12,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.PrisListe;
+import model.Produkt;
 import model.ProduktGruppe;
 import Controller.Controller;
 
@@ -20,6 +21,7 @@ public class ProduktWindow extends Stage {
     private final ComboBox comboBoxProduktGruppe = new ComboBox();
     private final ComboBox comboBoxPrisListe = new ComboBox();
     private final Label lblError = new Label();
+    private final TextField txfPris = new TextField();
 
 public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
@@ -47,19 +49,26 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
         pane.add(txfNavn, 0, 1);
         txfNavn.setPrefWidth(200);
 
+        // Label og textfield til pris på prodult
+        Label lblPris = new Label("Pris");
+        pane.add(lblPris, 3, 1);
+        pane.add(txfPris, 3, 2);
 
 
         // Label og combobox til liste af produktgrupper
         Label lblProduktGruppe = new Label("ProduktGrupper");
-        pane.add(lblProduktGruppe, 1, 1);
-        pane.add(comboBoxProduktGruppe, 1, 2);
+        pane.add(lblProduktGruppe, 0, 2);
+        pane.add(comboBoxProduktGruppe, 0, 3);
+        comboBoxProduktGruppe.setPrefWidth(200);
+
         comboBoxProduktGruppe.getItems().addAll(Storage.getProduktGruppe());
 
 
         //Label og combobox til liste af Prislister
         Label lblPrisListe = new Label("PrisLister");
-        pane.add(lblPrisListe, 2, 3);
-        pane.add(comboBoxPrisListe, 2, 4);
+        pane.add(lblPrisListe, 0, 4);
+        pane.add(comboBoxPrisListe, 0, 5);
+        comboBoxPrisListe.setPrefWidth(200);
         comboBoxPrisListe.getItems().addAll(Storage.getprisLister());
 
 
@@ -75,7 +84,7 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
         // ok knap
         Button btnOK = new Button("OK");
-        pane.add(btnOK, 0, 21);
+        pane.add(btnOK, 0, 20);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
     }
@@ -93,6 +102,12 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
             return;
         }
 
+        int pris = Integer.parseInt(txfPris.getText());
+        if (pris == 0) {
+            lblError.setText("Pris er 0!");
+            return;
+        }
+
         ProduktGruppe produktGruppe = (ProduktGruppe) comboBoxProduktGruppe.getSelectionModel().getSelectedItem();
 
         if (produktGruppe == null) {
@@ -102,8 +117,11 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
         PrisListe prisListe = (PrisListe) comboBoxPrisListe.getSelectionModel().getSelectedItem();
 
+        // Opretter produkt
+        Produkt produkt = Controller.createProdukt(name, produktGruppe);
 
-        Controller.createProdukt(name, produktGruppe);
+        // Opretter produktPris
+        Controller.createProduktPris(pris,produkt,prisListe);
 
         this.hide();
     }

@@ -15,11 +15,28 @@ public class SalgsLinje {
         this.salg = salg;
     }
 
+
+
     public ProduktPris getProduktPris() {
         return produktPris;
     }
 
     public int getAntal() {
         return antal;
+    }
+
+    public void setAntal(int antal) {
+        this.antal = antal;
+    }
+
+    public Salg getSalg() {
+        return salg;
+    }
+
+    @Override
+    public String toString() {
+        return
+                "antal: " + antal +
+                " " + produktPris;
     }
 }

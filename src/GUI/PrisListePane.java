@@ -23,17 +23,20 @@ public class PrisListePane extends GridPane {
         this.setVgap(10);
         this.setGridLinesVisible(false);
 
-        Label lblProduktGrupper = new Label();
-        this.add(lblProduktGrupper, 0, 1);
+        Label lblPrisLister = new Label("PrisLister:");
+        this.add(lblPrisLister, 0, 0);
 
-        this.add(lvwPrisLister, 0, 0);
+        this.add(lvwPrisLister, 0, 1);
         lvwPrisLister.setPrefWidth(200);
         lvwPrisLister.setPrefHeight(200);
         lvwPrisLister.getItems().addAll(Storage.getprisLister());
         ChangeListener<PrisListe> listener = (ov, o, n) -> this.selectedPrisListeChanged();
         lvwPrisLister.getSelectionModel().selectedItemProperty().addListener(listener);
 
-        this.add(lvwProdukterIPrisLister, 1, 0);
+        Label lblProdukterIPrisLister = new Label("Produkter: ");
+        this.add(lblProdukterIPrisLister, 1, 0);
+
+        this.add(lvwProdukterIPrisLister, 1, 1);
         lvwProdukterIPrisLister.setPrefHeight(200);
         lvwProdukterIPrisLister.setPrefWidth(200);
         lvwProdukterIPrisLister.getSelectionModel().getSelectedItem();
