@@ -29,9 +29,6 @@ public class ProduktGruppe {
 
     @Override
     public String toString() {
-        return "ProduktGruppe{" +
-                "produkter=" + produkter +
-                ", navn='" + navn + '\'' +
-                '}';
+        return "ProduktGruppe:"+ " " + navn;
     }
 }

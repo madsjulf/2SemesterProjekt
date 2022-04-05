@@ -106,18 +106,13 @@ public class UdlejningPane extends GridPane {
 
 
     private void updateControlsSalg() {
-        Salg salgKunde = (Salg) lvwUdlejninger.getSelectionModel().getSelectedItem();
+         Salg salgKunde = (Salg) lvwUdlejninger.getSelectionModel().getSelectedItem();
+        lvwProdukterIUdlejning.getItems().clear();
 
-        ArrayList<SalgsLinje> tempListe = new ArrayList<>();
-        for (Salg salg : Storage.getSalgs()) {
-            if (salg.getKunde().equals(salgKunde)) {
-                for (int i = 0; i < salg.getSalgsLinjer().size(); i++)
-                    tempListe.add(salg.getSalgsLinjer().get(i));
+        for(Salg salg : Storage.getSalgs()) {
+            if (salgKunde == salg) {
+                lvwProdukterIUdlejning.getItems().setAll(salg.getSalgsLinjer());
             }
-        }
-
-        if (lvwProdukterIUdlejning != null) {
-            this.lvwProdukterIUdlejning.getItems().setAll(tempListe);
         }
     }
 

@@ -148,6 +148,8 @@ public class SalgPane extends GridPane {
     private void createAction() {
         SalgWindow dialog = new SalgWindow("Opret Salg");
         dialog.showAndWait();
+        lvwIndkøbsListe.getItems().clear();
+        checkBoxStartSalg.setSelected(false);
     }
 
     private void tilføjAction() {
@@ -168,19 +170,20 @@ public class SalgPane extends GridPane {
 
 //        salgsLinje.getProduktPris().setPris(pris);
 
-        ArrayList<SalgsLinje> salgslinjeIndkøb = new ArrayList<>();
+
 
 
         if (produktPris != null){
             for (SalgsLinje sl : Storage.getSalgsLinjer()) {
+                if (!lvwIndkøbsListe.getItems().contains(sl))
                 if (Storage.getSalgs().contains(sl.getSalg())) {
-                    salgslinjeIndkøb.add(sl);
+                    lvwIndkøbsListe.getItems().add(sl);
+
                 }
             }
         }
 
 
-        this.lvwIndkøbsListe.getItems().setAll(salgslinjeIndkøb);
 
         produktPris.setPris(actualPris);
 
@@ -241,7 +244,9 @@ public class SalgPane extends GridPane {
     }
 
     public void updateControlsCheck() {
-        Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null);
+        if(checkBoxStartSalg.isSelected()) {
+            Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null);
+        }
     }
 
 

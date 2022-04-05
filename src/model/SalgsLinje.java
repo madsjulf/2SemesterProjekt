@@ -35,9 +35,8 @@ public class SalgsLinje {
 
     @Override
     public String toString() {
-        return "SalgsLinje{" +
-                "antal=" + antal +
-                ", produktPris=" + produktPris +
-                '}';
+        return
+                "antal: " + antal +
+                " " + produktPris;
     }
 }

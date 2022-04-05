@@ -167,8 +167,8 @@ public class Controller {
         PrisListe butik = createPrisListe("Butik");
 
         //Tildeler fredagsbarspris til flaskeøl
-        createProduktPris(70,flaskeKlosterbryg,fredagsbar);
-        createProduktPris(70,flaskeSweetGeorgiaBrown,fredagsbar);
+        ProduktPris flaskeKlosterBryg = createProduktPris(70,flaskeKlosterbryg,fredagsbar);
+        ProduktPris flaskeSweetGeorgiaBrow = createProduktPris(70,flaskeSweetGeorgiaBrown,fredagsbar);
         createProduktPris(70,flaskeEkstraPilsner,fredagsbar);
         createProduktPris(70,flaskeCelebration,fredagsbar);
         createProduktPris(70,flaskeBlondie,fredagsbar);
@@ -279,5 +279,13 @@ public class Controller {
         createProduktPris(15, glasAlleStørrelser,butik);
 
 
+        //Opretter Kunde
+       Kunde morten = createKunde("Morten");
+        //Opretter salg
+        Salg salg = createSalg(LocalDate.of(2022, 12, 12), "Kreditkort",morten );
+
+        //Tilføjer salgslinjer til salg
+        createSalgsLinje(2, flaskeKlosterBryg, salg);
+        createSalgsLinje(1, flaskeSweetGeorgiaBrow, salg);
     }
 }

@@ -33,4 +33,10 @@ public class Kunde {
     }
 
 
+    @Override
+    public String toString() {
+        return
+                 "KundeNr: " + kundeNr +", " +
+                 kundeNavn;
+    }
 }
