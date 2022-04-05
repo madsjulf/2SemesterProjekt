@@ -78,6 +78,10 @@ public class Controller {
         ProduktGruppe beklædning = createProduktGruppe("Beklædning");
         ProduktGruppe anlæg = createProduktGruppe("Anlæg");
         ProduktGruppe glas = createProduktGruppe("Glas");
+        ProduktGruppe klippekortGruppe = createProduktGruppe("Klippekort");
+
+        //Opretter Klippekort
+        Produkt klippekort = createProdukt("Klippekort, 4 klip", klippekortGruppe);
 
         //Opretter flaskeøl
         Produkt flaskeKlosterbryg = createProdukt("Klosterbryg",flaskeøl);
@@ -168,6 +172,10 @@ public class Controller {
         //Opretter prisliste
         PrisListe fredagsbar = createPrisListe("Fredagsbar");
         PrisListe butik = createPrisListe("Butik");
+
+        //Tildeler klippekort til fredagsbar og butik
+        createProduktPris(130, klippekort, fredagsbar);
+        createProduktPris(130, klippekort, butik);
 
         //Tildeler fredagsbarspris til flaskeøl
         ProduktPris flaskeKlosterBryg = createProduktPris(70,flaskeKlosterbryg,fredagsbar);
