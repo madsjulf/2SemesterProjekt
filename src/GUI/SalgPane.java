@@ -25,10 +25,6 @@ public class SalgPane extends GridPane {
     private final CheckBox checkBoxStartSalg = new CheckBox();
 
 
-
-
-
-
     public SalgPane() {
         this.setPadding(new Insets(20));
         this.setHgap(20);
@@ -95,12 +91,6 @@ public class SalgPane extends GridPane {
         txfAntal.textProperty().addListener((ov, o, n) -> this.selectedAntalChanged());
 
 
-
-
-
-
-
-
         // Knap til registrering af salg
         HBox hbxButtons = new HBox(40);
         this.add(hbxButtons, 0, 6, 3, 1);
@@ -160,29 +150,24 @@ public class SalgPane extends GridPane {
 
         int pris = Integer.parseInt(txfPris.getText());
 
-        int i = Storage.getSalgs().size()-1;
+        int i = Storage.getSalgs().size() - 1;
 
         Salg salg = Storage.getSalgs().get(i);
 
         produktPris.setPris(pris);
 
-        SalgsLinje salgsLinje =  Controller.createSalgsLinje(antal, produktPris, salg);
+        SalgsLinje salgsLinje = Controller.createSalgsLinje(antal, produktPris, salg);
 
 //        salgsLinje.getProduktPris().setPris(pris);
 
 
-
-
-        if (produktPris != null){
-            for (SalgsLinje sl : Storage.getSalgsLinjer()) {
-                if (!lvwIndkøbsListe.getItems().contains(sl))
-                if (Storage.getSalgs().contains(sl.getSalg())) {
+        if (produktPris != null) {
+            for (SalgsLinje sl : salg.getSalgsLinjer()) {
+                if (!lvwIndkøbsListe.getItems().contains(sl)) {
                     lvwIndkøbsListe.getItems().add(sl);
-
                 }
             }
         }
-
 
 
         produktPris.setPris(actualPris);
@@ -196,11 +181,11 @@ public class SalgPane extends GridPane {
         ArrayList<ProduktPris> produktPrisestemp = new ArrayList<>();
 
         if (valgtProduktGruppe != null) {
-            for (ProduktPris aa : prisListe.getProduktPriser()){
+            for (ProduktPris aa : prisListe.getProduktPriser()) {
                 if (valgtProduktGruppe.getProdukter().contains(aa.getProdukt())) {
                     produktPrisestemp.add(aa);
                 }
-                }
+            }
         }
         this.lvwProdukterIGrupper.getItems().setAll(produktPrisestemp);
     }
@@ -216,7 +201,7 @@ public class SalgPane extends GridPane {
 
         txfProcentRabat.setText(rabat + "");
 
-        txfPris.setText(produktPris.getPris()*antal + "");
+        txfPris.setText(produktPris.getPris() * antal + "");
 
     }
 
@@ -232,23 +217,20 @@ public class SalgPane extends GridPane {
         if (!txfAntal.getText().isBlank()) {
             antal = Integer.parseInt(txfAntal.getText());
         }
-            if (rabat == 0 || rabat > 100 || rabat < 0) {
-                txfPris.setText(String.valueOf((produktPris.getPris() * antal)));
-            } else {
-                txfPris.setText(String.valueOf((produktPris.getPris() * antal) * (100 - rabat) / 100));
-            }
-
-
+        if (rabat == 0 || rabat > 100 || rabat < 0) {
+            txfPris.setText(String.valueOf((produktPris.getPris() * antal)));
+        } else {
+            txfPris.setText(String.valueOf((produktPris.getPris() * antal) * (100 - rabat) / 100));
+        }
 
 
     }
 
     public void updateControlsCheck() {
-        if(checkBoxStartSalg.isSelected()) {
+        if (checkBoxStartSalg.isSelected()) {
             Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null);
         }
     }
-
 
 
 }
