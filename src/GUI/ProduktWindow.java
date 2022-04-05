@@ -51,8 +51,8 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
         // Label og textfield til pris på prodult
         Label lblPris = new Label("Pris");
-        pane.add(lblPris, 3, 1);
-        pane.add(txfPris, 3, 2);
+        pane.add(lblPris, 0, 6);
+        pane.add(txfPris, 0, 7);
 
 
         // Label og combobox til liste af produktgrupper

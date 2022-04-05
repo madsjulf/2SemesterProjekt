@@ -71,7 +71,15 @@ public class MainApp extends Application {
             UdlejningPane udlejningPane = new UdlejningPane();
             tabUdlejning.setContent(udlejningPane);
             tabUdlejning.setOnSelectionChanged(event -> udlejningPane.updateControls());
-        }
+
+            Tab tabStatistik = new Tab("Statistik");
+            tabPane.getTabs().add(tabStatistik);
+
+            StatistikPane statistikPane = new StatistikPane();
+            tabStatistik.setContent(statistikPane);
+//            tabStatistik.setOnSelectionChanged(event -> statistikPane.updateControls());
+
+    }
 
 
 
