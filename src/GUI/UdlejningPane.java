@@ -78,6 +78,7 @@ public class UdlejningPane extends GridPane {
         int antal = Integer.parseInt(txfReturMængde.getText());
         int reelleAntal = salgsLinje.getAntal();
         salgsLinje.setAntal(reelleAntal - antal);
+        updateControlsSalg();
 
     }
 
