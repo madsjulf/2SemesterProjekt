@@ -36,7 +36,7 @@ public class ProduktPris {
 
     @Override
     public String toString() {
-        return  " " +"Pris " + pris +
+        return  " " +"Pris: " + pris +
                 " " + produkt +
                 " " + prisListe;
     }

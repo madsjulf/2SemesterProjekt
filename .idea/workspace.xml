@@ -6,9 +6,22 @@
   <component name="ChangeListManager">
     <list default="true" id="eedddd2a-6240-4d67-aefb-dd007fc1f402" name="Changes" comment="Commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/Controller/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/Controller/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/MainApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/MainApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktWindow.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/GUI/ProduktWindow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/Storage/Storage.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/Storage/Storage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/ProduktGruppe.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/ProduktGruppe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/ProduktPris.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/2SemesterProjekt/model/ProduktPris.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/ProduktWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/ProduktWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/SalgPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SalgPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/UdlejningPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/UdlejningPane.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/GUI/UdlejningWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/UdlejningWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Kunde.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Kunde.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProduktGruppe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ProduktGruppe.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProduktPris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ProduktPris.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Salg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Salg.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/SalgsLinje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SalgsLinje.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/model/SalgTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/SalgTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,9 +55,7 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_1_PrisListePane.class" root0="SKIP_INSPECTION" />
     <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp__PrisListePane.class" root0="SKIP_INSPECTION" />
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_2_PrisListePane.class" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProjectId" id="26rvTgT2CPJDKStyWb9xwZveuln" />
   <component name="ProjectViewState">
@@ -82,6 +93,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SalgTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="2SemesterProjekt" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="model.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="model" />
+      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="SalgTest.getSamletPris2salgsLinjer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
@@ -93,22 +119,6 @@
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
       <option name="METHOD_NAME" value="getSamletPris2salgsLinjer" />
-      <option name="TEST_OBJECT" value="method" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="SalgTest.getsalgsnr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="2SemesterProjekt" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="model.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getsalgsnr" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -149,10 +159,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
+        <item itemvalue="JUnit.SalgTest" />
         <item itemvalue="JUnit.SalgTest.salgKorrektOprettet" />
         <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinjer" />
         <item itemvalue="JUnit.SalgTest.getsalgsnr2Salg" />
-        <item itemvalue="JUnit.SalgTest.getsalgsnr" />
       </list>
     </recent_temporary>
   </component>

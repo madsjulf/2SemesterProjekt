@@ -99,7 +99,13 @@ public class Salg {
     }
 
 
-
+    @Override
+    public String toString() {
+        return  "SalgsNr: "+ salgsNr + ", " +
+                salgsDato + ", "+
+                 betalingsForm +", "+
+                 kunde;
+    }
 
     public int updateNr(){
         return nrCounter++;

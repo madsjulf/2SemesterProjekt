@@ -72,6 +72,7 @@ class SalgTest {
         //Arrange
         this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
 
+        // Assert
         assertEquals(1,salg.getSalgsNr());
 
     }
@@ -82,6 +83,7 @@ class SalgTest {
         this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
         this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
 
+        // Assert
         assertEquals(2,salg.getSalgsNr());
 
     }
