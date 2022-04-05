@@ -23,10 +23,10 @@ public class ProduktGruppePane extends GridPane {
         this.setVgap(10);
         this.setGridLinesVisible(false);
 
-        Label lblProduktGrupper = new Label("Produktgrupper");
-        this.add(lblProduktGrupper, 0, 1);
+        Label lblProduktGrupper = new Label("Produktgrupper:");
+        this.add(lblProduktGrupper, 0, 0);
 
-        this.add(lvwProduktGrupper, 0, 0);
+        this.add(lvwProduktGrupper, 0, 1);
         lvwProduktGrupper.setPrefWidth(200);
         lvwProduktGrupper.setPrefHeight(200);
         lvwProduktGrupper.getItems().addAll(Storage.getProduktGruppe());
@@ -34,7 +34,10 @@ public class ProduktGruppePane extends GridPane {
         lvwProduktGrupper.getSelectionModel().selectedItemProperty().addListener(listener);
 
 
-        this.add(lvwProdukterIGruppe, 1, 0);
+        Label lblProdukterIGruppe = new Label("Produkter:");
+        this.add(lblProdukterIGruppe, 1, 0);
+
+        this.add(lvwProdukterIGruppe, 1, 1);
         lvwProdukterIGruppe.setPrefWidth(200);
         lvwProdukterIGruppe.setPrefHeight(200);
         lvwProdukterIGruppe.getSelectionModel().getSelectedItem();
