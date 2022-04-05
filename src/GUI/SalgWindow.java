@@ -92,7 +92,7 @@ public class SalgWindow extends Stage {
 
         // ok knap
         javafx.scene.control.Button btnOK = new Button("OK");
-        pane.add(btnOK, 0, 21);
+        pane.add(btnOK, 0, 20);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
 

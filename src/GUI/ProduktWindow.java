@@ -51,15 +51,18 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
         // Label og combobox til liste af produktgrupper
         Label lblProduktGruppe = new Label("ProduktGrupper");
-        pane.add(lblProduktGruppe, 1, 1);
-        pane.add(comboBoxProduktGruppe, 1, 2);
+        pane.add(lblProduktGruppe, 0, 2);
+        pane.add(comboBoxProduktGruppe, 0, 3);
+        comboBoxProduktGruppe.setPrefWidth(200);
+
         comboBoxProduktGruppe.getItems().addAll(Storage.getProduktGruppe());
 
 
         //Label og combobox til liste af Prislister
         Label lblPrisListe = new Label("PrisLister");
-        pane.add(lblPrisListe, 2, 3);
-        pane.add(comboBoxPrisListe, 2, 4);
+        pane.add(lblPrisListe, 0, 4);
+        pane.add(comboBoxPrisListe, 0, 5);
+        comboBoxPrisListe.setPrefWidth(200);
         comboBoxPrisListe.getItems().addAll(Storage.getprisLister());
 
 
@@ -75,7 +78,7 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
         // ok knap
         Button btnOK = new Button("OK");
-        pane.add(btnOK, 0, 21);
+        pane.add(btnOK, 0, 20);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
     }

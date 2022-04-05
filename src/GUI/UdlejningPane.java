@@ -45,9 +45,9 @@ public class UdlejningPane extends GridPane {
 
 
         Label lblReturMængde = new Label("Antal retur:");
-        this.add(lblReturMængde, 3, 1);
+        this.add(lblReturMængde, 2, 2);
 
-        this.add(txfReturMængde, 3, 2);
+        this.add(txfReturMængde, 2, 3);
 
 
         lvwUdlejninger.getSelectionModel().select(0);
