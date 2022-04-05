@@ -21,9 +21,7 @@ public class SalgsLinje {
         return produktPris;
     }
 
-    public int getAntal() {
-        return antal;
-    }
+
 
     public void setAntal(int antal) {
         this.antal = antal;

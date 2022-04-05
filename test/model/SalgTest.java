@@ -20,14 +20,14 @@ class SalgTest {
         this.produktGruppe = new ProduktGruppe("Flaskeøl");
         this.produkt = new Produkt("Øl", produktGruppe);
         this.prisListe = new PrisListe("Julefest");
-        this.produktPris = new ProduktPris(10, produkt);
+        this.produktPris = new ProduktPris(10, produkt,prisListe);
 
     }
 
     @Test
     void salgKorrektOprettet() {
         //Arrange
-        this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
+        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Kreditkort",null);
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
 
         //Arrange Act
@@ -40,7 +40,7 @@ class SalgTest {
     @Test
     void getSamletPris1SalgsLinje1Antal() {
         //Arrange
-        this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
+        this.salg = new Salg( LocalDate.of(2022, 12, 12),"KreditKort",null);
         this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
 
         //Act
@@ -55,7 +55,7 @@ class SalgTest {
     @Test
     void getSamletPris1SalgsLinje2Antal() {
         //Arrange
-        this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
+        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Kreditkort",null);
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
 
 
@@ -72,9 +72,9 @@ class SalgTest {
     @Test
     void getSamletPris2SalgsLinjer() {
         //Arrange
-        this.salg = new Salg(1, LocalDate.of(2022, 12, 12));
+        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Kreditkort",null);
         this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
-        ProduktPris produktPris = new ProduktPris(5, produkt);
+        ProduktPris produktPris = new ProduktPris(5, produkt,prisListe);
         SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
 
 
