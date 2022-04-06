@@ -190,8 +190,8 @@ public class SalgPane extends GridPane {
                         i = valgtProduktGruppe.getProdukter().size()-1;
                         ProduktPris produktPris3 = lvwProdukterIGrupper.getItems().get(i);
                         produktPris3.setPris(1000);
-                        SalgsLinje salgsLinje1 = Controller.createSalgsLinje(antal, produktPris3, salg);
-                        lvwIndkøbsListe.getItems().add(salgsLinje1);
+                        SalgsLinje salgsLinje2 = Controller.createSalgsLinje(antal, produktPris3, salg);
+                        lvwIndkøbsListe.getItems().add(salgsLinje2);
                     }
 
                 }
@@ -260,7 +260,7 @@ public class SalgPane extends GridPane {
 
     public void updateControlsCheck() {
         if(checkBoxStartSalg.isSelected()) {
-            Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null);
+            Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null,false);
         }
     }
 
