@@ -90,7 +90,7 @@ public class StatistikPane extends GridPane {
         if (start != null) {
             for (Salg salg : Storage.getSalgs()) {
                 if (start.isBefore(salg.getSalgsDato()) || start == salg.getSalgsDato()) {
-                    if (salg.getSalgFærdigt() == true) {
+                    if (salg.isSalgFærdigt() == true) {
                         tempSalg.add(salg);
                     }
                 }
@@ -107,7 +107,7 @@ public class StatistikPane extends GridPane {
         if(start == null && slut != null) {
             for (Salg salg : Storage.getSalgs()) {
                 if (slut.isAfter(salg.getSalgsDato()) || slut == salg.getSalgsDato()) {
-                    if (salg.getSalgFærdigt() == true) {
+                    if (salg.isSalgFærdigt() == true) {
                         tempSalg.add(salg);
                     }
                 }

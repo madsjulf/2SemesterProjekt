@@ -37,8 +37,8 @@ public class Controller {
         return produktGruppe;
     }
 
-    public static ProduktPris createProduktPris(int pris, Produkt produkt, PrisListe prisListe) {
-        ProduktPris produktPris = prisListe.createProduktPris(pris, produkt,prisListe);
+    public static ProduktPris createProduktPris(int pris, Produkt produkt, PrisListe prisListe,int klip) {
+        ProduktPris produktPris = prisListe.createProduktPris(pris, produkt,prisListe,klip);
         Storage.storeProduktpriser(produktPris);
         return produktPris;
     }
@@ -49,8 +49,8 @@ public class Controller {
         return prisListe;
     }
 
-    public static Salg createSalg(LocalDate salgsDato, String betalingsform, Kunde kunde) {
-        Salg salg = new Salg(salgsDato, betalingsform, kunde);
+    public static Salg createSalg(LocalDate salgsDato, String betalingsform, Kunde kunde,boolean salgFærdigt) {
+        Salg salg = new Salg(salgsDato, betalingsform, kunde,salgFærdigt);
         Storage.storeSalgs(salg);
         return salg;
     }
@@ -148,7 +148,6 @@ public class Controller {
         Produkt pantKulsyre = createProdukt("PantKulsyre", kulsyre);
         Produkt sekskg = createProdukt("6 kg",kulsyre);
 
-
         //Opretter malt
         Produkt femOgTyveKg = createProdukt("25 kg sæk",malt);
 
@@ -174,134 +173,133 @@ public class Controller {
         PrisListe butik = createPrisListe("Butik");
 
         //Tildeler klippekort til fredagsbar og butik
-        createProduktPris(130, klippekort, fredagsbar);
-        createProduktPris(130, klippekort, butik);
+        createProduktPris(130, klippekort, fredagsbar,0);
+        createProduktPris(130, klippekort, butik,0);
 
         //Tildeler fredagsbarspris til flaskeøl
-        ProduktPris flaskeKlosterBryg = createProduktPris(70,flaskeKlosterbryg,fredagsbar);
-        ProduktPris flaskeSweetGeorgiaBrow = createProduktPris(70,flaskeSweetGeorgiaBrown,fredagsbar);
-        createProduktPris(70,flaskeEkstraPilsner,fredagsbar);
-        createProduktPris(70,flaskeCelebration,fredagsbar);
-        createProduktPris(70,flaskeBlondie,fredagsbar);
-        createProduktPris(70,flaskeForårsbryg,fredagsbar);
-        createProduktPris(70,flaskeIndiaPaleAle,fredagsbar);
-        createProduktPris(70,flaskeJulebryg,fredagsbar);
-        createProduktPris(70,flaskeJuletønden,fredagsbar);
-        createProduktPris(70,flaskeOldStrongAle,fredagsbar);
-        createProduktPris(70,flaskeFregattenJylland,fredagsbar);
-        createProduktPris(70,flaskeImperialStout,fredagsbar);
-        createProduktPris(70,flaskeTribute,fredagsbar);
-        createProduktPris(100,flaskeBlackMonster,fredagsbar);
+        ProduktPris flaskeKlosterBryg = createProduktPris(70,flaskeKlosterbryg,fredagsbar,2);
+        ProduktPris flaskeSweetGeorgiaBrow = createProduktPris(70,flaskeSweetGeorgiaBrown,fredagsbar,2);
+        createProduktPris(70,flaskeEkstraPilsner,fredagsbar,2);
+        createProduktPris(70,flaskeCelebration,fredagsbar,2);
+        createProduktPris(70,flaskeBlondie,fredagsbar,2);
+        createProduktPris(70,flaskeForårsbryg,fredagsbar,2);
+        createProduktPris(70,flaskeIndiaPaleAle,fredagsbar,2);
+        createProduktPris(70,flaskeJulebryg,fredagsbar,2);
+        createProduktPris(70,flaskeJuletønden,fredagsbar,2);
+        createProduktPris(70,flaskeOldStrongAle,fredagsbar,2);
+        createProduktPris(70,flaskeFregattenJylland,fredagsbar,2);
+        createProduktPris(70,flaskeImperialStout,fredagsbar,2);
+        createProduktPris(70,flaskeTribute,fredagsbar,2);
+        createProduktPris(100,flaskeBlackMonster,fredagsbar,3);
 
         //Tildeler fredagsbarspris til fadøl
-        createProduktPris(38,fadKlosterbryg,fredagsbar);
-        createProduktPris(38,fadJazzClassic,fredagsbar);
-        createProduktPris(38,fadEkstraPilsner,fredagsbar);
-        createProduktPris(38,fadCelebration,fredagsbar);
-        createProduktPris(38,fadBlondie,fredagsbar);
-        createProduktPris(38,fadForårsbryg,fredagsbar);
-        createProduktPris(38,fadIndiaPaleAle,fredagsbar);
-        createProduktPris(38,fadJulebryg,fredagsbar);
-        createProduktPris(38,fadImperialStout,fredagsbar);
-        createProduktPris(38,fadSpecial,fredagsbar);
-        createProduktPris(15,Æblebrus,fredagsbar);
-        createProduktPris(10,chips,fredagsbar);
-        createProduktPris(15,peanuts,fredagsbar);
-        createProduktPris(15,cola,fredagsbar);
-        createProduktPris(15, nikoline,fredagsbar);
-        createProduktPris(15, sevenUp,fredagsbar);
-        createProduktPris(10, vand,fredagsbar);
-        createProduktPris(30, ølpølser,fredagsbar);
+        createProduktPris(38,fadKlosterbryg,fredagsbar,1);
+        createProduktPris(38,fadJazzClassic,fredagsbar,1);
+        createProduktPris(38,fadEkstraPilsner,fredagsbar,1);
+        createProduktPris(38,fadCelebration,fredagsbar,1);
+        createProduktPris(38,fadBlondie,fredagsbar,1);
+        createProduktPris(38,fadForårsbryg,fredagsbar,1);
+        createProduktPris(38,fadIndiaPaleAle,fredagsbar,1);
+        createProduktPris(38,fadJulebryg,fredagsbar,1);
+        createProduktPris(38,fadImperialStout,fredagsbar,1);
+        createProduktPris(38,fadSpecial,fredagsbar,1);
+        createProduktPris(15,Æblebrus,fredagsbar,0);
+        createProduktPris(10,chips,fredagsbar,0);
+        createProduktPris(15,peanuts,fredagsbar,0);
+        createProduktPris(15,cola,fredagsbar,0);
+        createProduktPris(15, nikoline,fredagsbar,0);
+        createProduktPris(15, sevenUp,fredagsbar,0);
+        createProduktPris(10, vand,fredagsbar,0);
+        createProduktPris(30, ølpølser,fredagsbar,1);
 
         //Tildeler fredagsbarspris til spiritus
-        createProduktPris(599, whiskey50cl45Procent,fredagsbar);
-        createProduktPris(50, whiskey4cl45Procent,fredagsbar);
-        createProduktPris(499, whiskey50cl43Procent,fredagsbar);
-        createProduktPris(300, udenEgesplint,fredagsbar);
-        createProduktPris(350, medEgesplint,fredagsbar);
-        createProduktPris(80, toWhiskyGlasMedBrikker,fredagsbar);
-        createProduktPris(175, liquorOfAarhus,fredagsbar);
-        createProduktPris(350, lyngGin50cl,fredagsbar);
-        createProduktPris(40, lyngGin4cl,fredagsbar);
+        createProduktPris(599, whiskey50cl45Procent,fredagsbar,0);
+        createProduktPris(50, whiskey4cl45Procent,fredagsbar,0);
+        createProduktPris(499, whiskey50cl43Procent,fredagsbar,0);
+        createProduktPris(300, udenEgesplint,fredagsbar,0);
+        createProduktPris(350, medEgesplint,fredagsbar,0);
+        createProduktPris(80, toWhiskyGlasMedBrikker,fredagsbar,0);
+        createProduktPris(175, liquorOfAarhus,fredagsbar,0);
+        createProduktPris(350, lyngGin50cl,fredagsbar,0);
+        createProduktPris(40, lyngGin4cl,fredagsbar,0);
 
         //Tildeler fredagsbarspris til kulsyre
-        createProduktPris(400, sekskg,fredagsbar);
-        createProduktPris(1000, pantKulsyre, fredagsbar);
+        createProduktPris(400, sekskg,fredagsbar,0);
+        createProduktPris(1000, pantKulsyre, fredagsbar,0);
 
         //Tildeler fredagsbarspris til beklædning
-        createProduktPris(70, tShirt,fredagsbar);
-        createProduktPris(100, polo,fredagsbar);
-        createProduktPris(30, cap,fredagsbar);
+        createProduktPris(70, tShirt,fredagsbar,0);
+        createProduktPris(100, polo,fredagsbar,0);
+        createProduktPris(30, cap,fredagsbar,0);
 
         //Tildeler butikspris til flaskeøl
-        createProduktPris(36, flaskeKlosterbryg,butik);
-        createProduktPris(36, flaskeSweetGeorgiaBrown,butik);
-        createProduktPris(36, flaskeEkstraPilsner,butik);
-        createProduktPris(36, flaskeCelebration,butik);
-        createProduktPris(36, flaskeBlondie,butik);
-        createProduktPris(36, flaskeForårsbryg,butik);
-        createProduktPris(36, flaskeIndiaPaleAle,butik);
-        createProduktPris(36, flaskeJulebryg,butik);
-        createProduktPris(36, flaskeJuletønden,butik);
-        createProduktPris(36, flaskeOldStrongAle,butik);
-        createProduktPris(36, flaskeFregattenJylland,butik);
-        createProduktPris(36, flaskeImperialStout,butik);
-        createProduktPris(36, flaskeTribute,butik);
-        createProduktPris(60, flaskeBlackMonster,butik);
+        createProduktPris(36, flaskeKlosterbryg,butik,0);
+        createProduktPris(36, flaskeSweetGeorgiaBrown,butik,0);
+        createProduktPris(36, flaskeEkstraPilsner,butik,0);
+        createProduktPris(36, flaskeCelebration,butik,0);
+        createProduktPris(36, flaskeBlondie,butik,0);
+        createProduktPris(36, flaskeForårsbryg,butik,0);
+        createProduktPris(36, flaskeIndiaPaleAle,butik,0);
+        createProduktPris(36, flaskeJulebryg,butik,0);
+        createProduktPris(36, flaskeJuletønden,butik,0);
+        createProduktPris(36, flaskeOldStrongAle,butik,0);
+        createProduktPris(36, flaskeFregattenJylland,butik,0);
+        createProduktPris(36, flaskeImperialStout,butik,0);
+        createProduktPris(36, flaskeTribute,butik,0);
+        createProduktPris(60, flaskeBlackMonster,butik,0);
 
         //Tildeler butikspris til Spiritus
-        createProduktPris(599, whiskey50cl45Procent,butik);
-        createProduktPris(499, whiskey50cl43Procent,butik);
-        createProduktPris(300, udenEgesplint,butik);
-        createProduktPris(350, medEgesplint,butik);
-        createProduktPris(80, toWhiskyGlasMedBrikker,butik);
-        createProduktPris(175, liquorOfAarhus,butik);
-        createProduktPris(350, lyngGin50cl,butik);
+        createProduktPris(599, whiskey50cl45Procent,butik,0);
+        createProduktPris(499, whiskey50cl43Procent,butik,0);
+        createProduktPris(300, udenEgesplint,butik,0);
+        createProduktPris(350, medEgesplint,butik,0);
+        createProduktPris(80, toWhiskyGlasMedBrikker,butik,0);
+        createProduktPris(175, liquorOfAarhus,butik,0);
+        createProduktPris(350, lyngGin50cl,butik,0);
 
         //Tildeler butikspris til Fustage
-        createProduktPris(775, fustageKlosterbryg,butik);
-        createProduktPris(625, fustageJazzClassic,butik);
-        createProduktPris(575, fustageEkstraPilsner,butik);
-        createProduktPris(775, fustageCelebration,butik);
-        createProduktPris(700, fustageBlondie,butik);
-        createProduktPris(775, fustageForårsbryg,butik);
-        createProduktPris(775, fustageIndiaPaleAle,butik);
-        createProduktPris(775, fustageJulebryg,butik);
-        createProduktPris(775, fustageImperialStout,butik);
-        createProduktPris(200, pant, butik);
+        createProduktPris(775, fustageKlosterbryg,butik,0);
+        createProduktPris(625, fustageJazzClassic,butik,0);
+        createProduktPris(575, fustageEkstraPilsner,butik,0);
+        createProduktPris(775, fustageCelebration,butik,0);
+        createProduktPris(700, fustageBlondie,butik,0);
+        createProduktPris(775, fustageForårsbryg,butik,0);
+        createProduktPris(775, fustageIndiaPaleAle,butik,0);
+        createProduktPris(775, fustageJulebryg,butik,0);
+        createProduktPris(775, fustageImperialStout,butik,0);
+        createProduktPris(200, pant, butik,0);
 
         //Tildeler butikspris til kulsyre
-        createProduktPris(400, sekskg,butik);
-        createProduktPris(1000, pantKulsyre, butik);
+        createProduktPris(400, sekskg,butik,0);
+        createProduktPris(1000, pantKulsyre, butik,0);
 
         //Tildeler butikspris til Malt
-        createProduktPris(300, femOgTyveKg,butik);
+        createProduktPris(300, femOgTyveKg,butik,0);
 
         //Tildeler butikspris til beklædning
-        createProduktPris(70, tShirt,butik);
-        createProduktPris(100, polo,butik);
-        createProduktPris(30, cap,butik);
+        createProduktPris(70, tShirt,butik,0);
+        createProduktPris(100, polo,butik,0);
+        createProduktPris(30, cap,butik,0);
 
         //Tildeler butikspris til anlæg
-        createProduktPris(250, énHane,butik);
-        createProduktPris(400, toHaner,butik);
-        createProduktPris(500, barMedFlereHaner,butik);
-        createProduktPris(500, Levering,butik);
-        createProduktPris(60, Krus,butik);
+        createProduktPris(250, énHane,butik,0);
+        createProduktPris(400, toHaner,butik,0);
+        createProduktPris(500, barMedFlereHaner,butik,0);
+        createProduktPris(500, Levering,butik,0);
+        createProduktPris(60, Krus,butik,0);
 
         //Tildeler butikspris til glas
-        createProduktPris(15, glasAlleStørrelser,butik);
+        createProduktPris(15, glasAlleStørrelser,butik,0);
 
 
         //Opretter Kunde
-       Kunde morten = createKunde("Morten");
+        Kunde morten = createKunde("Morten");
         //Opretter salg
-        Salg salg = createSalg(LocalDate.of(2022, 12, 12), "Kreditkort",morten );
-        Salg salg1 = createSalg(LocalDate.of(2022,4,5),"Kreditkort", null);
+        Salg salg = createSalg(LocalDate.of(2022, 12, 12), "Kreditkort",morten,false );
 
         //Tilføjer salgslinjer til salg
         createSalgsLinje(2, flaskeKlosterBryg, salg);
         createSalgsLinje(1, flaskeSweetGeorgiaBrow, salg);
-        createSalgsLinje(1, flaskeKlosterBryg, salg1);
+
     }
 }

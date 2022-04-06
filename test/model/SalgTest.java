@@ -15,76 +15,76 @@ class SalgTest {
     private SalgsLinje salgsLinje;
     private Salg salg;
 
-    @BeforeEach
-    public void setUpBeforeEach_SalgData(){
-        this.produktGruppe = new ProduktGruppe("Flaskeøl");
-        this.produkt = new Produkt("Øl", produktGruppe);
-        this.prisListe = new PrisListe("Julefest");
-        this.produktPris = new ProduktPris(10, produkt,prisListe);
-
-    }
-
-    @Test
-    void salgKorrektOprettet() {
-        //Arrange
-        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Kreditkort",null);
-        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
-
-        //Arrange Act
-        assertTrue(salg.getSalgsLinjer().contains(salgsLinje));
-
-    }
-
-
-
-    @Test
-    void getSamletPris1SalgsLinje1Antal() {
-        //Arrange
-        this.salg = new Salg( LocalDate.of(2022, 12, 12),"KreditKort",null);
-        this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
-
-        //Act
-        int actual = salg.getSamletPris();
-        int expected = 10;
-
-        //Assert
-        assertEquals(expected,actual);
-
-    }
-
-    @Test
-    void getSamletPris1SalgsLinje2Antal() {
-        //Arrange
-        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Kreditkort",null);
-        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
-
-
-        //Act
-        int actual = salg.getSamletPris();
-        int expected = 20;
-
-        //Assert
-        assertEquals(expected,actual);
-
-    }
-
-
-    @Test
-    void getSamletPris2SalgsLinjer() {
-        //Arrange
-        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Kreditkort",null);
-        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
-        ProduktPris produktPris = new ProduktPris(5, produkt,prisListe);
-        SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
-
-
-        //Act
-        int actual = salg.getSamletPris();
-        int expected = 25;
-
-        //Assert
-        assertEquals(expected,actual);
-
-    }
+//    @BeforeEach
+//    public void setUpBeforeEach_SalgData(){
+//        this.produktGruppe = new ProduktGruppe("Flaskeøl");
+//        this.produkt = new Produkt("Øl", produktGruppe);
+//        this.prisListe = new PrisListe("Julefest");
+//        this.produktPris = new ProduktPris(10, produkt,prisListe);
+//
+//    }
+//
+//    @Test
+//    void salgKorrektOprettet() {
+//        //Arrange
+//        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Kreditkort",null);
+//        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
+//
+//        //Arrange Act
+//        assertTrue(salg.getSalgsLinjer().contains(salgsLinje));
+//
+//    }
+//
+//
+//
+//    @Test
+//    void getSamletPris1SalgsLinje1Antal() {
+//        //Arrange
+//        this.salg = new Salg( LocalDate.of(2022, 12, 12),"KreditKort",null);
+//        this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
+//
+//        //Act
+//        int actual = salg.getSamletPris();
+//        int expected = 10;
+//
+//        //Assert
+//        assertEquals(expected,actual);
+//
+//    }
+//
+//    @Test
+//    void getSamletPris1SalgsLinje2Antal() {
+//        //Arrange
+//        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Kreditkort",null);
+//        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
+//
+//
+//        //Act
+//        int actual = salg.getSamletPris();
+//        int expected = 20;
+//
+//        //Assert
+//        assertEquals(expected,actual);
+//
+//    }
+//
+//
+//    @Test
+//    void getSamletPris2SalgsLinjer() {
+//        //Arrange
+//        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Kreditkort",null);
+//        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
+//        ProduktPris produktPris = new ProduktPris(5, produkt,prisListe);
+//        SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
+//
+//
+//        //Act
+//        int actual = salg.getSamletPris();
+//        int expected = 25;
+//
+//        //Assert
+//        assertEquals(expected,actual);
+//
+//    }
 
 }

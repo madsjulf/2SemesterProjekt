@@ -5,16 +5,25 @@ import java.util.ArrayList;
 public class ProduktPris {
 
     private int pris;
+    private int klip;
     // Tvungen assosiering --> 1 Produkt
     private Produkt produkt;
     private PrisListe prisListe;
 
-    public ProduktPris(int pris, Produkt produkt, PrisListe prisListe) {
+    public ProduktPris(int pris, Produkt produkt, PrisListe prisListe,int klip) {
+        this.klip = klip;
         this.pris = pris;
         this.produkt = produkt;
         this.prisListe = prisListe;
     }
 
+    public int getKlip() {
+        return klip;
+    }
+
+    public void setKlip(int klip) {
+        this.klip = klip;
+    }
 
     public void setPris(int pris) {
         this.pris = pris;
