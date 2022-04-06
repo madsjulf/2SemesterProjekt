@@ -104,19 +104,21 @@ public class Salg {
     public int getSamletPrisUdenPant(){
         int samletPantPris = 0;
         int samletPris = 0;
-        int pantAntal = 0;
-        int antal = 0;
-        for (SalgsLinje salgsLinje : salgsLinjer) {
 
+        for (SalgsLinje salgsLinje : salgsLinjer) {
+            if (salgsLinje.getSalg() == this) {
                 if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Pant" || salgsLinje.getProduktPris().getProdukt().getNavn() == "PantKulsyre") {
+                    int pantAntal = 0;
                     pantAntal += salgsLinje.getAntal();
                     samletPantPris += salgsLinje.getProduktPris().getPris() * pantAntal;
 
                 } else {
+                    int antal = 0;
                     antal += salgsLinje.getAntal();
                     samletPris += salgsLinje.getProduktPris().getPris() * antal;
                 }
             }
+        }
 
         return samletPris-samletPantPris;
     }
@@ -132,5 +134,9 @@ public class Salg {
 
     public int updateNr(){
         return nrCounter++;
+    }
+
+    public void setSalgsDato(LocalDate salgsDato) {
+        this.salgsDato = salgsDato;
     }
 }
