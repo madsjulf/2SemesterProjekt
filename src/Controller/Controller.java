@@ -148,7 +148,6 @@ public class Controller {
         Produkt pantKulsyre = createProdukt("PantKulsyre", kulsyre);
         Produkt sekskg = createProdukt("6 kg",kulsyre);
 
-
         //Opretter malt
         Produkt femOgTyveKg = createProdukt("25 kg sæk",malt);
 
