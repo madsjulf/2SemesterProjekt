@@ -129,6 +129,7 @@ public class SalgWindow extends Stage {
     }
 
     private void okAction() {
+
         String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
         int i = Storage.getSalgs().size()-1;
 
@@ -136,16 +137,21 @@ public class SalgWindow extends Stage {
 
         salg.setBetalingsForm(betalingsform);
 
+        salg.setSalgFærdigt(true);
+
 
         if (checkBoxUdlejning.isSelected()) {
             Kunde kunde = Controller.createKunde(txfKundeNavn.getText());
             salg.setKunde(kunde);
+            salg.setSalgFærdigt(false);
         }
 
         if (!checkboxBetalt.isSelected()) {
             lblError.setText("Betaling mangler!");
             return;
         }
+
+
 
         this.hide();
         }
