@@ -1,23 +1,34 @@
 package GUI;
 
+
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Salg;
-import model.SalgsLinje;
+
+import java.time.LocalDate;
+import java.util.ArrayList;
+
 
 public class UdlejningWindow extends Stage {
     private final TextField txfPris = new TextField();
+    private final CheckBox checkBoxBetalt = new CheckBox();
+    private final ComboBox comboBoxBetalingsform = new ComboBox();
+    private ArrayList<String> betalingsformer = new ArrayList<>();
+    private final Label lblError = new Label();
+    private int pris;
+    private Salg salg;
 
 
 
 
-    public UdlejningWindow(String title) {
+    public UdlejningWindow(String title, int pris, Salg salg) {
+        this.pris = pris;
+        this.salg = salg;
+
         this.setTitle(title);
         GridPane pane = new GridPane();
         this.initContent(pane);
@@ -34,10 +45,31 @@ public class UdlejningWindow extends Stage {
         pane.setVgap(10);
         pane.setGridLinesVisible(false);
 
+        betalingsformer.add("Kreditkort");
+        betalingsformer.add("MobilePay");
+        betalingsformer.add("Kontant");
+        betalingsformer.add("Klippekort");
+
 
         Label lblPris = new Label("Samlet Pris:");
-        pane.add(lblPris, 1, 0);
-        pane.add(txfPris, 1, 1);
+        pane.add(lblPris, 0, 0);
+        pane.add(txfPris, 0, 1);
+        txfPris.setText(pris + "");
+
+        Label lblBetaling = new Label("Betalt");
+        pane.add(lblBetaling, 1, 0);
+        pane.add(checkBoxBetalt, 1, 1);
+
+        Label lblBetalingsform = new Label("Betalingsform");
+        pane.add(lblBetalingsform, 0, 2);
+        pane.add(comboBoxBetalingsform, 0, 3);
+        comboBoxBetalingsform.getItems().setAll(betalingsformer);
+
+
+
+        // error besked
+        pane.add(lblError, 0, 22);
+        lblError.setStyle("-fx-text-fill: red");
 
         // cancel knap
         javafx.scene.control.Button btnCancel = new javafx.scene.control.Button("Cancel");
@@ -47,13 +79,12 @@ public class UdlejningWindow extends Stage {
 
         // ok knap
         javafx.scene.control.Button btnOK = new Button("OK");
-        pane.add(btnOK, 0, 20);
+        pane.add(btnOK, 1, 20);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
 
 
-
-
+        comboBoxBetalingsform.getSelectionModel().select(0);
 
 
     }
@@ -63,6 +94,19 @@ public class UdlejningWindow extends Stage {
     }
 
     private void okAction() {
+        String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
+
+        if (!checkBoxBetalt.isSelected()) {
+            lblError.setText("Betaling mangler!");
+            return;
+        }
+
+        salg.setBetalingsForm(betalingsform);
+        salg.setSalgsDato(LocalDate.now());
+
+        this.salg.setSalgFærdigt(true);
+        this.hide();
+
     }
 
 

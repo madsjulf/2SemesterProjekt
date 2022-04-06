@@ -8,8 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/2SemesterProjekt/model/SalgTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/2SemesterProjekt/model/SalgTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/SalgWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SalgWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/StatistikPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/StatistikPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/UdlejningPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/UdlejningPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/UdlejningWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/UdlejningWindow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Salg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Salg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/SalgTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/SalgTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,11 +44,6 @@
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_1_PrisListePane.class" root0="SKIP_INSPECTION" />
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp_2_PrisListePane.class" root0="SKIP_INSPECTION" />
-    <setting file="file://$USER_HOME$/AppData/Local/Temp/tmp__PrisListePane.class" root0="SKIP_INSPECTION" />
-  </component>
   <component name="ProjectId" id="26rvTgT2CPJDKStyWb9xwZveuln" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -69,7 +66,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="JUnit.SalgTest.getSamletPrisPant">
+  <component name="RunManager" selected="Application.Main">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Main" />
       <module name="2SemesterProjekt" />
@@ -149,9 +146,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SalgTest.getSamletPrisPant" />
         <item itemvalue="JUnit.SalgTest.getSamletPrisUdenPant" />
-        <item itemvalue="Application.Main" />
         <item itemvalue="JUnit.SalgTest.salgKorrektOprettet" />
         <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinjer" />
       </list>
