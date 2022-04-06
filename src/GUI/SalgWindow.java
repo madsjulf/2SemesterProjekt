@@ -76,7 +76,7 @@ public class SalgWindow extends Stage {
         txfPris.setEditable(false);
         int i = Storage.getSalgs().size()-1;
         int samletPris = Storage.getSalgs().get(i).getSamletPris();
-        int samletPrisPant = Storage.getSalgs().get(i).getSamletPrisPant();
+
 
         if(checkBoxUdlejning.isSelected()) {
            updateControlsUdlejning();

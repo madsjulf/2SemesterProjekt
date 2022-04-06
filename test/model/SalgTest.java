@@ -87,4 +87,50 @@ class SalgTest {
 //
 //    }
 
+//    @Test
+//    void getSamletPrisPant(){
+//        this.produktGruppe = new ProduktGruppe("Kulsyre");
+//        this.produkt = new Produkt("Øl", produktGruppe);
+//        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Kreditkort",null,false);
+//        this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
+//        this.prisListe = new PrisListe("Fredagsbar");
+//        this.produktPris = new ProduktPris(5, produkt,prisListe,2);
+//        SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
+//        Produkt produkt2 = new Produkt("Pant", produktGruppe);
+//        ProduktPris produktPris2 = new ProduktPris(200, produkt2, prisListe, 0);
+//        SalgsLinje salgsLinje2 = salg.opretSalgsLinje(1, produktPris2, salg);
+//
+//        // Act
+//        int actual = salg.getSamletPrisPant();
+//        int expected = 200;
+//
+//        // Assert
+//        assertEquals(expected, actual);
+//    }
+//
+//    @Test
+//    void getSamletPrisUdenPant(){
+//        //
+//        this.produktGruppe = new ProduktGruppe("Fustage");
+//        this.produkt = new Produkt("Øl", produktGruppe);
+//        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Kreditkort",null,false);
+//        this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
+//        this.prisListe = new PrisListe("Fredagsbar");
+//
+//        ProduktPris produktPris = new ProduktPris(5, produkt,prisListe,2);
+//        SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
+//        Produkt produkt2 = new Produkt("Pant", produktGruppe);
+//        ProduktPris produktPris2 = new ProduktPris(200, produkt2, prisListe, 0);
+//        SalgsLinje salgsLinje2 = salg.opretSalgsLinje(1, produktPris2, salg);
+//
+//
+//        //
+//        int actual = salg.getSamletPrisUdenPant();
+//        int expected = -195;
+//
+//
+//        //
+//        assertEquals(expected, actual);
+//    }
+
 }
