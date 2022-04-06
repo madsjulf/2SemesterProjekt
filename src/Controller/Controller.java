@@ -131,6 +131,7 @@ public class Controller {
         Produkt lyngGin4cl = createProdukt("Lyng gin 4 cl", spiritus);
 
         //Opretter fustage
+        Produkt pant = createProdukt("Pant", fustage);
         Produkt fustageKlosterbryg = createProdukt("Klosterbryg",fustage);
         Produkt fustageJazzClassic = createProdukt("Jazz Classic",fustage);
         Produkt fustageEkstraPilsner = createProdukt("Ekstra Pilsner",fustage);
@@ -142,7 +143,9 @@ public class Controller {
         Produkt fustageImperialStout = createProdukt("Imperial Stout",fustage);
 
 
+
         //Opretter kulsyre
+        Produkt pantKulsyre = createProdukt("PantKulsyre", kulsyre);
         Produkt sekskg = createProdukt("6 kg",kulsyre);
 
 
@@ -223,6 +226,7 @@ public class Controller {
 
         //Tildeler fredagsbarspris til kulsyre
         createProduktPris(400, sekskg,fredagsbar);
+        createProduktPris(1000, pantKulsyre, fredagsbar);
 
         //Tildeler fredagsbarspris til beklædning
         createProduktPris(70, tShirt,fredagsbar);
@@ -264,9 +268,11 @@ public class Controller {
         createProduktPris(775, fustageIndiaPaleAle,butik);
         createProduktPris(775, fustageJulebryg,butik);
         createProduktPris(775, fustageImperialStout,butik);
+        createProduktPris(200, pant, butik);
 
         //Tildeler butikspris til kulsyre
         createProduktPris(400, sekskg,butik);
+        createProduktPris(1000, pantKulsyre, butik);
 
         //Tildeler butikspris til Malt
         createProduktPris(300, femOgTyveKg,butik);

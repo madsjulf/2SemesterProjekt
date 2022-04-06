@@ -7,6 +7,7 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -26,6 +27,7 @@ public class SalgWindow extends Stage {
     private final CheckBox checkBoxUdlejning = new CheckBox();
     private final TextField txfKundeNavn = new TextField();
     private final Label lblKundeNavn = new Label("Kunde Navn:");
+    private final TextField txfPris = new TextField();
 
 
     public SalgWindow(String title) {
@@ -68,11 +70,25 @@ public class SalgWindow extends Stage {
         pane.add(checkBoxUdlejning, 0, 3);
         checkBoxUdlejning.selectedProperty().addListener((ov, o, n) -> this.selectedUdlejningChanged());
 
+        Label lblPris = new Label("Pris");
+        pane.add(lblPris, 0, 4);
+        pane.add(txfPris, 0, 5);
+        txfPris.setEditable(false);
+        int i = Storage.getSalgs().size()-1;
+        int samletPris = Storage.getSalgs().get(i).getSamletPris();
+        int samletPrisPant = Storage.getSalgs().get(i).getSamletPrisPant();
 
-        pane.add(lblKundeNavn, 0, 4);
+        if(checkBoxUdlejning.isSelected()) {
+           updateControlsUdlejning();
+        } else
+
+        txfPris.setText(samletPris+"");
+
+
+        pane.add(lblKundeNavn, 0, 6);
         lblKundeNavn.setVisible(false);
 
-        pane.add(txfKundeNavn, 0, 5);
+        pane.add(txfKundeNavn, 0, 7);
         txfKundeNavn.setEditable(false);
         txfKundeNavn.setVisible(false);
 
@@ -140,6 +156,9 @@ public class SalgWindow extends Stage {
             txfKundeNavn.setEditable(true);
             txfKundeNavn.setVisible(true);
             lblKundeNavn.setVisible(true);
+            int i = Storage.getSalgs().size()-1;
+            int samletPrisPant = Storage.getSalgs().get(i).getSamletPrisPant();
+            txfPris.setText(samletPrisPant + "");
         }
     }
 
