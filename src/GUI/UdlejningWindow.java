@@ -1,7 +1,9 @@
 package GUI;
 
+import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
@@ -37,6 +39,17 @@ public class UdlejningWindow extends Stage {
         pane.add(lblPris, 1, 0);
         pane.add(txfPris, 1, 1);
 
+        // cancel knap
+        javafx.scene.control.Button btnCancel = new javafx.scene.control.Button("Cancel");
+        pane.add(btnCancel, 0, 20);
+        GridPane.setHalignment(btnCancel, HPos.LEFT);
+        btnCancel.setOnAction(event -> this.cancelAction());
+
+        // ok knap
+        javafx.scene.control.Button btnOK = new Button("OK");
+        pane.add(btnOK, 0, 20);
+        GridPane.setHalignment(btnOK, HPos.RIGHT);
+        btnOK.setOnAction(event -> this.okAction());
 
 
 
@@ -45,6 +58,12 @@ public class UdlejningWindow extends Stage {
 
     }
 
+    private void cancelAction() {
+        this.hide();
+    }
+
+    private void okAction() {
+    }
 
 
     }

@@ -82,6 +82,8 @@ public class StatistikPane extends GridPane {
 
 
     public void updateControlsDate() {
+
+        // Vis færdige salg inden for den valgte periode.
         LocalDate start = startDate.getValue();
         LocalDate slut = slutDate.getValue();
 
@@ -115,6 +117,11 @@ public class StatistikPane extends GridPane {
         }
 
         lvwSalg.getItems().setAll(tempSalg);
+
+//        // Vis antal Klippekort solgt i den valgte periode.
+//        if (!lvwSalg.getItems().isEmpty()) {
+//            for (Salg salg : lvwSalg)
+//        }
     }
 
     private void updateControlsSalg() {
@@ -127,6 +134,7 @@ public class StatistikPane extends GridPane {
             }
         }
     }
+
 
 
 
