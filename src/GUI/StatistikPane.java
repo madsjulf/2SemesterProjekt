@@ -13,6 +13,7 @@ import model.ProduktGruppe;
 import model.Salg;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class StatistikPane extends GridPane {
@@ -37,19 +38,22 @@ public class StatistikPane extends GridPane {
         Label lblStartDate = new Label("Start Dato:");
         this.add(lblStartDate, 0, 0);
         this.add(startDate, 0, 1);
-
-        startDate.valueProperty().addListener((ov,o,n) -> this.selectedStartChanged());
+        startDate.valueProperty().addListener((ov,o,n) -> this.selectedDateChanged());
 
 
         Label lblSlutDate = new Label("Slut Dato:");
         this.add(lblSlutDate, 1, 0);
         this.add(slutDate, 1, 1);
-        slutDate.valueProperty().addListener((ov,o,n) -> this.selectedSlutChanged());
+        slutDate.valueProperty().addListener((ov,o,n) -> this.selectedDateChanged());
 
 
         Label lblSalg = new Label("Salg:");
         this.add(lblSalg, 0, 2);
         this.add(lvwSalg, 0, 3);
+        ChangeListener<Salg> listener = (ov, o, n) -> this.selectedSalgChanged();
+        lvwSalg.getSelectionModel().selectedItemProperty().addListener(listener);
+
+
 
 
         Label lblSalgsLinjer = new Label("Produkter:");
@@ -57,46 +61,74 @@ public class StatistikPane extends GridPane {
         this.add(lvwSalgsLinjer, 1, 3);
 
         Label lblKøbtKlip = new Label("Købte Klip:");
-        this.add(lblKøbtKlip, 0, 2);
-        this.add(txtfKøbtKlip, 0, 3);
+        this.add(lblKøbtKlip, 0, 4);
+        this.add(txtfKøbtKlip, 0, 5);
 
         Label lblBrugtKlip = new Label("Brugte Klip:");
-        this.add(lblBrugtKlip, 1, 2);
-        this.add(txtfBrugtKlip,1,3);
+        this.add(lblBrugtKlip, 1, 4);
+        this.add(txtfBrugtKlip,1,5);
 
     }
 
     //-----------------------------------------------------------
 
-    private void selectedStartChanged() {
-        this.updateControlsStart();
+    private void selectedDateChanged() {
+        this.updateControlsDate();
     }
 
-    private void selectedSlutChanged() {
-        this.updateControlsSlut();
+    private void selectedSalgChanged() {
+        this.updateControlsSalg();
     }
 
 
-    public void updateControlsStart() {
+    public void updateControlsDate() {
         LocalDate start = startDate.getValue();
-        for (Salg salg : Storage.getSalgs()) {
-            if (start.isBefore(salg.getSalgsDato())) {
-                lvwSalg.getItems().add(salg);
+        LocalDate slut = slutDate.getValue();
+
+        ArrayList<Salg> tempSalg = new ArrayList<>();
+
+        if (start != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (start.isBefore(salg.getSalgsDato()) || start == salg.getSalgsDato()) {
+                    if (salg.isSalgFærdigt() == true) {
+                        tempSalg.add(salg);
+                    }
+                }
+            }
+            if (slut != null) {
+                for (Salg salg : Storage.getSalgs()) {
+                    if (slut.isBefore(salg.getSalgsDato()) || slut == salg.getSalgsDato()) {
+                        tempSalg.remove(salg);
+                    }
+                }
             }
         }
 
-    }
-
-    public void updateControlsSlut() {
-        LocalDate slut = slutDate.getValue();
-
-        for (int i = 0; i < lvwSalg.getItems().size(); i++) {
-//            if (slut.isBefore(lvwSalg.getItems().get(i)))
+        if(start == null && slut != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (slut.isAfter(salg.getSalgsDato()) || slut == salg.getSalgsDato()) {
+                    if (salg.isSalgFærdigt() == true) {
+                        tempSalg.add(salg);
+                    }
+                }
+            }
         }
 
-
-
+        lvwSalg.getItems().setAll(tempSalg);
     }
+
+    private void updateControlsSalg() {
+        Salg salgKunde = (Salg) lvwSalg.getSelectionModel().getSelectedItem();
+        lvwSalgsLinjer.getItems().clear();
+
+        for (Salg salg : Storage.getSalgs()) {
+            if (salgKunde == salg) {
+                lvwSalgsLinjer.getItems().setAll(salg.getSalgsLinjer());
+            }
+        }
+    }
+
+
 
 
 }

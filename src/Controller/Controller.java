@@ -293,12 +293,13 @@ public class Controller {
 
 
         //Opretter Kunde
-       Kunde morten = createKunde("Morten");
+        Kunde morten = createKunde("Morten");
         //Opretter salg
         Salg salg = createSalg(LocalDate.of(2022, 12, 12), "Kreditkort",morten,false );
 
         //Tilføjer salgslinjer til salg
         createSalgsLinje(2, flaskeKlosterBryg, salg);
         createSalgsLinje(1, flaskeSweetGeorgiaBrow, salg);
+
     }
 }
