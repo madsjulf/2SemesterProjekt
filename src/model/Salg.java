@@ -93,7 +93,7 @@ public class Salg {
         int samletPris = 0;
         for (SalgsLinje salgsLinje : salgsLinjer){
             int antal = 0;
-            if (salgsLinje.getProduktPris().getProdukt().getNavn()=="Pant" ||salgsLinje.getProduktPris().getProdukt().getNavn()== "pantKulsyre" ){
+            if (salgsLinje.getProduktPris().getProdukt().getNavn()=="Pant" ||salgsLinje.getProduktPris().getProdukt().getNavn()== "PantKulsyre" ){
                 antal += salgsLinje.getAntal();
                 samletPris += salgsLinje.getProduktPris().getPris()*antal;
             }
@@ -101,21 +101,24 @@ public class Salg {
         return samletPris;
     }
 
-    public int getSamletReturPris() {
-        int pris = 0;
+    public int getSamletPrisUdenPant(){
+        int samletPantPris = 0;
         int samletPris = 0;
+        int pantAntal = 0;
+        int antal = 0;
         for (SalgsLinje salgsLinje : salgsLinjer) {
-            int antal = 0;
-            antal += salgsLinje.getAntal();
-            samletPris += salgsLinje.getProduktPris().getPris() * antal;
-        }
-        int samletReturPris = 0;
-        for (SalgsLinje returSalgsLinje : returSalgsLinjer) {
-            int antal = 0;
-            antal += returSalgsLinje.getAntal();
-            samletReturPris += returSalgsLinje.getProduktPris().getPris() * antal;
-        }
-        return pris = samletPris - samletReturPris;
+
+                if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Pant" || salgsLinje.getProduktPris().getProdukt().getNavn() == "PantKulsyre") {
+                    pantAntal += salgsLinje.getAntal();
+                    samletPantPris += salgsLinje.getProduktPris().getPris() * pantAntal;
+
+                } else {
+                    antal += salgsLinje.getAntal();
+                    samletPris += salgsLinje.getProduktPris().getPris() * antal;
+                }
+            }
+
+        return samletPris-samletPantPris;
     }
 
 
