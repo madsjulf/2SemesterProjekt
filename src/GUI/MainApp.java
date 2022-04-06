@@ -77,7 +77,7 @@ public class MainApp extends Application {
 
             StatistikPane statistikPane = new StatistikPane();
             tabStatistik.setContent(statistikPane);
-//            tabStatistik.setOnSelectionChanged(event -> statistikPane.updateControls());
+            tabStatistik.setOnSelectionChanged(event -> statistikPane.updateControlsDate());
 
     }
 

@@ -297,9 +297,11 @@ public class Controller {
        Kunde morten = createKunde("Morten");
         //Opretter salg
         Salg salg = createSalg(LocalDate.of(2022, 12, 12), "Kreditkort",morten );
+        Salg salg1 = createSalg(LocalDate.of(2022,4,5),"Kreditkort", null);
 
         //Tilføjer salgslinjer til salg
         createSalgsLinje(2, flaskeKlosterBryg, salg);
         createSalgsLinje(1, flaskeSweetGeorgiaBrow, salg);
+        createSalgsLinje(1, flaskeKlosterBryg, salg1);
     }
 }
