@@ -9,8 +9,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.util.converter.LocalDateStringConverter;
+import model.Produkt;
 import model.ProduktGruppe;
 import model.Salg;
+import model.SalgsLinje;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -88,18 +90,27 @@ public class StatistikPane extends GridPane {
         LocalDate slut = slutDate.getValue();
 
         ArrayList<Salg> tempSalg = new ArrayList<>();
+        int antal = 0;
+        int købteKlip = 0;
+        int brugteKlip = 0;
 
         if (start != null) {
             for (Salg salg : Storage.getSalgs()) {
                 if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
                     if (salg.isSalgFærdigt() == true) {
                         tempSalg.add(salg);
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
+                                antal = salgsLinje.getAntal();
+                                købteKlip += 4 * antal;
+                            }
+                        }
                     }
                 }
             }
             if (slut != null) {
                 for (Salg salg : Storage.getSalgs()) {
-                    if (slut.isBefore(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
+                    if (slut.isBefore(salg.getSalgsDato())) {
                         tempSalg.remove(salg);
                     }
                 }
@@ -111,6 +122,12 @@ public class StatistikPane extends GridPane {
                 if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
                     if (salg.isSalgFærdigt() == true) {
                         tempSalg.add(salg);
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
+                                antal = salgsLinje.getAntal();
+                                købteKlip += 4 * antal;
+                            }
+                        }
                     }
                 }
             }
@@ -118,10 +135,8 @@ public class StatistikPane extends GridPane {
 
         lvwSalg.getItems().setAll(tempSalg);
 
-//        // Vis antal Klippekort solgt i den valgte periode.
-//        if (!lvwSalg.getItems().isEmpty()) {
-//            for (Salg salg : lvwSalg)
-//        }
+        txtfKøbtKlip.setText(købteKlip + "");
+
     }
 
     private void updateControlsSalg() {

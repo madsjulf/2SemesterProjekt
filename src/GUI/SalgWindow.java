@@ -2,6 +2,7 @@ package GUI;
 
 import Controller.Controller;
 import Storage.Storage;
+import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.scene.control.Button;
@@ -15,6 +16,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Kunde;
 import model.Salg;
+import model.SalgsLinje;
 
 import java.awt.*;
 import java.util.ArrayList;
@@ -28,10 +30,14 @@ public class SalgWindow extends Stage {
     private final TextField txfKundeNavn = new TextField();
     private final Label lblKundeNavn = new Label("Kunde Navn:");
     private final TextField txfPris = new TextField();
+    private Label lblPris = new Label();
+    private Label lblPrisKlip = new Label();
+    private SalgsLinje salgsLinje;
 
 
-    public SalgWindow(String title) {
+    public SalgWindow(String title, SalgsLinje salgsLinje) {
         this.setTitle(title);
+        this.salgsLinje = salgsLinje;
         GridPane pane = new GridPane();
         this.initContent(pane);
 
@@ -59,6 +65,9 @@ public class SalgWindow extends Stage {
 
         pane.add(comboBoxBetalingsform, 0, 1);
         comboBoxBetalingsform.getItems().setAll(betalingsformer);
+        ChangeListener<String> listener = (ov, o, n) -> this.selectedBetalingsformChanged();
+        comboBoxBetalingsform.getSelectionModel().selectedItemProperty().addListener(listener);
+
 
         Label lblBetalt = new Label("Betalt");
         pane.add(lblBetalt,2,0);
@@ -70,17 +79,23 @@ public class SalgWindow extends Stage {
         pane.add(checkBoxUdlejning, 0, 3);
         checkBoxUdlejning.selectedProperty().addListener((ov, o, n) -> this.selectedUdlejningChanged());
 
-        Label lblPris = new Label("Pris");
+        lblPris = new Label("Pris");
         pane.add(lblPris, 0, 4);
         pane.add(txfPris, 0, 5);
         txfPris.setEditable(false);
         int i = Storage.getSalgs().size()-1;
         int samletPris = Storage.getSalgs().get(i).getSamletPris();
 
+        lblPrisKlip = new Label("Pris i klip:");
+        pane.add(lblPrisKlip, 0, 4);
+        lblPrisKlip.setVisible(false);
+
 
         if(checkBoxUdlejning.isSelected()) {
            updateControlsUdlejning();
-        } else
+        }
+
+
 
         txfPris.setText(samletPris+"");
 
@@ -123,6 +138,10 @@ public class SalgWindow extends Stage {
         this.updateControlsUdlejning();
     }
 
+    private void selectedBetalingsformChanged() {
+        this.updateControlsBetalingsform();
+    }
+
 
     private void cancelAction() {
         this.hide();
@@ -163,6 +182,22 @@ public class SalgWindow extends Stage {
             int samletPrisPant = Storage.getSalgs().get(i).getSamletPrisPant();
             txfPris.setText(samletPrisPant + "");
         }
+    }
+
+    public void updateControlsBetalingsform() {
+        String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
+
+        if (betalingsform.equals("Klippekort")) {
+            lblPris.setVisible(false);
+            lblPrisKlip.setVisible(true);
+
+
+
+        } else {
+            lblPrisKlip.setVisible(false);
+            lblPris.setVisible(true);
+        }
+
     }
 
 
