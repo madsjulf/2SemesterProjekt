@@ -8,7 +8,6 @@ import javafx.geometry.Insets;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.Scene;
 import javafx.scene.control.ComboBox;
@@ -16,9 +15,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Kunde;
 import model.Salg;
-import model.SalgsLinje;
 
-import java.awt.*;
+
 import java.util.ArrayList;
 
 public class SalgWindow extends Stage {
@@ -32,12 +30,11 @@ public class SalgWindow extends Stage {
     private final TextField txfPris = new TextField();
     private Label lblPris = new Label();
     private Label lblPrisKlip = new Label();
-    private SalgsLinje salgsLinje;
 
 
-    public SalgWindow(String title, SalgsLinje salgsLinje) {
+
+    public SalgWindow(String title) {
         this.setTitle(title);
-        this.salgsLinje = salgsLinje;
         GridPane pane = new GridPane();
         this.initContent(pane);
 
@@ -83,8 +80,7 @@ public class SalgWindow extends Stage {
         pane.add(lblPris, 0, 4);
         pane.add(txfPris, 0, 5);
         txfPris.setEditable(false);
-        int i = Storage.getSalgs().size()-1;
-        int samletPris = Storage.getSalgs().get(i).getSamletPris();
+
 
         lblPrisKlip = new Label("Pris i klip:");
         pane.add(lblPrisKlip, 0, 4);
@@ -97,7 +93,6 @@ public class SalgWindow extends Stage {
 
 
 
-        txfPris.setText(samletPris+"");
 
 
         pane.add(lblKundeNavn, 0, 6);
@@ -187,15 +182,26 @@ public class SalgWindow extends Stage {
     public void updateControlsBetalingsform() {
         String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
 
+
+
         if (betalingsform.equals("Klippekort")) {
             lblPris.setVisible(false);
             lblPrisKlip.setVisible(true);
+            checkBoxUdlejning.setSelected(false);
+            checkBoxUdlejning.setVisible(false);
 
-
+            int i = Storage.getSalgs().size() -1;
+            Salg salg = Storage.getSalgs().get(i);
+            txfPris.setText(Controller.betalingMedKlip(salg)+ "");
 
         } else {
             lblPrisKlip.setVisible(false);
             lblPris.setVisible(true);
+            checkBoxUdlejning.setVisible(true);
+
+            int i = Storage.getSalgs().size()-1;
+            int samletPris = Storage.getSalgs().get(i).getSamletPris();
+            txfPris.setText(samletPris+"");
         }
 
     }

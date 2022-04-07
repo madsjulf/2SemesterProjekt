@@ -97,7 +97,7 @@ public class StatistikPane extends GridPane {
         if (start != null) {
             for (Salg salg : Storage.getSalgs()) {
                 if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
-                    if (salg.isSalgFærdigt() == true) {
+                    if (salg.isSalgFærdigt()) {
                         tempSalg.add(salg);
                         for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
                             if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
@@ -120,7 +120,7 @@ public class StatistikPane extends GridPane {
         if(start == null && slut != null) {
             for (Salg salg : Storage.getSalgs()) {
                 if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
-                    if (salg.isSalgFærdigt() == true) {
+                    if (salg.isSalgFærdigt()) {
                         tempSalg.add(salg);
                         for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
                             if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {

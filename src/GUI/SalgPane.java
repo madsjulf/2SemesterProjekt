@@ -146,9 +146,7 @@ public class SalgPane extends GridPane {
 
 
     private void createAction() {
-        SalgsLinje salgsLinjerTilWindow = (SalgsLinje) lvwIndkøbsListe.getItems();
-
-        SalgWindow dialog = new SalgWindow("Opret Salg", salgsLinjerTilWindow);
+        SalgWindow dialog = new SalgWindow("Opret Salg");
         dialog.showAndWait();
         lvwIndkøbsListe.getItems().clear();
         checkBoxStartSalg.setSelected(false);
@@ -169,9 +167,6 @@ public class SalgPane extends GridPane {
         produktPris.setPris(pris);
 
         SalgsLinje salgsLinje =  Controller.createSalgsLinje(antal, produktPris, salg);
-
-//        salgsLinje.getProduktPris().setPris(pris);
-
 
 
 

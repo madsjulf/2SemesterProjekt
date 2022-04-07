@@ -4,6 +4,7 @@ import Storage.Storage;
 import model.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class Controller {
@@ -65,6 +66,125 @@ public class Controller {
         Kunde kunde = new Kunde(navn);
         Storage.storeKunder(kunde);
         return kunde;
+    }
+
+    public static int betalingMedKlip(Salg salg) {
+        int prisIKlip = 0;
+        for (SalgsLinje salgsLinje : salg.getSalgsLinjer())
+            if (salgsLinje.getProduktPris().getKlip() != 0) {
+                int antal = salgsLinje.getAntal();
+                int tempKlip = salgsLinje.getProduktPris().getKlip();
+                prisIKlip += tempKlip * antal;
+            }
+        return prisIKlip;
+    }
+
+    public static ArrayList<Salg> salgPåDato(LocalDate start, LocalDate slut) {
+        ArrayList<Salg> tempSalg = new ArrayList<>();
+
+        if (start != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        tempSalg.add(salg);
+                    }
+                }
+            }
+            if (slut != null) {
+                for (Salg salg : Storage.getSalgs()) {
+                    if (slut.isBefore(salg.getSalgsDato())) {
+                        tempSalg.remove(salg);
+                    }
+                }
+            }
+        }
+        if (start == null && slut != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        tempSalg.add(salg);
+                    }
+                }
+            }
+        }
+
+
+        return tempSalg;
+    }
+
+    public static int købtKlip(LocalDate start, LocalDate slut) {
+        int antal;
+        int købteKlip = 0;
+
+        if (start != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
+                                antal = salgsLinje.getAntal();
+                                købteKlip += 4 * antal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(start == null && slut != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
+                                antal = salgsLinje.getAntal();
+                                købteKlip += 4 * antal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+            return købteKlip;
+    }
+
+    public static int brugtKlip(LocalDate start, LocalDate slut) {
+        int antal;
+        int brugteKlip = 0;
+
+        if (start != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                            if (salg.getBetalingsform() == "Klippekort") {
+                                antal = salgsLinje.getAntal();
+                                brugteKlip += salgsLinje.getProduktPris().getKlip() * antal;
+                        }
+
+
+
+                        }
+                    }
+                }
+            }
+        }
+        if(start == null && slut != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                                if (salg.getBetalingsform() == "Klippekort") {
+                                    antal = salgsLinje.getAntal();
+                                    brugteKlip += salgsLinje.getProduktPris().getKlip() * antal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return brugteKlip;
+
+
     }
 
     public static void createSomeObjects() {
