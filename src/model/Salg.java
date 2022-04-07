@@ -37,12 +37,6 @@ public class Salg {
         return salgsLinje;
     }
 
-    public SalgsLinje opretReturSalgsLinje(int antal, ProduktPris produktPris, Salg salg){
-        SalgsLinje returSalgsLinje = new SalgsLinje(antal, produktPris, salg);
-        returSalgsLinjer.add(returSalgsLinje);
-        return returSalgsLinje;
-     }
-
 
     public void setBetalingsForm(String betalingsForm) {
         this.betalingsForm = betalingsForm;
@@ -73,10 +67,12 @@ public class Salg {
         this.kunde = kunde;
         if(kunde != null){
             kunde.addSalg(this);
-
         }
     }
 
+    /**
+     * Finder den samlet pris for et salg ved at løbe alle salgsLinjer igennem på salget
+     */
     public int getSamletPris() {
         int samletPris = 0;
         for (SalgsLinje salgsLinje : salgsLinjer) {
@@ -85,22 +81,27 @@ public class Salg {
             samletPris += salgsLinje.getProduktPris().getPris()*antal;
         }
             return samletPris;
-
-
     }
 
+    /**
+     * Finder den samlet pris på panten for et salg ved at løbe alle salgsLinjer igennem på salget
+     */
     public int getSamletPrisPant(){
-        int samletPris = 0;
+        int samletPantPris = 0;
         for (SalgsLinje salgsLinje : salgsLinjer){
-            int antal = 0;
+            int pantAntal = 0;
             if (salgsLinje.getProduktPris().getProdukt().getNavn()=="Pant" ||salgsLinje.getProduktPris().getProdukt().getNavn()== "PantKulsyre" ){
-                antal += salgsLinje.getAntal();
-                samletPris += salgsLinje.getProduktPris().getPris()*antal;
+                pantAntal += salgsLinje.getAntal();
+                samletPantPris += salgsLinje.getProduktPris().getPris()*pantAntal;
             }
         }
-        return samletPris;
+        return samletPantPris;
     }
 
+    /**
+     * Finder den samlet pris for et salg ved at løbe alle salgsLinjer igennem på salget
+     * og finder den betalte pant pris og trækker den fra den samlede pris på salget
+     */
     public int getSamletPrisUdenPant(){
         int samletPantPris = 0;
         int samletPris = 0;
@@ -119,7 +120,6 @@ public class Salg {
                 }
             }
         }
-
         return samletPris-samletPantPris;
     }
 
@@ -132,6 +132,9 @@ public class Salg {
                  kunde;
     }
 
+    /**
+     * Opdaterer salgsNr med +1 når der bliver oprettet et salg
+     */
     public int updateNr(){
         return nrCounter++;
     }

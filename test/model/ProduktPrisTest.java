@@ -25,17 +25,18 @@ class ProduktPrisTest {
 
     //-------------------- ProduktPris(constructor) ----------------------------
 
-//    @Test
-//    void ProduktPrisKorrektOprettet(){
-//    //Arrange
-//
-//    //Act
-//    ProduktPris pp = new ProduktPris(12, produkt,prisListe);
-//
-//    //Assert
-//    assertTrue(pp.getProdukt().getNavn().contains(produkt.getNavn()));
-//
-//
-//    }
+    @Test
+    void ProduktPrisKorrektOprettet(){
+    //Arrange
+
+
+    //Act
+    ProduktPris produktPris = new ProduktPris(10, produkt, prisListe, 0);
+
+    //Assert
+    assertTrue(produktPris.getProdukt().getNavn().contains(produkt.getNavn()));
+
+
+    }
 
 }
