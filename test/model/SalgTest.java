@@ -14,99 +14,123 @@ class SalgTest {
     private ProduktPris produktPris;
     private SalgsLinje salgsLinje;
     private Salg salg;
-    private Kunde kunde;
 
-    @BeforeEach
-    public void setUpBeforeEach_SalgData(){
-        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
-        this.produktGruppe = new ProduktGruppe("Flaskeøl");
-        this.produkt = new Produkt("Øl", produktGruppe);
-        this.prisListe = new PrisListe("Julefest");
-        this.produktPris = new ProduktPris(10, produkt,prisListe);
+//    @BeforeEach
+//    public void setUpBeforeEach_SalgData(){
+//        this.produktGruppe = new ProduktGruppe("Flaskeøl");
+//        this.produkt = new Produkt("Øl", produktGruppe);
+//        this.prisListe = new PrisListe("Julefest");
+//        this.produktPris = new ProduktPris(10, produkt,prisListe);
+//
+//    }
+//
+//    @Test
+//    void salgKorrektOprettet() {
+//        //Arrange
+//        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Kreditkort",null);
+//        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
+//
+//        //Arrange Act
+//        assertTrue(salg.getSalgsLinjer().contains(salgsLinje));
+//
+//    }
+//
+//
+//
+//    @Test
+//    void getSamletPris1SalgsLinje1Antal() {
+//        //Arrange
+//        this.salg = new Salg( LocalDate.of(2022, 12, 12),"KreditKort",null);
+//        this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
+//
+//        //Act
+//        int actual = salg.getSamletPris();
+//        int expected = 10;
+//
+//        //Assert
+//        assertEquals(expected,actual);
+//
+//    }
+//
+//    @Test
+//    void getSamletPris1SalgsLinje2Antal() {
+//        //Arrange
+//        this.salg = new Salg( LocalDate.of(2022, 12, 12),"Kreditkort",null);
+//        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
+//
+//
+//        //Act
+//        int actual = salg.getSamletPris();
+//        int expected = 20;
+//
+//        //Assert
+//        assertEquals(expected,actual);
+//
+//    }
+//
+//
+//    @Test
+//    void getSamletPris2SalgsLinjer() {
+//        //Arrange
+//        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Kreditkort",null);
+//        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
+//        ProduktPris produktPris = new ProduktPris(5, produkt,prisListe);
+//        SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
+//
+//
+//        //Act
+//        int actual = salg.getSamletPris();
+//        int expected = 25;
+//
+//        //Assert
+//        assertEquals(expected,actual);
+//
+//    }
 
-    }
-
-    @Test
-    void salgKorrektOprettet() {
-        //Arrange
-        this.salgsLinje = salg.opretSalgsLinje(2, produktPris,salg );
-
-        //Arrange Act
-        assertTrue(salg.getSalgsLinjer().contains(salgsLinje));
-
-    }
-
-    @Test
-    void getSamletPris1salgsLinje2Antal() {
-        //Arrange
-        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
-
-        //Act
-        int actual = salg.getSamletPris();
-        int expected = 20;
-
-        //Assert
-        assertEquals(expected,actual);
-    }
-
-    @Test
-    void getSamletPris2salgsLinjer() {
-        //Arrange
-        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
-        this.produkt = new Produkt("øl", produktGruppe);
-        this.produktPris = new ProduktPris(5, produkt,prisListe);
-        this.salgsLinje = salg.opretSalgsLinje(1,produktPris , salg);
-
-        //Act
-        int actual = salg.getSamletPris();
-        int expected = 25;
-
-        //Assert
-        assertEquals(expected,actual);
-    }
-
-
-
-    @Test
-    void getsalgsnr1Salg() {
-        //Arrange
-        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
-
-        // Assert
-        assertEquals(1,salg.getSalgsNr());
-
-    }
-
-    @Test
-    void getsalgsnr2Salg() {
-        //Arrange
-        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
-        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Mobilepay", kunde);
-
-        // Assert
-        assertEquals(2,salg.getSalgsNr());
-
-    }
-
-
-    @Test
-    void getSamletReturPris(){
-        Produkt produkt1 =  new Produkt("mad",produktGruppe);
-        ProduktPris produktPris1 = new ProduktPris(5, produkt1, prisListe);
-        this.salgsLinje = salg.opretSalgsLinje(2, produktPris, salg);
-        this.salgsLinje = salg.opretSalgsLinje(2,produktPris1,salg);
-
-        this.salgsLinje = salg.opretReturSalgsLinje(1, produktPris, salg);
-        SalgsLinje salgsLinje1 = salg.opretReturSalgsLinje(1, produktPris1, salg);
-
-
-        int expected = 2*5+2*10-10-5;
-        int actual = salg.getSamletReturPris();
-
-
-        assertEquals(expected, actual);
-
-    }
-
+//    @Test
+//    void getSamletPrisPant(){
+//        this.produktGruppe = new ProduktGruppe("Kulsyre");
+//        this.produkt = new Produkt("Øl", produktGruppe);
+//        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Kreditkort",null,false);
+//        this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
+//        this.prisListe = new PrisListe("Fredagsbar");
+//        this.produktPris = new ProduktPris(5, produkt,prisListe,2);
+//        SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
+//        Produkt produkt2 = new Produkt("Pant", produktGruppe);
+//        ProduktPris produktPris2 = new ProduktPris(200, produkt2, prisListe, 0);
+//        SalgsLinje salgsLinje2 = salg.opretSalgsLinje(1, produktPris2, salg);
+//
+//        // Act
+//        int actual = salg.getSamletPrisPant();
+//        int expected = 200;
+//
+//        // Assert
+//        assertEquals(expected, actual);
+//    }
+//
+//    @Test
+//    void getSamletPrisUdenPant(){
+//        //
+//        this.produktGruppe = new ProduktGruppe("Fustage");
+//        this.produkt = new Produkt("Øl", produktGruppe);
+//        this.salg = new Salg(LocalDate.of(2022, 12, 12),"Kreditkort",null,false);
+//        this.salgsLinje = salg.opretSalgsLinje(1, produktPris,salg );
+//        this.prisListe = new PrisListe("Fredagsbar");
+//
+//        ProduktPris produktPris = new ProduktPris(5, produkt,prisListe,2);
+//        SalgsLinje salgsLinje1 = salg.opretSalgsLinje(1, produktPris, salg);
+//        Produkt produkt2 = new Produkt("Pant", produktGruppe);
+//        ProduktPris produktPris2 = new ProduktPris(200, produkt2, prisListe, 0);
+//        SalgsLinje salgsLinje2 = salg.opretSalgsLinje(1, produktPris2, salg);
+//
+//
+//        //
+//        int actual = salg.getSamletPrisUdenPant();
+//        int expected = -195;
+//
+//
+//        //
+//        assertEquals(expected, actual);
+//    }
 
 }

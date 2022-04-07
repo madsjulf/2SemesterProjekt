@@ -21,9 +21,7 @@ public class SalgsLinje {
         return produktPris;
     }
 
-    public int getAntal() {
-        return antal;
-    }
+
 
     public void setAntal(int antal) {
         this.antal = antal;
@@ -38,5 +36,9 @@ public class SalgsLinje {
         return
                 "antal: " + antal +
                 " " + produktPris;
+    }
+
+    public int getAntal() {
+        return antal;
     }
 }

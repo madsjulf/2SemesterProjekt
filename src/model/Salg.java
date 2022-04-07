@@ -6,6 +6,7 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Salg {
+    private boolean salgFærdigt = false;
     private static int nrCounter = 1;
     private int salgsNr;
     private LocalDate salgsDato;
@@ -16,7 +17,8 @@ public class Salg {
     private ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
     private ArrayList<SalgsLinje>returSalgsLinjer = new ArrayList<>();
 
-    public Salg(LocalDate salgsDato, String betalingsForm, Kunde kunde) {
+    public Salg(LocalDate salgsDato, String betalingsForm, Kunde kunde, boolean salgFærdigt) {
+        this.salgFærdigt = salgFærdigt;
         this.salgsDato = salgsDato;
         this.kunde = kunde;
         this.betalingsForm = betalingsForm;
@@ -50,7 +52,13 @@ public class Salg {
         return salgsNr;
     }
 
+    public void setSalgFærdigt(boolean salgFærdigt) {
+        this.salgFærdigt = salgFærdigt;
+    }
 
+    public boolean isSalgFærdigt() {
+        return salgFærdigt;
+    }
 
     public LocalDate getSalgsDato() {
         return salgsDato;
@@ -81,21 +89,38 @@ public class Salg {
 
     }
 
-    public int getSamletReturPris() {
-        int pris = 0;
+    public int getSamletPrisPant(){
         int samletPris = 0;
+        for (SalgsLinje salgsLinje : salgsLinjer){
+            int antal = 0;
+            if (salgsLinje.getProduktPris().getProdukt().getNavn()=="Pant" ||salgsLinje.getProduktPris().getProdukt().getNavn()== "PantKulsyre" ){
+                antal += salgsLinje.getAntal();
+                samletPris += salgsLinje.getProduktPris().getPris()*antal;
+            }
+        }
+        return samletPris;
+    }
+
+    public int getSamletPrisUdenPant(){
+        int samletPantPris = 0;
+        int samletPris = 0;
+
         for (SalgsLinje salgsLinje : salgsLinjer) {
-            int antal = 0;
-            antal += salgsLinje.getAntal();
-            samletPris += salgsLinje.getProduktPris().getPris() * antal;
+            if (salgsLinje.getSalg() == this) {
+                if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Pant" || salgsLinje.getProduktPris().getProdukt().getNavn() == "PantKulsyre") {
+                    int pantAntal = 0;
+                    pantAntal += salgsLinje.getAntal();
+                    samletPantPris += salgsLinje.getProduktPris().getPris() * pantAntal;
+
+                } else {
+                    int antal = 0;
+                    antal += salgsLinje.getAntal();
+                    samletPris += salgsLinje.getProduktPris().getPris() * antal;
+                }
+            }
         }
-        int samletReturPris = 0;
-        for (SalgsLinje returSalgsLinje : returSalgsLinjer) {
-            int antal = 0;
-            antal += returSalgsLinje.getAntal();
-            samletReturPris += returSalgsLinje.getProduktPris().getPris() * antal;
-        }
-        return pris = samletPris - samletReturPris;
+
+        return samletPris-samletPantPris;
     }
 
 
@@ -109,5 +134,9 @@ public class Salg {
 
     public int updateNr(){
         return nrCounter++;
+    }
+
+    public void setSalgsDato(LocalDate salgsDato) {
+        this.salgsDato = salgsDato;
     }
 }

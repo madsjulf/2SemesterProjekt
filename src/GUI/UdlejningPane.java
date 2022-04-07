@@ -78,12 +78,18 @@ public class UdlejningPane extends GridPane {
         int antal = Integer.parseInt(txfReturMængde.getText());
         int reelleAntal = salgsLinje.getAntal();
         salgsLinje.setAntal(reelleAntal - antal);
+        updateControlsSalg();
 
     }
 
     private void AfregnAction() {
-        UdlejningWindow dialog = new UdlejningWindow("Afregn");
+        Salg salg = (Salg) lvwUdlejninger.getSelectionModel().getSelectedItem();
+        int pris = salg.getSamletPrisUdenPant();
+
+        UdlejningWindow dialog = new UdlejningWindow("Afregn", pris, salg);
         dialog.showAndWait();
+
+        updateControls();
 
     }
 
@@ -96,7 +102,7 @@ public class UdlejningPane extends GridPane {
         ArrayList<Salg> tempSalg = new ArrayList<>();
 
         for (Salg salg : Storage.getSalgs()) {
-            if (salg.getKunde() != null) {
+            if (!salg.isSalgFærdigt()) {
                 tempSalg.add(salg);
             }
         }

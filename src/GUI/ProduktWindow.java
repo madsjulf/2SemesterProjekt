@@ -22,6 +22,7 @@ public class ProduktWindow extends Stage {
     private final ComboBox comboBoxPrisListe = new ComboBox();
     private final Label lblError = new Label();
     private final TextField txfPris = new TextField();
+    private final TextField txfKlip = new TextField();
 
 public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
@@ -51,8 +52,8 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
 
         // Label og textfield til pris på prodult
         Label lblPris = new Label("Pris");
-        pane.add(lblPris, 3, 1);
-        pane.add(txfPris, 3, 2);
+        pane.add(lblPris, 0, 6);
+        pane.add(txfPris, 0, 7);
 
 
         // Label og combobox til liste af produktgrupper
@@ -70,6 +71,12 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
         pane.add(comboBoxPrisListe, 0, 5);
         comboBoxPrisListe.setPrefWidth(200);
         comboBoxPrisListe.getItems().addAll(Storage.getprisLister());
+
+        // Label og Textfield til antal klip
+        Label lblKlip = new Label("Klip");
+        pane.add(lblKlip, 0, 8);
+        pane.add(txfKlip, 0, 9);
+
 
 
         // error besked
@@ -115,13 +122,16 @@ public ProduktWindow(String title, String name, ProduktGruppe produktGruppe) {
             return;
         }
 
+        int klip = Integer.parseInt(txfKlip.getText());
+
+
         PrisListe prisListe = (PrisListe) comboBoxPrisListe.getSelectionModel().getSelectedItem();
 
         // Opretter produkt
         Produkt produkt = Controller.createProdukt(name, produktGruppe);
 
         // Opretter produktPris
-        Controller.createProduktPris(pris,produkt,prisListe);
+        Controller.createProduktPris(pris,produkt,prisListe,klip);
 
         this.hide();
     }
