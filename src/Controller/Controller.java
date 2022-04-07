@@ -1,6 +1,7 @@
 package Controller;
 
 import Storage.Storage;
+import javafx.collections.ObservableList;
 import model.*;
 
 import java.time.LocalDate;
@@ -66,6 +67,40 @@ public class Controller {
         Kunde kunde = new Kunde(navn);
         Storage.storeKunder(kunde);
         return kunde;
+    }
+
+    public static void tilføjProduktMedProduktPant(ProduktPris produktPris, ObservableList<SalgsLinje> salgsLinje,ObservableList<ProduktPris> produktPrisListe, int antal) {
+
+        int actualPris = produktPris.getPris();
+
+        int i = Storage.getSalgs().size()-1;
+
+        Salg salg = Storage.getSalgs().get(i);
+
+
+
+
+        if (produktPris != null){
+            for (SalgsLinje sl : salg.getSalgsLinjer()) {
+                if (!salgsLinje.contains(sl)) {
+                    salgsLinje.add(sl);
+                    if(sl.getProduktPris().getProdukt().getProduktGruppe().getNavn()=="Fustage"){
+                        ProduktPris produktPris2 = produktPrisListe.get(9);
+                        produktPris2.setPris(200);
+                        SalgsLinje salgsLinje1 = Controller.createSalgsLinje(antal, produktPris2, salg);
+                        salgsLinje.add(salgsLinje1);
+                    }
+                    if(sl.getProduktPris().getProdukt().getProduktGruppe().getNavn()=="Kulsyre"){
+                        ProduktPris produktPris3 = produktPrisListe.get(1);
+                        produktPris3.setPris(1000);
+                        SalgsLinje salgsLinje2 = Controller.createSalgsLinje(antal, produktPris3, salg);
+                        salgsLinje.add(salgsLinje2);
+                    }
+                }
+            }
+        }
+
+        produktPris.setPris(actualPris);
     }
 
     public static int betalingMedKlip(Salg salg) {
@@ -156,7 +191,7 @@ public class Controller {
                 if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
                     if (salg.isSalgFærdigt()) {
                         for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
-                            if (salg.getBetalingsform() == "Klippekort") {
+                            if (salg.getBetalingsForm() == "Klippekort") {
                                 antal = salgsLinje.getAntal();
                                 brugteKlip += salgsLinje.getProduktPris().getKlip() * antal;
                         }
@@ -173,7 +208,7 @@ public class Controller {
                 if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
                     if (salg.isSalgFærdigt()) {
                         for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
-                                if (salg.getBetalingsform() == "Klippekort") {
+                                if (salg.getBetalingsForm() == "Klippekort") {
                                     antal = salgsLinje.getAntal();
                                     brugteKlip += salgsLinje.getProduktPris().getKlip() * antal;
                             }

@@ -176,6 +176,15 @@ public class SalgWindow extends Stage {
             int i = Storage.getSalgs().size()-1;
             int samletPrisPant = Storage.getSalgs().get(i).getSamletPrisPant();
             txfPris.setText(samletPrisPant + "");
+        } else {
+            txfKundeNavn.clear();
+            txfKundeNavn.setEditable(false);
+            txfKundeNavn.setVisible(false);
+            lblKundeNavn.setVisible(false);
+            int i = Storage.getSalgs().size()-1;
+            int samletPris = Storage.getSalgs().get(i).getSamletPris();
+            txfPris.setText(samletPris+"");
+
         }
     }
 

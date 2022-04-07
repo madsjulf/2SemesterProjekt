@@ -1,5 +1,6 @@
 package GUI;
 
+import Controller.Controller;
 import Storage.Storage;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
@@ -89,53 +90,9 @@ public class StatistikPane extends GridPane {
         LocalDate start = startDate.getValue();
         LocalDate slut = slutDate.getValue();
 
-        ArrayList<Salg> tempSalg = new ArrayList<>();
-        int antal = 0;
-        int købteKlip = 0;
-        int brugteKlip = 0;
-
-        if (start != null) {
-            for (Salg salg : Storage.getSalgs()) {
-                if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
-                    if (salg.isSalgFærdigt()) {
-                        tempSalg.add(salg);
-                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
-                            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
-                                antal = salgsLinje.getAntal();
-                                købteKlip += 4 * antal;
-                            }
-                        }
-                    }
-                }
-            }
-            if (slut != null) {
-                for (Salg salg : Storage.getSalgs()) {
-                    if (slut.isBefore(salg.getSalgsDato())) {
-                        tempSalg.remove(salg);
-                    }
-                }
-            }
-        }
-
-        if(start == null && slut != null) {
-            for (Salg salg : Storage.getSalgs()) {
-                if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
-                    if (salg.isSalgFærdigt()) {
-                        tempSalg.add(salg);
-                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
-                            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
-                                antal = salgsLinje.getAntal();
-                                købteKlip += 4 * antal;
-                            }
-                        }
-                    }
-                }
-            }
-        }
-
-        lvwSalg.getItems().setAll(tempSalg);
-
-        txtfKøbtKlip.setText(købteKlip + "");
+        txtfBrugtKlip.setText(Controller.brugtKlip(start, slut) + "");
+        lvwSalg.getItems().setAll(Controller.salgPåDato(start, slut));
+        txtfKøbtKlip.setText(Controller.købtKlip(start, slut) + "");
 
     }
 
