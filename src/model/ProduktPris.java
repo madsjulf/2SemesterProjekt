@@ -15,7 +15,6 @@ public class ProduktPris {
         this.prisListe = prisListe;
     }
 
-
     public void setPris(int pris) {
         this.pris = pris;
     }
@@ -32,13 +31,10 @@ public class ProduktPris {
         return prisListe;
     }
 
-
-
     @Override
     public String toString() {
         return  " " +"Pris: " + pris +
                 " " + produkt +
                 " " + prisListe;
     }
-
 }

@@ -111,12 +111,9 @@ public class SalgPane extends GridPane {
         comboBoxPrisListe.getSelectionModel().select(0);
 
         lvwGrupperIPrisListe.getSelectionModel().select(0);
-
-
     }
 
     //------------------------------------------------------------------
-
 
     private void selectedProduktGruppeChanged() {
         this.updateControlsProduktGruppe();
@@ -160,7 +157,6 @@ public class SalgPane extends GridPane {
 
 //        salgsLinje.getProduktPris().setPris(pris);
 
-
         if (produktPris != null) {
             for (SalgsLinje sl : salg.getSalgsLinjer()) {
                 if (!lvwIndkøbsListe.getItems().contains(sl)) {
@@ -168,10 +164,7 @@ public class SalgPane extends GridPane {
                 }
             }
         }
-
-
         produktPris.setPris(actualPris);
-
     }
 
     public void updateControlsProduktGruppe() {
@@ -190,7 +183,6 @@ public class SalgPane extends GridPane {
         this.lvwProdukterIGrupper.getItems().setAll(produktPrisestemp);
     }
 
-
     public void updateControlsProdukt() {
         ProduktPris produktPris = lvwProdukterIGrupper.getSelectionModel().getSelectedItem();
 
@@ -198,11 +190,9 @@ public class SalgPane extends GridPane {
         int rabat = 0;
         txfAntal.setText(antal + "");
 
-
         txfProcentRabat.setText(rabat + "");
 
         txfPris.setText(produktPris.getPris() * antal + "");
-
     }
 
     public void updateControlsAntal() {
@@ -222,8 +212,6 @@ public class SalgPane extends GridPane {
         } else {
             txfPris.setText(String.valueOf((produktPris.getPris() * antal) * (100 - rabat) / 100));
         }
-
-
     }
 
     public void updateControlsCheck() {
