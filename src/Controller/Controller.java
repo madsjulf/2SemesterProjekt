@@ -449,12 +449,16 @@ public class Controller {
 
         //Opretter Kunde
         Kunde morten = createKunde("Morten");
+        Kunde malte = createKunde("Malte");
         //Opretter salg
         Salg salg = createSalg(LocalDate.of(2022, 12, 12), "Kreditkort",morten,false );
+        Salg salg1 = createSalg(LocalDate.of(2022, 4, 6), "Kreditkort",malte,true );
 
         //Tilføjer salgslinjer til salg
         createSalgsLinje(2, flaskeKlosterBryg, salg);
         createSalgsLinje(1, flaskeSweetGeorgiaBrow, salg);
+        createSalgsLinje(2, flaskeKlosterBryg, salg1);
+        createSalgsLinje(2, flaskeSweetGeorgiaBrow, salg1);
 
     }
 }

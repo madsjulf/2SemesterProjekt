@@ -103,6 +103,7 @@ public class UdlejningPane extends GridPane {
 
         for (Salg salg : Storage.getSalgs()) {
             if (!salg.isSalgFærdigt()) {
+                if (salg.getKunde() != null)
                 tempSalg.add(salg);
             }
         }

@@ -147,6 +147,10 @@ public class SalgWindow extends Stage {
             lblError.setText("Betaling mangler!");
             return;
         }
+        if (txfKundeNavn.getText().isBlank()) {
+            lblError.setText("Kunde navn mangler!");
+            return;
+        }
 
         String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
         int i = Storage.getSalgs().size()-1;
@@ -159,8 +163,10 @@ public class SalgWindow extends Stage {
 
 
         if (checkBoxUdlejning.isSelected()) {
-            Kunde kunde = Controller.createKunde(txfKundeNavn.getText());
-            salg.setKunde(kunde);
+            if (!txfKundeNavn.getText().isBlank()) {
+                Kunde kunde = Controller.createKunde(txfKundeNavn.getText());
+                salg.setKunde(kunde);
+            }
             salg.setSalgFærdigt(false);
         }
 
