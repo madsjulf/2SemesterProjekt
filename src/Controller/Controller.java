@@ -86,8 +86,6 @@ public class Controller {
                 }
             }
         }
-
-
         produktPris.setPris(actualPris);
     }
 
@@ -139,8 +137,6 @@ public class Controller {
                 }
             }
         }
-
-
         return tempSalg;
     }
 
@@ -200,8 +196,6 @@ public class Controller {
                                 antal = salgsLinje.getAntal();
                                 brugteKlip += salgsLinje.getProduktPris().getKlip() * antal;
                             }
-
-
                         }
                     }
                 }
@@ -222,8 +216,6 @@ public class Controller {
             }
         }
         return brugteKlip;
-
-
     }
 
     public static void createSomeObjects() {
