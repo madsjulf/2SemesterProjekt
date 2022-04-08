@@ -15,13 +15,9 @@ public class SalgsLinje {
         this.salg = salg;
     }
 
-
-
     public ProduktPris getProduktPris() {
         return produktPris;
     }
-
-
 
     public void setAntal(int antal) {
         this.antal = antal;

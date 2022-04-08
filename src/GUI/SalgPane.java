@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import model.*;
-
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -23,11 +22,6 @@ public class SalgPane extends GridPane {
     private final ListView<ProduktPris> lvwProdukterIGrupper = new ListView();
     private final ListView<SalgsLinje> lvwIndkøbsListe = new ListView();
     private final CheckBox checkBoxStartSalg = new CheckBox();
-
-
-
-
-
 
     public SalgPane() {
         this.setPadding(new Insets(20));
@@ -95,12 +89,6 @@ public class SalgPane extends GridPane {
         txfAntal.textProperty().addListener((ov, o, n) -> this.selectedAntalChanged());
 
 
-
-
-
-
-
-
         // Knap til registrering af salg
         HBox hbxButtons = new HBox(40);
         this.add(hbxButtons, 0, 6, 3, 1);
@@ -121,12 +109,9 @@ public class SalgPane extends GridPane {
         comboBoxPrisListe.getSelectionModel().select(0);
 
         lvwGrupperIPrisListe.getSelectionModel().select(0);
-
-
     }
 
     //------------------------------------------------------------------
-
 
     private void selectedProduktGruppeChanged() {
         this.updateControlsProduktGruppe();
@@ -193,7 +178,6 @@ public class SalgPane extends GridPane {
                         SalgsLinje salgsLinje2 = Controller.createSalgsLinje(antal, produktPris3, salg);
                         lvwIndkøbsListe.getItems().add(salgsLinje2);
                     }
-
                 }
             }
         }
@@ -263,7 +247,4 @@ public class SalgPane extends GridPane {
             Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null,false);
         }
     }
-
-
-
 }
