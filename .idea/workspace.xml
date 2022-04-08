@@ -4,13 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="eedddd2a-6240-4d67-aefb-dd007fc1f402" name="Changes" comment="MortenCommit">
+    <list default="true" id="eedddd2a-6240-4d67-aefb-dd007fc1f402" name="Changes" comment="Commit">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/test/2SemesterProjekt/model/ProduktPrisTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/2SemesterProjekt/model/ProduktPrisTest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/test/2SemesterProjekt/model/SalgTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/2SemesterProjekt/model/SalgTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/GUI/SalgPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SalgPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/SalgWindow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/SalgWindow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/StatistikPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/StatistikPane.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Salg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Salg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/SalgsLinje.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/SalgsLinje.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,12 +28,12 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="Morten_commit" />
+    <option name="BRANCH" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="Morten_commit" />
+        <entry key="$PROJECT_DIR$" value="master" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -79,7 +82,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.getSamletPris2salgsLinjer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SalgTest.setSalgFærdigt" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
@@ -89,13 +92,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getSamletPris2salgsLinjer" />
+      <option name="METHOD_NAME" value="setSalgFærdigt" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.getsalgsnr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SalgTest.setSalgsDato" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
@@ -105,13 +108,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getsalgsnr" />
+      <option name="METHOD_NAME" value="setSalgsDato" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.getsalgsnr2Salg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SalgTest.updateNr" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
@@ -121,13 +124,13 @@
       </extension>
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getsalgsnr2Salg" />
+      <option name="METHOD_NAME" value="updateNr" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.salgKorrektOprettet" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="SalgTest.updateNr_2Salg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
@@ -137,7 +140,7 @@
       </extension>
       <option name="PACKAGE_NAME" value="model" />
       <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="salgKorrektOprettet" />
+      <option name="METHOD_NAME" value="updateNr_2Salg" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -146,16 +149,26 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.SalgTest.salgKorrektOprettet" />
-        <item itemvalue="JUnit.SalgTest.getSamletPris2salgsLinjer" />
-        <item itemvalue="JUnit.SalgTest.getsalgsnr2Salg" />
-        <item itemvalue="JUnit.SalgTest.getsalgsnr" />
+        <item itemvalue="JUnit.SalgTest.setSalgsDato" />
+        <item itemvalue="JUnit.SalgTest.setSalgFærdigt" />
+        <item itemvalue="JUnit.SalgTest.updateNr_2Salg" />
+        <item itemvalue="JUnit.SalgTest.updateNr" />
       </list>
     </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.History.Properties">
+    <option name="COLUMN_ID_ORDER">
+      <list>
+        <option value="Default.Root" />
+        <option value="Default.Author" />
+        <option value="Default.Date" />
+        <option value="Default.Subject" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -172,7 +185,6 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Test" />
     <MESSAGE value="Commit" />
-    <MESSAGE value="MortenCommit" />
-    <option name="LAST_COMMIT_MESSAGE" value="MortenCommit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Commit" />
   </component>
 </project>

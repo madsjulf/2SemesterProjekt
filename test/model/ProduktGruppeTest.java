@@ -20,21 +20,21 @@ class ProduktGruppeTest {
     void createProduktKorrektOprettet() {
 
         //Arrange
-        this.produktGruppe = new ProduktGruppe("Flaskeøl");
+        ProduktGruppe produktGruppe = new ProduktGruppe("Flaskeøl");
 
         //Act
         Produkt tuborg = produktGruppe.createProdukt("Tuborg", produktGruppe);
 
         //Assert
         assertTrue(produktGruppe.getProdukter().contains(tuborg));
-        assertEquals("Tuborg", produkt.getNavn());
 
     }
 
     @Test
-    void createProduktProduktGruppeIkkeOprettet() {
+    void createProdukt_ProduktGruppe_null() {
 
         //Act&Assert
+        produktGruppe = null;
         Exception exception = assertThrows(NullPointerException.class, () -> {
             Produkt tuborg = produktGruppe.createProdukt("Tuborg", produktGruppe);
         });

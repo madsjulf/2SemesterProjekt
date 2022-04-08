@@ -15,7 +15,7 @@ public class Salg {
     private Kunde kunde; // nullable
     // Komposition --> 0..* SalgsLinjer
     private ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
-    private ArrayList<SalgsLinje> returSalgsLinjer = new ArrayList<>();
+    private ArrayList<SalgsLinje>returSalgsLinjer = new ArrayList<>();
 
     public Salg(LocalDate salgsDato, String betalingsForm, Kunde kunde, boolean salgFærdigt) {
         this.salgFærdigt = salgFærdigt;
@@ -37,15 +37,13 @@ public class Salg {
         return salgsLinje;
     }
 
-    public SalgsLinje opretReturSalgsLinje(int antal, ProduktPris produktPris, Salg salg) {
-        SalgsLinje returSalgsLinje = new SalgsLinje(antal, produktPris, salg);
-        returSalgsLinjer.add(returSalgsLinje);
-        return returSalgsLinje;
-    }
-
 
     public void setBetalingsForm(String betalingsForm) {
         this.betalingsForm = betalingsForm;
+    }
+
+    public String getBetalingsForm() {
+        return betalingsForm;
     }
 
     public int getSalgsNr() {
@@ -65,53 +63,60 @@ public class Salg {
     }
 
 
-    public Kunde getKunde() {
+    public Kunde getKunde(){
         return kunde;
     }
 
-    public void setKunde(Kunde kunde) {
+    public void setKunde(Kunde kunde){
         this.kunde = kunde;
-        if (kunde != null) {
+        if(kunde != null){
             kunde.addSalg(this);
-
         }
     }
 
+    /**
+     * Finder den samlet pris for et salg ved at løbe alle salgsLinjer igennem på salget
+     */
     public int getSamletPris() {
         int samletPris = 0;
         for (SalgsLinje salgsLinje : salgsLinjer) {
             int antal = 0;
             antal += salgsLinje.getAntal();
-            samletPris += salgsLinje.getProduktPris().getPris() * antal;
+            samletPris += salgsLinje.getProduktPris().getPris()*antal;
         }
-        return samletPris;
-
-
+            return samletPris;
     }
 
-    public int getSamletPrisPant() {
-        int samletPris = 0;
-        for (SalgsLinje salgsLinje : salgsLinjer) {
-            int antal = 0;
-            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Pant" || salgsLinje.getProduktPris().getProdukt().getNavn() == "PantKulsyre") {
-                antal += salgsLinje.getAntal();
-                samletPris += salgsLinje.getProduktPris().getPris() * antal;
+    /**
+     * Finder den samlet pris på panten for et salg ved at løbe alle salgsLinjer igennem på salget
+     */
+    public int getSamletPrisPant(){
+        int samletPantPris = 0;
+        for (SalgsLinje salgsLinje : salgsLinjer){
+            int pantAntal = 0;
+            if (salgsLinje.getProduktPris().getProdukt().getNavn()=="Pant" ||salgsLinje.getProduktPris().getProdukt().getNavn()== "PantKulsyre" ){
+                pantAntal += salgsLinje.getAntal();
+                samletPantPris += salgsLinje.getProduktPris().getPris()*pantAntal;
             }
         }
-        return samletPris;
+        return samletPantPris;
     }
 
-    public int getSamletPrisUdenPant() {
+    /**
+     * Finder den samlet pris for et salg ved at løbe alle salgsLinjer igennem på salget
+     * og finder den betalte pant pris og trækker den fra den samlede pris på salget
+     */
+    public int getSamletPrisUdenPant(){
         int samletPantPris = 0;
         int samletPris = 0;
 
         for (SalgsLinje salgsLinje : salgsLinjer) {
             if (salgsLinje.getSalg() == this) {
-                if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Pant"
-                        || salgsLinje.getProduktPris().getProdukt().getNavn() == "PantKulsyre") {
+                if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Pant" || salgsLinje.getProduktPris().getProdukt().getNavn() == "PantKulsyre") {
                     int pantAntal = 0;
                     pantAntal += salgsLinje.getAntal();
                     samletPantPris += salgsLinje.getProduktPris().getPris() * pantAntal;
+
                 } else {
                     int antal = 0;
                     antal += salgsLinje.getAntal();
@@ -119,20 +124,22 @@ public class Salg {
                 }
             }
         }
-
-        return samletPris - samletPantPris;
+        return samletPris-samletPantPris;
     }
 
 
     @Override
     public String toString() {
-        return "SalgsNr: " + salgsNr + ", " +
-                salgsDato + ", " +
-                betalingsForm + ", " +
-                kunde;
+        return  "SalgsNr: "+ salgsNr + ", " +
+                salgsDato + ", "+
+                 betalingsForm +", "+
+                 kunde;
     }
 
-    public int updateNr() {
+    /**
+     * Opdaterer salgsNr med +1 når der bliver oprettet et salg
+     */
+    public int updateNr(){
         return nrCounter++;
     }
 

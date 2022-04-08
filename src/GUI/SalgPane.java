@@ -4,12 +4,14 @@ import Controller.Controller;
 import Storage.Storage;
 import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import model.*;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 
@@ -22,6 +24,11 @@ public class SalgPane extends GridPane {
     private final ListView<ProduktPris> lvwProdukterIGrupper = new ListView();
     private final ListView<SalgsLinje> lvwIndkøbsListe = new ListView();
     private final CheckBox checkBoxStartSalg = new CheckBox();
+
+
+
+
+
 
     public SalgPane() {
         this.setPadding(new Insets(20));
@@ -89,6 +96,12 @@ public class SalgPane extends GridPane {
         txfAntal.textProperty().addListener((ov, o, n) -> this.selectedAntalChanged());
 
 
+
+
+
+
+
+
         // Knap til registrering af salg
         HBox hbxButtons = new HBox(40);
         this.add(hbxButtons, 0, 6, 3, 1);
@@ -109,9 +122,12 @@ public class SalgPane extends GridPane {
         comboBoxPrisListe.getSelectionModel().select(0);
 
         lvwGrupperIPrisListe.getSelectionModel().select(0);
+
+
     }
 
     //------------------------------------------------------------------
+
 
     private void selectedProduktGruppeChanged() {
         this.updateControlsProduktGruppe();
@@ -139,52 +155,19 @@ public class SalgPane extends GridPane {
 
     private void tilføjAction() {
         ProduktPris produktPris = lvwProdukterIGrupper.getSelectionModel().getSelectedItem();
-
-        int actualPris = produktPris.getPris();
+        ObservableList<ProduktPris> produktPrisListe = lvwProdukterIGrupper.getItems();
+        ObservableList<SalgsLinje>  salgsLinje = lvwIndkøbsListe.getItems();
         int antal = Integer.parseInt(txfAntal.getText());
-
         int pris = Integer.parseInt(txfPris.getText());
-
         int i = Storage.getSalgs().size()-1;
 
         Salg salg = Storage.getSalgs().get(i);
 
         produktPris.setPris(pris);
 
-        SalgsLinje salgsLinje =  Controller.createSalgsLinje(antal, produktPris, salg);
+        Controller.createSalgsLinje(antal, produktPris, salg);
 
-//        salgsLinje.getProduktPris().setPris(pris);
-
-
-
-
-        if (produktPris != null){
-            for (SalgsLinje sl : salg.getSalgsLinjer()) {
-                if (!lvwIndkøbsListe.getItems().contains(sl)) {
-                    lvwIndkøbsListe.getItems().add(sl);
-                    if(sl.getProduktPris().getProdukt().getProduktGruppe().getNavn()=="Fustage"){
-                        ProduktGruppe valgtProduktGruppe = lvwGrupperIPrisListe.getSelectionModel().getSelectedItem();
-                        i = valgtProduktGruppe.getProdukter().size()-1;
-                        ProduktPris produktPris2 = lvwProdukterIGrupper.getItems().get(i);
-                        produktPris2.setPris(200);
-                       SalgsLinje salgsLinje1 = Controller.createSalgsLinje(antal, produktPris2, salg);
-                        lvwIndkøbsListe.getItems().add(salgsLinje1);
-                    }
-                    if(sl.getProduktPris().getProdukt().getProduktGruppe().getNavn()=="Kulsyre"){
-                        ProduktGruppe valgtProduktGruppe = lvwGrupperIPrisListe.getSelectionModel().getSelectedItem();
-                        i = valgtProduktGruppe.getProdukter().size()-1;
-                        ProduktPris produktPris3 = lvwProdukterIGrupper.getItems().get(i);
-                        produktPris3.setPris(1000);
-                        SalgsLinje salgsLinje2 = Controller.createSalgsLinje(antal, produktPris3, salg);
-                        lvwIndkøbsListe.getItems().add(salgsLinje2);
-                    }
-                }
-            }
-        }
-
-
-
-        produktPris.setPris(actualPris);
+        Controller.tilføjProduktMedProduktPant(produktPris,salgsLinje,produktPrisListe,antal);
 
     }
 
@@ -247,4 +230,7 @@ public class SalgPane extends GridPane {
             Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null,false);
         }
     }
+
+
+
 }

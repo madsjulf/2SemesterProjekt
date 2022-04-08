@@ -1,9 +1,11 @@
 package Controller;
 
 import Storage.Storage;
+import javafx.collections.ObservableList;
 import model.*;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 
 public class Controller {
@@ -65,6 +67,159 @@ public class Controller {
         Kunde kunde = new Kunde(navn);
         Storage.storeKunder(kunde);
         return kunde;
+    }
+
+    public static void tilføjProduktMedProduktPant(ProduktPris produktPris, ObservableList<SalgsLinje> salgsLinje,ObservableList<ProduktPris> produktPrisListe, int antal) {
+
+        int actualPris = produktPris.getPris();
+
+        int i = Storage.getSalgs().size()-1;
+
+        Salg salg = Storage.getSalgs().get(i);
+
+
+
+
+        if (produktPris != null){
+            for (SalgsLinje sl : salg.getSalgsLinjer()) {
+                if (!salgsLinje.contains(sl)) {
+                    salgsLinje.add(sl);
+                    if(sl.getProduktPris().getProdukt().getProduktGruppe().getNavn()=="Fustage"){
+                        ProduktPris produktPris2 = produktPrisListe.get(9);
+                        produktPris2.setPris(200);
+                        SalgsLinje salgsLinje1 = Controller.createSalgsLinje(antal, produktPris2, salg);
+                        salgsLinje.add(salgsLinje1);
+                    }
+                    if(sl.getProduktPris().getProdukt().getProduktGruppe().getNavn()=="Kulsyre"){
+                        ProduktPris produktPris3 = produktPrisListe.get(1);
+                        produktPris3.setPris(1000);
+                        SalgsLinje salgsLinje2 = Controller.createSalgsLinje(antal, produktPris3, salg);
+                        salgsLinje.add(salgsLinje2);
+                    }
+                }
+            }
+        }
+
+        produktPris.setPris(actualPris);
+    }
+
+    public static int betalingMedKlip(Salg salg) {
+        int prisIKlip = 0;
+        for (SalgsLinje salgsLinje : salg.getSalgsLinjer())
+            if (salgsLinje.getProduktPris().getKlip() != 0) {
+                int antal = salgsLinje.getAntal();
+                int tempKlip = salgsLinje.getProduktPris().getKlip();
+                prisIKlip += tempKlip * antal;
+            }
+        return prisIKlip;
+    }
+
+    public static ArrayList<Salg> salgPåDato(LocalDate start, LocalDate slut) {
+        ArrayList<Salg> tempSalg = new ArrayList<>();
+
+        if (start != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        tempSalg.add(salg);
+                    }
+                }
+            }
+            if (slut != null) {
+                for (Salg salg : Storage.getSalgs()) {
+                    if (slut.isBefore(salg.getSalgsDato())) {
+                        tempSalg.remove(salg);
+                    }
+                }
+            }
+        }
+        if (start == null && slut != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        tempSalg.add(salg);
+                    }
+                }
+            }
+        }
+
+
+        return tempSalg;
+    }
+
+    public static int købtKlip(LocalDate start, LocalDate slut) {
+        int antal;
+        int købteKlip = 0;
+
+        if (start != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
+                                antal = salgsLinje.getAntal();
+                                købteKlip += 4 * antal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        if(start == null && slut != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                            if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Klippekort, 4 klip") {
+                                antal = salgsLinje.getAntal();
+                                købteKlip += 4 * antal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+            return købteKlip;
+    }
+
+    public static int brugtKlip(LocalDate start, LocalDate slut) {
+        int antal;
+        int brugteKlip = 0;
+
+        if (start != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                            if (salg.getBetalingsForm() == "Klippekort") {
+                                antal = salgsLinje.getAntal();
+                                brugteKlip += salgsLinje.getProduktPris().getKlip() * antal;
+                        }
+
+
+
+                        }
+                    }
+                }
+            }
+        }
+        if(start == null && slut != null) {
+            for (Salg salg : Storage.getSalgs()) {
+                if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
+                    if (salg.isSalgFærdigt()) {
+                        for (SalgsLinje salgsLinje : salg.getSalgsLinjer()) {
+                                if (salg.getBetalingsForm() == "Klippekort") {
+                                    antal = salgsLinje.getAntal();
+                                    brugteKlip += salgsLinje.getProduktPris().getKlip() * antal;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return brugteKlip;
+
+
     }
 
     public static void createSomeObjects() {
