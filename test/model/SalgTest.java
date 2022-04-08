@@ -120,7 +120,7 @@ class SalgTest {
     }
 
         @Test
-        void getSamletPrisPant () {
+        void getSamletPrisPant_1PantProdukt () {
             // Arrange
             ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
             Produkt Øl = new Produkt("Øl", Kulsyre);
@@ -141,6 +141,31 @@ class SalgTest {
             // Assert
             assertEquals(expected, actual);
         }
+
+    @Test
+    void getSamletPrisPant_2PantProdukt () {
+        // Arrange
+        ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
+        Produkt Øl = new Produkt("Øl", Kulsyre);
+        PrisListe FredagsBar = new PrisListe("Fredagsbar");
+        ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
+
+        Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
+        salg.opretSalgsLinje(1, pp1, salg);
+
+        Produkt pant = new Produkt("Pant", Kulsyre);
+        ProduktPris produktPris2 = new ProduktPris(200, pant, FredagsBar, 0);
+        salg.opretSalgsLinje(1, produktPris2, salg);
+
+        salg.opretSalgsLinje(1, produktPris2,salg);
+
+        // Act
+        int actual = salg.getSamletPrisPant();
+        int expected = 400;
+
+        // Assert
+        assertEquals(expected, actual);
+    }
 
         @Test
         void getSamletPrisUdenPant () {
