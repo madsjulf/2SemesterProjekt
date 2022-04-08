@@ -1,6 +1,5 @@
 package model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
@@ -13,7 +12,6 @@ class ProduktGruppeTest {
     private Produkt produkt;
     private ProduktGruppe produktGruppe;
     private final ArrayList<Produkt> produkter = new ArrayList<>();
-
 
 
     @Test

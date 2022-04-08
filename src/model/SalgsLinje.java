@@ -1,11 +1,9 @@
 package model;
 
-import java.util.ArrayList;
-
 public class SalgsLinje {
     private int antal;
-    private ProduktPris produktPris;
-    private Salg salg;
+    private final ProduktPris produktPris;
+    private final Salg salg;
 
     //Tvungen Association --> 1 ProduktPris
 
@@ -31,7 +29,7 @@ public class SalgsLinje {
     public String toString() {
         return
                 "antal: " + antal +
-                " " + produktPris;
+                        " " + produktPris;
     }
 
     public int getAntal() {

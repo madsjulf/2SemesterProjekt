@@ -23,7 +23,7 @@ class SalgTest {
     }
 
     @Test
-    void salg_Korrekt_Oprettet_Med_Negativ_Antal(){
+    void salg_Korrekt_Oprettet_Med_Negativ_Antal() {
         //Arrange
         ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
         Produkt Øl = new Produkt("Øl", Kulsyre);
@@ -52,7 +52,7 @@ class SalgTest {
         int expected = 5;
 
         //Assert
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
 
@@ -72,7 +72,7 @@ class SalgTest {
         int expected = 10;
 
         //Assert
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
 
@@ -87,7 +87,7 @@ class SalgTest {
         Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
         salg.opretSalgsLinje(1, pp1, salg);
         ProduktPris pp2 = new ProduktPris(10, Øl, FredagsBar, 2);
-        salg.opretSalgsLinje(1,pp2,salg );
+        salg.opretSalgsLinje(1, pp2, salg);
 
 
         //Act
@@ -95,7 +95,7 @@ class SalgTest {
         int expected = 15;
 
         //Assert
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
 
@@ -115,35 +115,12 @@ class SalgTest {
         int expected = 0;
 
         //Assert
-        assertEquals(expected,actual);
+        assertEquals(expected, actual);
 
     }
 
-        @Test
-        void getSamletPrisPant_1PantProdukt () {
-            // Arrange
-            ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
-            Produkt Øl = new Produkt("Øl", Kulsyre);
-            PrisListe FredagsBar = new PrisListe("Fredagsbar");
-            ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
-
-            Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-            salg.opretSalgsLinje(1, pp1, salg);
-
-            Produkt pant = new Produkt("Pant", Kulsyre);
-            ProduktPris produktPris2 = new ProduktPris(200, pant, FredagsBar, 0);
-            salg.opretSalgsLinje(1, produktPris2, salg);
-
-            // Act
-            int actual = salg.getSamletPrisPant();
-            int expected = 200;
-
-            // Assert
-            assertEquals(expected, actual);
-        }
-
     @Test
-    void getSamletPrisPant_2PantProdukt () {
+    void getSamletPrisPant_1PantProdukt() {
         // Arrange
         ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
         Produkt Øl = new Produkt("Øl", Kulsyre);
@@ -157,7 +134,30 @@ class SalgTest {
         ProduktPris produktPris2 = new ProduktPris(200, pant, FredagsBar, 0);
         salg.opretSalgsLinje(1, produktPris2, salg);
 
-        salg.opretSalgsLinje(1, produktPris2,salg);
+        // Act
+        int actual = salg.getSamletPrisPant();
+        int expected = 200;
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void getSamletPrisPant_2PantProdukt() {
+        // Arrange
+        ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
+        Produkt Øl = new Produkt("Øl", Kulsyre);
+        PrisListe FredagsBar = new PrisListe("Fredagsbar");
+        ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
+
+        Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
+        salg.opretSalgsLinje(1, pp1, salg);
+
+        Produkt pant = new Produkt("Pant", Kulsyre);
+        ProduktPris produktPris2 = new ProduktPris(200, pant, FredagsBar, 0);
+        salg.opretSalgsLinje(1, produktPris2, salg);
+
+        salg.opretSalgsLinje(1, produktPris2, salg);
 
         // Act
         int actual = salg.getSamletPrisPant();
@@ -167,72 +167,72 @@ class SalgTest {
         assertEquals(expected, actual);
     }
 
-        @Test
-        void getSamletPrisUdenPant () {
-            // Arrange
-            ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
-            Produkt Øl = new Produkt("Øl", Kulsyre);
-            PrisListe FredagsBar = new PrisListe("Fredagsbar");
-            ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
-            Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-            salg.opretSalgsLinje(1, pp1, salg);
+    @Test
+    void getSamletPrisUdenPant() {
+        // Arrange
+        ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
+        Produkt Øl = new Produkt("Øl", Kulsyre);
+        PrisListe FredagsBar = new PrisListe("Fredagsbar");
+        ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
+        Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
+        salg.opretSalgsLinje(1, pp1, salg);
 
 
-            Produkt produkt2 = new Produkt("Pant", Kulsyre);
-            ProduktPris produktPris2 = new ProduktPris(200, produkt2, FredagsBar, 0);
-            salg.opretSalgsLinje(1, produktPris2, salg);
+        Produkt produkt2 = new Produkt("Pant", Kulsyre);
+        ProduktPris produktPris2 = new ProduktPris(200, produkt2, FredagsBar, 0);
+        salg.opretSalgsLinje(1, produktPris2, salg);
 
 
-            // Act
-            int actual = salg.getSamletPrisUdenPant();
-            int expected = -195;
+        // Act
+        int actual = salg.getSamletPrisUdenPant();
+        int expected = -195;
 
 
-            // Assert
-            assertEquals(expected, actual);
-        }
-
-        @Test
-        void getSamletPrisUdenPantIngenPantProdukt () {
-            // Arrange
-            ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
-            Produkt Øl = new Produkt("Øl", Kulsyre);
-            PrisListe FredagsBar = new PrisListe("Fredagsbar");
-            ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
-            Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-            salg.opretSalgsLinje(1, pp1, salg);
-
-
-            // Act
-            int actual = salg.getSamletPrisUdenPant();
-            int expected = 5;
-
-
-            // Assert
-            assertEquals(expected, actual);
-        }
-
-
-        @Test
-        void updateNr(){
-            // Arrange
-            ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
-            Produkt Øl = new Produkt("Øl", Kulsyre);
-            PrisListe FredagsBar = new PrisListe("Fredagsbar");
-            ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
-            Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-            salg.opretSalgsLinje(1, pp1, salg);
-
-            // Act
-            int actual = salg.getSalgsNr();
-            int expected = 1;
-
-            // Assert
-            assertEquals(expected, actual);
-        }
+        // Assert
+        assertEquals(expected, actual);
+    }
 
     @Test
-    void updateNr_2Salg(){
+    void getSamletPrisUdenPantIngenPantProdukt() {
+        // Arrange
+        ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
+        Produkt Øl = new Produkt("Øl", Kulsyre);
+        PrisListe FredagsBar = new PrisListe("Fredagsbar");
+        ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
+        Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
+        salg.opretSalgsLinje(1, pp1, salg);
+
+
+        // Act
+        int actual = salg.getSamletPrisUdenPant();
+        int expected = 5;
+
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+
+    @Test
+    void updateNr() {
+        // Arrange
+        ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
+        Produkt Øl = new Produkt("Øl", Kulsyre);
+        PrisListe FredagsBar = new PrisListe("Fredagsbar");
+        ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
+        Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
+        salg.opretSalgsLinje(1, pp1, salg);
+
+        // Act
+        int actual = salg.getSalgsNr();
+        int expected = 1;
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    void updateNr_2Salg() {
         // Arrange
         ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
         Produkt Øl = new Produkt("Øl", Kulsyre);
@@ -253,7 +253,7 @@ class SalgTest {
     }
 
     @Test
-    void setSalgFærdigt(){
+    void setSalgFærdigt() {
         //Arrange
         ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
         Produkt Øl = new Produkt("Øl", Kulsyre);
@@ -271,7 +271,7 @@ class SalgTest {
 
 
     @Test
-    void setSalgsDato(){
+    void setSalgsDato() {
         // Arrange
         ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
         Produkt Øl = new Produkt("Øl", Kulsyre);
@@ -285,6 +285,6 @@ class SalgTest {
         LocalDate expected = LocalDate.now();
 
         // Assert
-        assertEquals(expected ,salg.getSalgsDato());
+        assertEquals(expected, salg.getSalgsDato());
     }
-    }
+}

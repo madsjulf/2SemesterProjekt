@@ -5,32 +5,26 @@ import Storage.Storage;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.CheckBox;
-import javafx.scene.control.TextField;
 import javafx.scene.Scene;
-import javafx.scene.control.ComboBox;
+import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 import model.Kunde;
 import model.Salg;
 
-
 import java.util.ArrayList;
 
 public class SalgWindow extends Stage {
-    private final ComboBox comboBoxBetalingsform = new ComboBox();
+    private final ComboBox<String> comboBoxBetalingsform = new ComboBox<>();
     private final Label lblError = new Label();
     private final CheckBox checkboxBetalt = new CheckBox();
-    private ArrayList<String> betalingsformer = new ArrayList<>();
+    private final ArrayList<String> betalingsformer = new ArrayList<>();
     private final CheckBox checkBoxUdlejning = new CheckBox();
     private final TextField txfKundeNavn = new TextField();
     private final Label lblKundeNavn = new Label("Kunde Navn:");
     private final TextField txfPris = new TextField();
     private Label lblPris = new Label();
     private Label lblPrisKlip = new Label();
-
 
 
     public SalgWindow(String title) {
@@ -58,7 +52,7 @@ public class SalgWindow extends Stage {
         betalingsformer.add("Klippekort");
 
         Label labelBetalingsform = new Label("Betalingsform");
-        pane.add(labelBetalingsform,0,0);
+        pane.add(labelBetalingsform, 0, 0);
 
         pane.add(comboBoxBetalingsform, 0, 1);
         comboBoxBetalingsform.getItems().setAll(betalingsformer);
@@ -67,7 +61,7 @@ public class SalgWindow extends Stage {
 
 
         Label lblBetalt = new Label("Betalt");
-        pane.add(lblBetalt,2,0);
+        pane.add(lblBetalt, 2, 0);
         pane.add(checkboxBetalt, 2, 1);
 
 
@@ -87,12 +81,9 @@ public class SalgWindow extends Stage {
         lblPrisKlip.setVisible(false);
 
 
-        if(checkBoxUdlejning.isSelected()) {
-           updateControlsUdlejning();
+        if (checkBoxUdlejning.isSelected()) {
+            updateControlsUdlejning();
         }
-
-
-
 
 
         pane.add(lblKundeNavn, 0, 6);
@@ -106,8 +97,6 @@ public class SalgWindow extends Stage {
         // error besked
         pane.add(lblError, 0, 22);
         lblError.setStyle("-fx-text-fill: red");
-
-
 
 
         // cancel knap
@@ -154,8 +143,8 @@ public class SalgWindow extends Stage {
             }
         }
 
-        String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
-        int i = Storage.getSalgs().size()-1;
+        String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem();
+        int i = Storage.getSalgs().size() - 1;
 
         Salg salg = Storage.getSalgs().get(i);
 
@@ -173,7 +162,7 @@ public class SalgWindow extends Stage {
         }
 
         this.hide();
-        }
+    }
 
 
     public void updateControlsUdlejning() {
@@ -181,7 +170,7 @@ public class SalgWindow extends Stage {
             txfKundeNavn.setEditable(true);
             txfKundeNavn.setVisible(true);
             lblKundeNavn.setVisible(true);
-            int i = Storage.getSalgs().size()-1;
+            int i = Storage.getSalgs().size() - 1;
             int samletPrisPant = Storage.getSalgs().get(i).getSamletPrisPant();
             txfPris.setText(samletPrisPant + "");
         } else {
@@ -189,16 +178,15 @@ public class SalgWindow extends Stage {
             txfKundeNavn.setEditable(false);
             txfKundeNavn.setVisible(false);
             lblKundeNavn.setVisible(false);
-            int i = Storage.getSalgs().size()-1;
+            int i = Storage.getSalgs().size() - 1;
             int samletPris = Storage.getSalgs().get(i).getSamletPris();
-            txfPris.setText(samletPris+"");
+            txfPris.setText(samletPris + "");
 
         }
     }
 
     public void updateControlsBetalingsform() {
-        String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
-
+        String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem();
 
 
         if (betalingsform.equals("Klippekort")) {
@@ -207,25 +195,21 @@ public class SalgWindow extends Stage {
             checkBoxUdlejning.setSelected(false);
             checkBoxUdlejning.setVisible(false);
 
-            int i = Storage.getSalgs().size() -1;
+            int i = Storage.getSalgs().size() - 1;
             Salg salg = Storage.getSalgs().get(i);
-            txfPris.setText(Controller.betalingMedKlip(salg)+ "");
+            txfPris.setText(Controller.betalingMedKlip(salg) + "");
 
         } else {
             lblPrisKlip.setVisible(false);
             lblPris.setVisible(true);
             checkBoxUdlejning.setVisible(true);
 
-            int i = Storage.getSalgs().size()-1;
+            int i = Storage.getSalgs().size() - 1;
             int samletPris = Storage.getSalgs().get(i).getSamletPris();
-            txfPris.setText(samletPris+"");
+            txfPris.setText(samletPris + "");
         }
 
     }
-
-
-
-
 
 
 }

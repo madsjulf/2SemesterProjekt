@@ -1,12 +1,12 @@
 package GUI;
 
+import Controller.Controller;
 import javafx.application.Application;
 import javafx.scene.Scene;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
-import Controller.Controller;
 
 public class MainApp extends Application {
     @Override
@@ -36,55 +36,48 @@ public class MainApp extends Application {
     private void initTabPane(TabPane tabPane) {
         tabPane.setTabClosingPolicy(TabPane.TabClosingPolicy.UNAVAILABLE);
 
+        Tab tabProdukter = new Tab("Produkter");
+        tabPane.getTabs().add(tabProdukter);
 
-            Tab tabProdukter = new Tab("Produkter");
-            tabPane.getTabs().add(tabProdukter);
+        ProduktPane produktPane = new ProduktPane();
+        tabProdukter.setContent(produktPane);
+        tabProdukter.setOnSelectionChanged(event -> produktPane.updateControls());
 
-            ProduktPane produktPane = new ProduktPane();
-            tabProdukter.setContent(produktPane);
-            tabProdukter.setOnSelectionChanged(event -> produktPane.updateControls());
+        Tab tabProduktGrupper = new Tab("ProduktGrupper");
+        tabPane.getTabs().add(tabProduktGrupper);
 
-            Tab tabProduktGrupper = new Tab("ProduktGrupper");
-            tabPane.getTabs().add(tabProduktGrupper);
+        ProduktGruppePane produktGruppePane = new ProduktGruppePane();
+        tabProduktGrupper.setContent(produktGruppePane);
+        tabProduktGrupper.setOnSelectionChanged(event -> produktGruppePane.updateControls());
 
-            ProduktGruppePane produktGruppePane = new ProduktGruppePane();
-            tabProduktGrupper.setContent(produktGruppePane);
-            tabProduktGrupper.setOnSelectionChanged(event -> produktGruppePane.updateControls());
+        Tab tabPrisListe = new Tab("PrisLister");
+        tabPane.getTabs().add(tabPrisListe);
 
-            Tab tabPrisListe = new Tab("PrisLister");
-            tabPane.getTabs().add(tabPrisListe);
+        PrisListePane prisListePane = new PrisListePane();
+        tabPrisListe.setContent(prisListePane);
+        tabPrisListe.setOnSelectionChanged(event -> prisListePane.updateControls());
 
-            PrisListePane prisListePane = new PrisListePane();
-            tabPrisListe.setContent(prisListePane);
-            tabPrisListe.setOnSelectionChanged(event -> prisListePane.updateControls());
+        Tab tabSalg = new Tab("Salg");
+        tabPane.getTabs().add(tabSalg);
 
-            Tab tabSalg = new Tab("Salg");
-            tabPane.getTabs().add(tabSalg);
+        SalgPane salgPane = new SalgPane();
+        tabSalg.setContent(salgPane);
+        tabSalg.setOnSelectionChanged(event -> salgPane.updateControlsProduktGruppe());
 
-            SalgPane salgPane = new SalgPane();
-            tabSalg.setContent(salgPane);
-            tabSalg.setOnSelectionChanged(event -> salgPane.updateControlsProduktGruppe());
+        Tab tabUdlejning = new Tab("Udlejning");
+        tabPane.getTabs().add(tabUdlejning);
 
-            Tab tabUdlejning = new Tab("Udlejning");
-            tabPane.getTabs().add(tabUdlejning);
+        UdlejningPane udlejningPane = new UdlejningPane();
+        tabUdlejning.setContent(udlejningPane);
+        tabUdlejning.setOnSelectionChanged(event -> udlejningPane.updateControls());
 
-            UdlejningPane udlejningPane = new UdlejningPane();
-            tabUdlejning.setContent(udlejningPane);
-            tabUdlejning.setOnSelectionChanged(event -> udlejningPane.updateControls());
+        Tab tabStatistik = new Tab("Statistik");
+        tabPane.getTabs().add(tabStatistik);
 
-            Tab tabStatistik = new Tab("Statistik");
-            tabPane.getTabs().add(tabStatistik);
-
-            StatistikPane statistikPane = new StatistikPane();
-            tabStatistik.setContent(statistikPane);
-            tabStatistik.setOnSelectionChanged(event -> statistikPane.updateControlsDate());
-
+        StatistikPane statistikPane = new StatistikPane();
+        tabStatistik.setContent(statistikPane);
+        tabStatistik.setOnSelectionChanged(event -> statistikPane.updateControlsDate());
     }
-
-
-
-
-
 }
 
 

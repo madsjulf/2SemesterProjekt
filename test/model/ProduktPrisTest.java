@@ -3,10 +3,7 @@ package model;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
-
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class ProduktPrisTest {
 
@@ -15,8 +12,7 @@ class ProduktPrisTest {
     private Produkt produkt;
 
     @BeforeEach
-    public void setUpBeforeEach_ProduktPrisConstructorBasisData()
-    {
+    public void setUpBeforeEach_ProduktPrisConstructorBasisData() {
         this.produktGruppe = new ProduktGruppe("Flaskeøl");
         this.produkt = new Produkt("Øl", produktGruppe);
         this.prisListe = new PrisListe("Julefest");
@@ -26,15 +22,15 @@ class ProduktPrisTest {
     //-------------------- ProduktPris(constructor) ----------------------------
 
     @Test
-    void ProduktPrisKorrektOprettet(){
-    //Arrange
+    void ProduktPrisKorrektOprettet() {
+        //Arrange
 
 
-    //Act
-    ProduktPris produktPris = new ProduktPris(10, produkt, prisListe, 0);
+        //Act
+        ProduktPris produktPris = new ProduktPris(10, produkt, prisListe, 0);
 
-    //Assert
-    assertTrue(produktPris.getProdukt().getNavn().contains(produkt.getNavn()));
+        //Assert
+        assertTrue(produktPris.getProdukt().getNavn().contains(produkt.getNavn()));
 
 
     }

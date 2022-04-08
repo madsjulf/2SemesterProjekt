@@ -1,5 +1,6 @@
 package GUI;
 
+import Storage.Storage;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -8,14 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.PrisListe;
 import model.Produkt;
 import model.ProduktGruppe;
-import Storage.Storage;
 
 public class ProduktGruppePane extends GridPane {
-    private final ListView lvwProduktGrupper = new ListView();
-    private final ListView lvwProdukterIGruppe = new ListView();
+    private final ListView<ProduktGruppe> lvwProduktGrupper = new ListView<>();
+    private final ListView<Produkt> lvwProdukterIGruppe = new ListView<>();
 
     public ProduktGruppePane() {
         this.setPadding(new Insets(20));
@@ -33,7 +32,6 @@ public class ProduktGruppePane extends GridPane {
         ChangeListener<ProduktGruppe> listener = (ov, o, n) -> this.selectedGruppeChanged();
         lvwProduktGrupper.getSelectionModel().selectedItemProperty().addListener(listener);
 
-
         Label lblProdukterIGruppe = new Label("Produkter:");
         this.add(lblProdukterIGruppe, 1, 0);
 
@@ -41,7 +39,6 @@ public class ProduktGruppePane extends GridPane {
         lvwProdukterIGruppe.setPrefWidth(200);
         lvwProdukterIGruppe.setPrefHeight(200);
         lvwProdukterIGruppe.getSelectionModel().getSelectedItem();
-
 
         // Knap til oprettelse af produktGrupper
         HBox hbxButtons = new HBox(40);
@@ -56,9 +53,7 @@ public class ProduktGruppePane extends GridPane {
 
         if (!lvwProduktGrupper.getItems().isEmpty())
             lvwProduktGrupper.getSelectionModel().select(0);
-
     }
-
 
 
 //-------------------------------------------------------------------------
@@ -67,9 +62,8 @@ public class ProduktGruppePane extends GridPane {
         this.updateControls();
     }
 
-
     private void createAction() {
-        ProduktGruppeWindow dialog = new ProduktGruppeWindow("Opret ProduktGruppe", null);
+        ProduktGruppeWindow dialog = new ProduktGruppeWindow("Opret ProduktGruppe");
         dialog.showAndWait();
 
         lvwProduktGrupper.getItems().clear();
@@ -77,9 +71,8 @@ public class ProduktGruppePane extends GridPane {
     }
 
 
-
     public void updateControls() {
-        ProduktGruppe produktGruppe = (ProduktGruppe) lvwProduktGrupper.getSelectionModel().getSelectedItem();
+        ProduktGruppe produktGruppe = lvwProduktGrupper.getSelectionModel().getSelectedItem();
 
         lvwProdukterIGruppe.getItems().clear();
         if (produktGruppe != null) {
@@ -92,6 +85,5 @@ public class ProduktGruppePane extends GridPane {
         } else {
             lvwProdukterIGruppe.getItems().clear();
         }
-
     }
 }

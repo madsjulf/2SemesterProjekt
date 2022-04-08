@@ -4,15 +4,15 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 
 public class Salg {
-    private boolean salgFærdigt = false;
+    private boolean salgFærdigt;
     private static int nrCounter = 1;
-    private int salgsNr;
+    private final int salgsNr;
     private LocalDate salgsDato;
     private String betalingsForm;
     // Association --> 0..1 Kunde
     private Kunde kunde; // nullable
     // Komposition --> 0..* SalgsLinjer
-    private ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
+    private final ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
 
     public Salg(LocalDate salgsDato, String betalingsForm, Kunde kunde, boolean salgFærdigt) {
         this.salgFærdigt = salgFærdigt;
@@ -34,9 +34,8 @@ public class Salg {
             salgsLinjer.add(salgsLinje);
             return salgsLinje;
         } else
-        return null;
+            return null;
     }
-
 
     public void setBetalingsForm(String betalingsForm) {
         this.betalingsForm = betalingsForm;
@@ -62,14 +61,13 @@ public class Salg {
         return salgsDato;
     }
 
-
-    public Kunde getKunde(){
+    public Kunde getKunde() {
         return kunde;
     }
 
-    public void setKunde(Kunde kunde){
+    public void setKunde(Kunde kunde) {
         this.kunde = kunde;
-        if(kunde != null){
+        if (kunde != null) {
             kunde.addSalg(this);
         }
     }
@@ -82,21 +80,21 @@ public class Salg {
         for (SalgsLinje salgsLinje : salgsLinjer) {
             int antal = 0;
             antal += salgsLinje.getAntal();
-            samletPris += salgsLinje.getProduktPris().getPris()*antal;
+            samletPris += salgsLinje.getProduktPris().getPris() * antal;
         }
-            return samletPris;
+        return samletPris;
     }
 
     /**
      * Finder den samlet pris på panten for et salg ved at løbe alle salgsLinjer igennem på salget
      */
-    public int getSamletPrisPant(){
+    public int getSamletPrisPant() {
         int samletPantPris = 0;
-        for (SalgsLinje salgsLinje : salgsLinjer){
+        for (SalgsLinje salgsLinje : salgsLinjer) {
             int pantAntal = 0;
-            if (salgsLinje.getProduktPris().getProdukt().getNavn()=="Pant" ||salgsLinje.getProduktPris().getProdukt().getNavn()== "PantKulsyre" ){
+            if (salgsLinje.getProduktPris().getProdukt().getNavn().equals("Pant") || salgsLinje.getProduktPris().getProdukt().getNavn().equals("PantKulsyre")) {
                 pantAntal += salgsLinje.getAntal();
-                samletPantPris += salgsLinje.getProduktPris().getPris()*pantAntal;
+                samletPantPris += salgsLinje.getProduktPris().getPris() * pantAntal;
             }
         }
         return samletPantPris;
@@ -106,13 +104,13 @@ public class Salg {
      * Finder den samlet pris for et salg ved at løbe alle salgsLinjer igennem på salget
      * og finder den betalte pant pris og trækker den fra den samlede pris på salget
      */
-    public int getSamletPrisUdenPant(){
+    public int getSamletPrisUdenPant() {
         int samletPantPris = 0;
         int samletPris = 0;
 
         for (SalgsLinje salgsLinje : salgsLinjer) {
             if (salgsLinje.getSalg() == this) {
-                if (salgsLinje.getProduktPris().getProdukt().getNavn() == "Pant" || salgsLinje.getProduktPris().getProdukt().getNavn() == "PantKulsyre") {
+                if (salgsLinje.getProduktPris().getProdukt().getNavn().equals("Pant") || salgsLinje.getProduktPris().getProdukt().getNavn().equals("PantKulsyre")) {
                     int pantAntal = 0;
                     pantAntal += salgsLinje.getAntal();
                     samletPantPris += salgsLinje.getProduktPris().getPris() * pantAntal;
@@ -124,23 +122,22 @@ public class Salg {
                 }
             }
         }
-        return samletPris-samletPantPris;
+        return samletPris - samletPantPris;
     }
-
 
     @Override
     public String toString() {
-        return  "SalgsNr: "+ salgsNr + ", " +
-                salgsDato + ", "+
-                 betalingsForm +", "+
-                 kunde;
+        return "SalgsNr: " + salgsNr + ", " +
+                salgsDato + ", " +
+                betalingsForm + ", " +
+                kunde;
     }
 
     /**
      * Opdaterer salgsNr med +1 når der bliver oprettet et salg
      */
-    public int updateNr(){
-        return nrCounter++;
+    public void updateNr() {
+        nrCounter++;
     }
 
     public void setSalgsDato(LocalDate salgsDato) {

@@ -4,14 +4,10 @@ import java.util.ArrayList;
 
 public class Kunde {
     private static int nrCounter = 1;
-    private int kundeNr;
-    private String kundeNavn;
+    private final int kundeNr;
+    private final String kundeNavn;
     // association --> 0..* Salg
-    private ArrayList<Salg> salgArrayList = new ArrayList<>();
-
-    public ArrayList<Salg> getSalgArrayList() {
-        return new ArrayList<>(salgArrayList);
-    }
+    private final ArrayList<Salg> salgArrayList = new ArrayList<>();
 
 
     public Kunde(String kundeNavn) {
@@ -20,23 +16,21 @@ public class Kunde {
         updateKundeNr();
     }
 
-
-    public void addSalg(Salg salg){
+    public void addSalg(Salg salg) {
         if (!salgArrayList.contains(salg)) {
             salgArrayList.add(salg);
             salg.setKunde(this);
         }
     }
 
-    public int updateKundeNr(){
-        return nrCounter++;
+    public void updateKundeNr() {
+        nrCounter++;
     }
-
 
     @Override
     public String toString() {
         return
-                 "KundeNr: " + kundeNr +", " +
-                 kundeNavn;
+                "KundeNr: " + kundeNr + ", " +
+                        kundeNavn;
     }
 }

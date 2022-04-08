@@ -10,20 +10,17 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import model.Salg;
+import model.SalgsLinje;
 
 import java.time.LocalDate;
 
 public class StatistikPane extends GridPane {
     private final DatePicker startDate = new DatePicker();
     private final DatePicker slutDate = new DatePicker();
-    private final ListView lvwSalg = new ListView();
-    private final ListView lvwSalgsLinjer = new ListView();
+    private final ListView<Salg> lvwSalg = new ListView<>();
+    private final ListView<SalgsLinje> lvwSalgsLinjer = new ListView<>();
     private final TextField txtfKøbtKlip = new TextField();
     private final TextField txtfBrugtKlip = new TextField();
-
-
-
-
 
     public StatistikPane() {
         this.setPadding(new Insets(20));
@@ -31,27 +28,21 @@ public class StatistikPane extends GridPane {
         this.setVgap(10);
         this.setGridLinesVisible(false);
 
-
         Label lblStartDate = new Label("Start Dato:");
         this.add(lblStartDate, 0, 0);
         this.add(startDate, 0, 1);
-        startDate.valueProperty().addListener((ov,o,n) -> this.selectedDateChanged());
-
+        startDate.valueProperty().addListener((ov, o, n) -> this.selectedDateChanged());
 
         Label lblSlutDate = new Label("Slut Dato:");
         this.add(lblSlutDate, 1, 0);
         this.add(slutDate, 1, 1);
-        slutDate.valueProperty().addListener((ov,o,n) -> this.selectedDateChanged());
-
+        slutDate.valueProperty().addListener((ov, o, n) -> this.selectedDateChanged());
 
         Label lblSalg = new Label("Salg:");
         this.add(lblSalg, 0, 2);
         this.add(lvwSalg, 0, 3);
         ChangeListener<Salg> listener = (ov, o, n) -> this.selectedSalgChanged();
         lvwSalg.getSelectionModel().selectedItemProperty().addListener(listener);
-
-
-
 
         Label lblSalgsLinjer = new Label("Produkter:");
         this.add(lblSalgsLinjer, 1, 2);
@@ -63,8 +54,7 @@ public class StatistikPane extends GridPane {
 
         Label lblBrugtKlip = new Label("Brugte Klip:");
         this.add(lblBrugtKlip, 1, 4);
-        this.add(txtfBrugtKlip,1,5);
-
+        this.add(txtfBrugtKlip, 1, 5);
     }
 
     //-----------------------------------------------------------
@@ -77,9 +67,7 @@ public class StatistikPane extends GridPane {
         this.updateControlsSalg();
     }
 
-
     public void updateControlsDate() {
-
         // Vis færdige salg inden for den valgte periode.
         LocalDate start = startDate.getValue();
         LocalDate slut = slutDate.getValue();
@@ -87,11 +75,10 @@ public class StatistikPane extends GridPane {
         txtfBrugtKlip.setText(Controller.brugtKlip(start, slut) + "");
         lvwSalg.getItems().setAll(Controller.salgIndenforDatoer(start, slut));
         txtfKøbtKlip.setText(Controller.købtKlip(start, slut) + "");
-
     }
 
     private void updateControlsSalg() {
-        Salg salgKunde = (Salg) lvwSalg.getSelectionModel().getSelectedItem();
+        Salg salgKunde = lvwSalg.getSelectionModel().getSelectedItem();
         lvwSalgsLinjer.getItems().clear();
 
         for (Salg salg : Storage.getSalgs()) {
@@ -100,9 +87,4 @@ public class StatistikPane extends GridPane {
             }
         }
     }
-
-
-
-
-
 }

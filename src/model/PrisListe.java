@@ -3,19 +3,15 @@ package model;
 import java.util.ArrayList;
 
 public class PrisListe {
-    private String navn;
-    private ArrayList<ProduktPris> produktPriser = new ArrayList<>();
-    private int klip;
-
-
+    private final String navn;
+    private final ArrayList<ProduktPris> produktPriser = new ArrayList<>();
 
     public PrisListe(String navn) {
         this.navn = navn;
-
     }
 
-    public ProduktPris createProduktPris(int pris, Produkt produkt, PrisListe prisListe,int klip){
-        ProduktPris pp = new ProduktPris(pris,produkt, prisListe,klip);
+    public ProduktPris createProduktPris(int pris, Produkt produkt, PrisListe prisListe, int klip) {
+        ProduktPris pp = new ProduktPris(pris, produkt, prisListe, klip);
         produktPriser.add(pp);
         return pp;
     }
@@ -28,5 +24,4 @@ public class PrisListe {
     public String toString() {
         return "PrisListe: " + navn;
     }
-
 }

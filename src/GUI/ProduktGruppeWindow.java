@@ -15,8 +15,7 @@ public class ProduktGruppeWindow extends Stage {
     private final TextField txfName = new TextField();
     private final Label lblError = new Label();
 
-
-    public ProduktGruppeWindow(String title, String name) {
+    public ProduktGruppeWindow(String title) {
         this.setTitle(title);
         GridPane pane = new GridPane();
         this.initContent(pane);
@@ -44,7 +43,6 @@ public class ProduktGruppeWindow extends Stage {
         pane.add(lblError, 0, 22);
         lblError.setStyle("-fx-text-fill: red");
 
-
         // cancel knap
         javafx.scene.control.Button btnCancel = new javafx.scene.control.Button("Cancel");
         pane.add(btnCancel, 0, 20);
@@ -56,7 +54,6 @@ public class ProduktGruppeWindow extends Stage {
         pane.add(btnOK, 1, 20);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
-
     }
 
     private void cancelAction() {
@@ -73,9 +70,4 @@ public class ProduktGruppeWindow extends Stage {
 
         this.hide();
     }
-
-
-
-
-
 }

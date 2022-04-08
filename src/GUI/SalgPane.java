@@ -18,10 +18,10 @@ public class SalgPane extends GridPane {
     private final TextField txfPris = new TextField();
     private final TextField txfProcentRabat = new TextField();
     private final TextField txfAntal = new TextField();
-    private final ComboBox comboBoxPrisListe = new ComboBox();
-    private final ListView<ProduktGruppe> lvwGrupperIPrisListe = new ListView();
-    private final ListView<ProduktPris> lvwProdukterIGrupper = new ListView();
-    private final ListView<SalgsLinje> lvwIndkøbsListe = new ListView();
+    private final ComboBox<PrisListe> comboBoxPrisListe = new ComboBox<>();
+    private final ListView<ProduktGruppe> lvwGrupperIPrisListe = new ListView<>();
+    private final ListView<ProduktPris> lvwProdukterIGrupper = new ListView<>();
+    private final ListView<SalgsLinje> lvwIndkøbsListe = new ListView<>();
     private final CheckBox checkBoxStartSalg = new CheckBox();
 
 
@@ -168,7 +168,7 @@ public class SalgPane extends GridPane {
     }
 
     public void updateControlsProduktGruppe() {
-        PrisListe prisListe = (PrisListe) comboBoxPrisListe.getSelectionModel().getSelectedItem();
+        PrisListe prisListe = comboBoxPrisListe.getSelectionModel().getSelectedItem();
         ProduktGruppe valgtProduktGruppe = lvwGrupperIPrisListe.getSelectionModel().getSelectedItem();
 
 
@@ -221,7 +221,7 @@ public class SalgPane extends GridPane {
 
     public void updateControlsCheck() {
         if (checkBoxStartSalg.isSelected()) {
-            Salg salg = Controller.createSalg(LocalDate.now(), "Kreditkort", null, false);
+            Controller.createSalg(LocalDate.now(), "Kreditkort", null, false);
             lvwGrupperIPrisListe.getItems().setAll(Storage.getProduktGruppe());
             comboBoxPrisListe.getItems().setAll(Storage.getprisLister());
             comboBoxPrisListe.getSelectionModel().select(0);

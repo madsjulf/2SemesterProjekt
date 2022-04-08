@@ -9,13 +9,12 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-import model.PrisListe;
 
 public class PrisListeWindow extends Stage {
     private final TextField txfNavn = new TextField();
     private final Label lblError = new Label();
 
-    public PrisListeWindow(String title, String navn) {
+    public PrisListeWindow(String title) {
         this.setTitle(title);
         GridPane pane = new GridPane();
         this.initContent(pane);
@@ -24,12 +23,12 @@ public class PrisListeWindow extends Stage {
         this.setScene(scene);
 
     }
+
     private void initContent(GridPane pane) {
         pane.setPadding(new Insets(10));
         pane.setHgap(10);
         pane.setVgap(10);
         pane.setGridLinesVisible(false);
-
 
         // Label og textfeldt til navn på produkt
         Label lblNavn = new Label("Navn");
@@ -52,8 +51,6 @@ public class PrisListeWindow extends Stage {
         pane.add(btnOK, 0, 20);
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
-
-
     }
 
     //-----------------------------------------------------------------

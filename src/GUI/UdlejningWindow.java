@@ -16,14 +16,11 @@ import java.util.ArrayList;
 public class UdlejningWindow extends Stage {
     private final TextField txfPris = new TextField();
     private final CheckBox checkBoxBetalt = new CheckBox();
-    private final ComboBox comboBoxBetalingsform = new ComboBox();
-    private ArrayList<String> betalingsformer = new ArrayList<>();
+    private final ComboBox<String> comboBoxBetalingsform = new ComboBox<>();
+    private final ArrayList<String> betalingsformer = new ArrayList<>();
     private final Label lblError = new Label();
-    private int pris;
-    private Salg salg;
-
-
-
+    private final int pris;
+    private final Salg salg;
 
     public UdlejningWindow(String title, int pris, Salg salg) {
         this.pris = pris;
@@ -35,8 +32,6 @@ public class UdlejningWindow extends Stage {
 
         Scene scene = new Scene(pane);
         this.setScene(scene);
-
-
     }
 
     private void initContent(GridPane pane) {
@@ -48,7 +43,6 @@ public class UdlejningWindow extends Stage {
         betalingsformer.add("Kreditkort");
         betalingsformer.add("MobilePay");
         betalingsformer.add("Kontant");
-
 
         Label lblPris = new Label("Samlet Pris:");
         pane.add(lblPris, 0, 0);
@@ -63,8 +57,6 @@ public class UdlejningWindow extends Stage {
         pane.add(lblBetalingsform, 0, 2);
         pane.add(comboBoxBetalingsform, 0, 3);
         comboBoxBetalingsform.getItems().setAll(betalingsformer);
-
-
 
         // error besked
         pane.add(lblError, 0, 22);
@@ -82,10 +74,7 @@ public class UdlejningWindow extends Stage {
         GridPane.setHalignment(btnOK, HPos.RIGHT);
         btnOK.setOnAction(event -> this.okAction());
 
-
         comboBoxBetalingsform.getSelectionModel().select(0);
-
-
     }
 
     private void cancelAction() {
@@ -93,7 +82,7 @@ public class UdlejningWindow extends Stage {
     }
 
     private void okAction() {
-        String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
+        String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem();
 
         if (!checkBoxBetalt.isSelected()) {
             lblError.setText("Betaling mangler!");
@@ -105,8 +94,5 @@ public class UdlejningWindow extends Stage {
 
         this.salg.setSalgFærdigt(true);
         this.hide();
-
     }
-
-
-    }
+}

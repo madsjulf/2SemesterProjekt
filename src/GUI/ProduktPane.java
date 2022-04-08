@@ -1,5 +1,6 @@
 package GUI;
 
+import Storage.Storage;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -8,7 +9,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import model.Produkt;
-import Storage.Storage;
 
 public class ProduktPane extends GridPane {
     private final ListView<Produkt> lvwProdukter = new ListView<>();
@@ -29,7 +29,6 @@ public class ProduktPane extends GridPane {
         lvwProdukter.setPrefHeight(200);
         lvwProdukter.getItems().addAll(Storage.getProdukter());
 
-
         // Knap til oprettelse af produkter
         HBox hbxButtons = new HBox(40);
         this.add(hbxButtons, 0, 6, 3, 1);
@@ -40,18 +39,12 @@ public class ProduktPane extends GridPane {
         this.add(btnCreate, 0, 8);
         hbxButtons.getChildren().add(btnCreate);
         btnCreate.setOnAction(event -> this.createAction());
-
-
-
     }
-
-
 
     //---------------------------------------------------------------------------------------
 
-
     private void createAction() {
-        ProduktWindow dialog = new ProduktWindow("Opret Produkt", null, null);
+        ProduktWindow dialog = new ProduktWindow("Opret Produkt");
         dialog.showAndWait();
 
         lvwProdukter.getItems().clear();
@@ -60,6 +53,6 @@ public class ProduktPane extends GridPane {
     //---------------------------------------------- --------------------
 
     public void updateControls() {
-        Produkt produkt = lvwProdukter.getSelectionModel().getSelectedItem();
+        lvwProdukter.getSelectionModel().getSelectedItem();
     }
 }

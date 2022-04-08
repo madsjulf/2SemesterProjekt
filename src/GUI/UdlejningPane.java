@@ -16,17 +16,15 @@ import model.SalgsLinje;
 import java.util.ArrayList;
 
 public class UdlejningPane extends GridPane {
-    private final ListView lvwUdlejninger = new ListView();
-    private final ListView lvwProdukterIUdlejning = new ListView();
+    private final ListView<Salg> lvwUdlejninger = new ListView<>();
+    private final ListView<SalgsLinje> lvwProdukterIUdlejning = new ListView<>();
     private final TextField txfReturMængde = new TextField();
-
 
     public UdlejningPane() {
         this.setPadding(new Insets(20));
         this.setHgap(20);
         this.setVgap(10);
         this.setGridLinesVisible(false);
-
 
         Label lblUdlejninger = new Label("Udlejninger: ");
         this.add(lblUdlejninger, 0, 0);
@@ -35,21 +33,17 @@ public class UdlejningPane extends GridPane {
         ChangeListener<Salg> listener = (ov, o, n) -> this.selectedSalgChanged();
         lvwUdlejninger.getSelectionModel().selectedItemProperty().addListener(listener);
 
-
         Label lblProdukterIUdlejning = new Label("Produkter:");
         this.add(lblProdukterIUdlejning, 2, 0);
 
         this.add(lvwProdukterIUdlejning, 2, 1);
-
 
         Label lblReturMængde = new Label("Antal retur:");
         this.add(lblReturMængde, 2, 2);
 
         this.add(txfReturMængde, 2, 3);
 
-
         lvwUdlejninger.getSelectionModel().select(0);
-
 
         // Knap til oprettelse af produktGrupper
         HBox hbxButtons = new HBox(40);
@@ -66,29 +60,24 @@ public class UdlejningPane extends GridPane {
         this.add(btnReturner, 0, 8);
         hbxButtons.getChildren().add(btnReturner);
         btnReturner.setOnAction(event -> this.ReturnerAction());
-
-
-
     }
 
     private void ReturnerAction() {
-        SalgsLinje salgsLinje = (SalgsLinje) lvwProdukterIUdlejning.getSelectionModel().getSelectedItem();
+        SalgsLinje salgsLinje = lvwProdukterIUdlejning.getSelectionModel().getSelectedItem();
         int antal = Integer.parseInt(txfReturMængde.getText());
         int reelleAntal = salgsLinje.getAntal();
         salgsLinje.setAntal(reelleAntal - antal);
         updateControlsSalg();
-
     }
 
     private void AfregnAction() {
-        Salg salg = (Salg) lvwUdlejninger.getSelectionModel().getSelectedItem();
+        Salg salg = lvwUdlejninger.getSelectionModel().getSelectedItem();
         int pris = salg.getSamletPrisUdenPant();
 
         UdlejningWindow dialog = new UdlejningWindow("Afregn", pris, salg);
         dialog.showAndWait();
 
         updateControls();
-
     }
 
     private void selectedSalgChanged() {
@@ -102,28 +91,20 @@ public class UdlejningPane extends GridPane {
         for (Salg salg : Storage.getSalgs()) {
             if (!salg.isSalgFærdigt()) {
                 if (salg.getKunde() != null)
-                tempSalg.add(salg);
+                    tempSalg.add(salg);
             }
         }
-
         lvwUdlejninger.getItems().setAll(tempSalg);
     }
 
-
     private void updateControlsSalg() {
-         Salg salgKunde = (Salg) lvwUdlejninger.getSelectionModel().getSelectedItem();
+        Salg salgKunde = lvwUdlejninger.getSelectionModel().getSelectedItem();
         lvwProdukterIUdlejning.getItems().clear();
 
-        for(Salg salg : Storage.getSalgs()) {
+        for (Salg salg : Storage.getSalgs()) {
             if (salgKunde == salg) {
                 lvwProdukterIUdlejning.getItems().setAll(salg.getSalgsLinjer());
             }
         }
     }
-
-
-
-
-
-
 }

@@ -1,11 +1,9 @@
 package model;
 
-import java.util.ArrayList;
-
 public class Produkt {
 
-    private String navn;
-    private ProduktGruppe produktGruppe;
+    private final String navn;
+    private final ProduktGruppe produktGruppe;
 
     public Produkt(String navn, ProduktGruppe produktGruppe) {
         this.navn = navn;
@@ -18,10 +16,6 @@ public class Produkt {
 
     public String getNavn() {
         return navn;
-    }
-
-    public void setNavn(String navn) {
-        this.navn = navn;
     }
 
     @Override

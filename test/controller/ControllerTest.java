@@ -4,11 +4,12 @@ import Controller.Controller;
 import model.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
-
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ControllerTest {
     private Salg salg1jan;
@@ -17,16 +18,16 @@ public class ControllerTest {
     private Salg salgIkkeFærdigt;
 
     @BeforeEach
-    public void setUpBeforeEach_3Salg(){
-        this.salg1jan = Controller.createSalg(LocalDate.of(2022, 1, 1), "Kreditkort",null,true);
-        this.salg15jan = Controller.createSalg(LocalDate.of(2022, 1, 15),"Kreditkort",null,true);
-        this.salg30jan = Controller.createSalg(LocalDate.of(2022,1,30),"Kreditkort", null, true);
-        this.salgIkkeFærdigt = Controller.createSalg(LocalDate.of(2022,2,1),"Kreditkort",null,false);
+    public void setUpBeforeEach_3Salg() {
+        this.salg1jan = Controller.createSalg(LocalDate.of(2022, 1, 1), "Kreditkort", null, true);
+        this.salg15jan = Controller.createSalg(LocalDate.of(2022, 1, 15), "Kreditkort", null, true);
+        this.salg30jan = Controller.createSalg(LocalDate.of(2022, 1, 30), "Kreditkort", null, true);
+        this.salgIkkeFærdigt = Controller.createSalg(LocalDate.of(2022, 2, 1), "Kreditkort", null, false);
 
     }
 
     @Test
-    void betalingMedKlip(){
+    void betalingMedKlip() {
         // Arrange
         ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
         Produkt Øl = new Produkt("Øl", Kulsyre);
@@ -45,16 +46,16 @@ public class ControllerTest {
     }
 
     @Test
-    void salgIndenforDatoer_AlleSalgIndenforDatoer(){
+    void salgIndenforDatoer_AlleSalgIndenforDatoer() {
         // Arrange
         LocalDate startDato = LocalDate.of(2022, 1, 1);
         LocalDate slutDato = LocalDate.of(2022, 1, 30);
         int forventetAntalSalg = 3;
 
         // Act
-         ArrayList<Salg> faktiskeSalg = Controller.salgIndenforDatoer(startDato,slutDato);
+        ArrayList<Salg> faktiskeSalg = Controller.salgIndenforDatoer(startDato, slutDato);
 
-         // Assert
+        // Assert
         assertEquals(forventetAntalSalg, faktiskeSalg.size());
         assertTrue(faktiskeSalg.contains(salg1jan));
         assertTrue(faktiskeSalg.contains(salg15jan));
@@ -62,14 +63,14 @@ public class ControllerTest {
     }
 
     @Test
-    void salgIndenforDatoer_1SalgIndenforDatoer(){
+    void salgIndenforDatoer_1SalgIndenforDatoer() {
         // Arrange
         LocalDate startDato = LocalDate.of(2022, 1, 2);
         LocalDate slutDato = LocalDate.of(2022, 1, 29);
         int forventetAntalSalg = 1;
 
         // Act
-        ArrayList<Salg> faktiskeSalg = Controller.salgIndenforDatoer(startDato,slutDato);
+        ArrayList<Salg> faktiskeSalg = Controller.salgIndenforDatoer(startDato, slutDato);
 
         // Assert
         assertEquals(forventetAntalSalg, faktiskeSalg.size());
@@ -77,32 +78,30 @@ public class ControllerTest {
     }
 
     @Test
-    void salgIndenforDatoer_0SalgIndenforDatoer(){
+    void salgIndenforDatoer_0SalgIndenforDatoer() {
         // Arrange
         LocalDate startDato = LocalDate.of(2022, 2, 2);
         LocalDate slutDato = LocalDate.of(2022, 3, 29);
         int forventetAntalSalg = 0;
 
         // Act
-        ArrayList<Salg> faktiskeSalg = Controller.salgIndenforDatoer(startDato,slutDato);
+        ArrayList<Salg> faktiskeSalg = Controller.salgIndenforDatoer(startDato, slutDato);
 
         // Assert
         assertEquals(forventetAntalSalg, faktiskeSalg.size());
     }
 
     @Test
-    void salgIndenforDatoer_1SalgIndenforDatoer_IkkeFærdigSalg(){
+    void salgIndenforDatoer_1SalgIndenforDatoer_IkkeFærdigSalg() {
         // Arrange
         LocalDate startDato = LocalDate.of(2022, 2, 1);
         LocalDate slutDato = LocalDate.of(2022, 3, 30);
         int forventetAntalSalg = 0;
 
         // Act
-        ArrayList<Salg> faktiskeSalg = Controller.salgIndenforDatoer(startDato,slutDato);
+        ArrayList<Salg> faktiskeSalg = Controller.salgIndenforDatoer(startDato, slutDato);
 
         // Assert
         assertEquals(forventetAntalSalg, faktiskeSalg.size());
     }
-
-
 }
