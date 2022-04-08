@@ -48,7 +48,6 @@ public class UdlejningWindow extends Stage {
         betalingsformer.add("Kreditkort");
         betalingsformer.add("MobilePay");
         betalingsformer.add("Kontant");
-        betalingsformer.add("Klippekort");
 
 
         Label lblPris = new Label("Samlet Pris:");
