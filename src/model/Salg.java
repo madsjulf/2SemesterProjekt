@@ -45,6 +45,10 @@ public class Salg {
         this.betalingsForm = betalingsForm;
     }
 
+    public String getBetalingsForm() {
+        return betalingsForm;
+    }
+
     public int getSalgsNr() {
         return salgsNr;
     }

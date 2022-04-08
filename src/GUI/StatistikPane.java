@@ -1,5 +1,6 @@
 package GUI;
 
+import Controller.Controller;
 import Storage.Storage;
 import javafx.beans.value.ChangeListener;
 import javafx.geometry.Insets;
@@ -9,8 +10,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.util.converter.LocalDateStringConverter;
+import model.Produkt;
 import model.ProduktGruppe;
 import model.Salg;
+import model.SalgsLinje;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -87,41 +90,10 @@ public class StatistikPane extends GridPane {
         LocalDate start = startDate.getValue();
         LocalDate slut = slutDate.getValue();
 
-        ArrayList<Salg> tempSalg = new ArrayList<>();
+        txtfBrugtKlip.setText(Controller.brugtKlip(start, slut) + "");
+        lvwSalg.getItems().setAll(Controller.salgPåDato(start, slut));
+        txtfKøbtKlip.setText(Controller.købtKlip(start, slut) + "");
 
-        if (start != null) {
-            for (Salg salg : Storage.getSalgs()) {
-                if (start.isBefore(salg.getSalgsDato()) || start.isEqual(salg.getSalgsDato())) {
-                    if (salg.isSalgFærdigt() == true) {
-                        tempSalg.add(salg);
-                    }
-                }
-            }
-            if (slut != null) {
-                for (Salg salg : Storage.getSalgs()) {
-                    if (slut.isBefore(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
-                        tempSalg.remove(salg);
-                    }
-                }
-            }
-        }
-
-        if(start == null && slut != null) {
-            for (Salg salg : Storage.getSalgs()) {
-                if (slut.isAfter(salg.getSalgsDato()) || slut.isEqual(salg.getSalgsDato())) {
-                    if (salg.isSalgFærdigt() == true) {
-                        tempSalg.add(salg);
-                    }
-                }
-            }
-        }
-
-        lvwSalg.getItems().setAll(tempSalg);
-
-//        // Vis antal Klippekort solgt i den valgte periode.
-//        if (!lvwSalg.getItems().isEmpty()) {
-//            for (Salg salg : lvwSalg)
-//        }
     }
 
     private void updateControlsSalg() {
