@@ -15,7 +15,6 @@ public class Salg {
     private Kunde kunde; // nullable
     // Komposition --> 0..* SalgsLinjer
     private ArrayList<SalgsLinje> salgsLinjer = new ArrayList<>();
-    private ArrayList<SalgsLinje>returSalgsLinjer = new ArrayList<>();
 
     public Salg(LocalDate salgsDato, String betalingsForm, Kunde kunde, boolean salgFærdigt) {
         this.salgFærdigt = salgFærdigt;

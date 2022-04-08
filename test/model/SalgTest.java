@@ -1,6 +1,5 @@
 package model;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.time.LocalDate;
@@ -8,12 +7,6 @@ import java.time.LocalDate;
 import static org.junit.jupiter.api.Assertions.*;
 
 class SalgTest {
-    private Produkt produkt;
-    private ProduktGruppe produktGruppe;
-    private PrisListe prisListe;
-    private ProduktPris produktPris;
-    private SalgsLinje salgsLinje;
-    private Salg salg;
 
     @Test
     void salgKorrektOprettetMedSalgsLinje() {
@@ -52,7 +45,7 @@ class SalgTest {
         PrisListe FredagsBar = new PrisListe("Fredagsbar");
         ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
         Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-        SalgsLinje salgsLinje = salg.opretSalgsLinje(1, pp1, salg);
+        salg.opretSalgsLinje(1, pp1, salg);
 
         //Act
         int actual = salg.getSamletPris();
@@ -71,7 +64,7 @@ class SalgTest {
         PrisListe FredagsBar = new PrisListe("Fredagsbar");
         ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
         Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-        SalgsLinje salgsLinje = salg.opretSalgsLinje(2, pp1, salg);
+        salg.opretSalgsLinje(2, pp1, salg);
 
 
         //Act
@@ -92,9 +85,9 @@ class SalgTest {
         PrisListe FredagsBar = new PrisListe("Fredagsbar");
         ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
         Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-        SalgsLinje salgsLinje = salg.opretSalgsLinje(1, pp1, salg);
+        salg.opretSalgsLinje(1, pp1, salg);
         ProduktPris pp2 = new ProduktPris(10, Øl, FredagsBar, 2);
-        SalgsLinje salgsLinje2 = salg.opretSalgsLinje(1,pp2,salg );
+        salg.opretSalgsLinje(1,pp2,salg );
 
 
         //Act
@@ -114,7 +107,7 @@ class SalgTest {
         PrisListe FredagsBar = new PrisListe("Fredagsbar");
         ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
         Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-        SalgsLinje salgsLinje = salg.opretSalgsLinje(0, pp1, salg);
+        salg.opretSalgsLinje(0, pp1, salg);
 
 
         //Act
@@ -242,7 +235,7 @@ class SalgTest {
         PrisListe FredagsBar = new PrisListe("Fredagsbar");
         ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
         Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-        SalgsLinje salgsLinje = salg.opretSalgsLinje(1, pp1, salg);
+        salg.opretSalgsLinje(1, pp1, salg);
 
         // Act
         salg.setSalgFærdigt(true);
@@ -260,7 +253,7 @@ class SalgTest {
         PrisListe FredagsBar = new PrisListe("Fredagsbar");
         ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
         Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
-        SalgsLinje salgsLinje = salg.opretSalgsLinje(1, pp1, salg);
+        salg.opretSalgsLinje(1, pp1, salg);
 
         // Act
         salg.setSalgsDato(LocalDate.now());

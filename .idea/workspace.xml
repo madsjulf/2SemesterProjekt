@@ -5,10 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="eedddd2a-6240-4d67-aefb-dd007fc1f402" name="Changes" comment="Commit">
+      <change afterPath="$PROJECT_DIR$/test/controller/ControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/test/2SemesterProjekt/model/SalgTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/test/2SemesterProjekt/model/SalgTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Controller/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/StatistikPane.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/StatistikPane.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/ProduktPris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/ProduktPris.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/model/Salg.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Salg.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/model/SalgTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/model/SalgTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,7 +26,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="MadsBranchNew" />
+    <option name="BRANCH" value="master" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
@@ -68,7 +71,7 @@
     <property name="project.structure.side.proportion" value="0.2" />
     <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
-  <component name="RunManager" selected="JUnit.SalgTest.getSamletPris1SalgsLinje0Antal">
+  <component name="RunManager" selected="JUnit.ControllerTest.salgIndenforDatoer_1SalgIndenforDatoer_IkkeFærdigSalg">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="GUI.Main" />
       <module name="2SemesterProjekt" />
@@ -82,65 +85,65 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.getSamletPris1SalgsLinje0Antal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ControllerTest.salgIndenforDatoer_0SalgIndenforDatoer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getSamletPris1SalgsLinje0Antal" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ControllerTest" />
+      <option name="METHOD_NAME" value="salgIndenforDatoer_0SalgIndenforDatoer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.getSamletPrisPant" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ControllerTest.salgIndenforDatoer_1SalgIndenforDatoer" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="getSamletPrisPant" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ControllerTest" />
+      <option name="METHOD_NAME" value="salgIndenforDatoer_1SalgIndenforDatoer" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.salg_Korrekt_Oprettet_Med_Negativ_Antal" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ControllerTest.salgIndenforDatoer_1SalgIndenforDatoer_IkkeFærdigSalg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="salg_Korrekt_Oprettet_Med_Negativ_Antal" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ControllerTest" />
+      <option name="METHOD_NAME" value="salgIndenforDatoer_1SalgIndenforDatoer_IkkeFærdigSalg" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SalgTest.updateNr_2Salg" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="ControllerTest.salgPåDato" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="2SemesterProjekt" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="model.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <option name="PACKAGE_NAME" value="model" />
-      <option name="MAIN_CLASS_NAME" value="model.SalgTest" />
-      <option name="METHOD_NAME" value="updateNr_2Salg" />
+      <option name="PACKAGE_NAME" value="controller" />
+      <option name="MAIN_CLASS_NAME" value="controller.ControllerTest" />
+      <option name="METHOD_NAME" value="salgPåDato" />
       <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -148,11 +151,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.SalgTest.getSamletPris1SalgsLinje0Antal" />
-        <item itemvalue="JUnit.SalgTest.salg_Korrekt_Oprettet_Med_Negativ_Antal" />
+        <item itemvalue="JUnit.ControllerTest.salgIndenforDatoer_1SalgIndenforDatoer_IkkeFærdigSalg" />
+        <item itemvalue="JUnit.ControllerTest.salgIndenforDatoer_0SalgIndenforDatoer" />
+        <item itemvalue="JUnit.ControllerTest.salgIndenforDatoer_1SalgIndenforDatoer" />
+        <item itemvalue="JUnit.ControllerTest.salgPåDato" />
         <item itemvalue="Application.Main" />
-        <item itemvalue="JUnit.SalgTest.getSamletPrisPant" />
-        <item itemvalue="JUnit.SalgTest.updateNr_2Salg" />
       </list>
     </recent_temporary>
   </component>

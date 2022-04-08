@@ -47,7 +47,7 @@ public class ProduktPris {
     public String toString() {
         return  " " +"Pris: " + pris +
                 " " + produkt +
-                " " + prisListe;
+                " " + prisListe + " Klip:" + klip;
     }
 
 }

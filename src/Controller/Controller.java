@@ -114,7 +114,7 @@ public class Controller {
         return prisIKlip;
     }
 
-    public static ArrayList<Salg> salgPåDato(LocalDate start, LocalDate slut) {
+    public static ArrayList<Salg> salgIndenforDatoer(LocalDate start, LocalDate slut) {
         ArrayList<Salg> tempSalg = new ArrayList<>();
 
         if (start != null) {
