@@ -16,7 +16,7 @@ class SalgTest {
     private Salg salg;
 
     @Test
-    void salgKorrektOprettet() {
+    void salgKorrektOprettetMedSalgsLinje() {
         //Arrange
         ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
         Produkt Øl = new Produkt("Øl", Kulsyre);
@@ -29,6 +29,19 @@ class SalgTest {
         assertTrue(salg.getSalgsLinjer().contains(salgsLinje));
     }
 
+    @Test
+    void salg_Korrekt_Oprettet_Med_Negativ_Antal(){
+        //Arrange
+        ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
+        Produkt Øl = new Produkt("Øl", Kulsyre);
+        PrisListe FredagsBar = new PrisListe("Fredagsbar");
+        ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
+        Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
+        SalgsLinje salgsLinje = salg.opretSalgsLinje(-1, pp1, salg);
+
+        //Arrange Act
+        assertFalse(salg.getSalgsLinjer().contains(salgsLinje));
+    }
 
 
     @Test
@@ -87,6 +100,26 @@ class SalgTest {
         //Act
         int actual = salg.getSamletPris();
         int expected = 15;
+
+        //Assert
+        assertEquals(expected,actual);
+
+    }
+
+    @Test
+    void getSamletPris1SalgsLinje0Antal() {
+        //Arrange
+        ProduktGruppe Kulsyre = new ProduktGruppe("Kulsyre");
+        Produkt Øl = new Produkt("Øl", Kulsyre);
+        PrisListe FredagsBar = new PrisListe("Fredagsbar");
+        ProduktPris pp1 = new ProduktPris(5, Øl, FredagsBar, 2);
+        Salg salg = new Salg(LocalDate.of(2022, 12, 12), "Kreditkort", null, false);
+        SalgsLinje salgsLinje = salg.opretSalgsLinje(0, pp1, salg);
+
+
+        //Act
+        int actual = salg.getSamletPris();
+        int expected = 0;
 
         //Assert
         assertEquals(expected,actual);

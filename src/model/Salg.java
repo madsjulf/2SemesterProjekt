@@ -32,9 +32,12 @@ public class Salg {
     }
 
     public SalgsLinje opretSalgsLinje(int antal, ProduktPris produktPris, Salg salg) {
-        SalgsLinje salgsLinje = new SalgsLinje(antal, produktPris, salg);
-        salgsLinjer.add(salgsLinje);
-        return salgsLinje;
+        if (antal > 0) {
+            SalgsLinje salgsLinje = new SalgsLinje(antal, produktPris, salg);
+            salgsLinjer.add(salgsLinje);
+            return salgsLinje;
+        } else
+        return null;
     }
 
 
