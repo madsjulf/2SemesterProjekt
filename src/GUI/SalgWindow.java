@@ -147,9 +147,11 @@ public class SalgWindow extends Stage {
             lblError.setText("Betaling mangler!");
             return;
         }
-        if (txfKundeNavn.getText().isBlank()) {
-            lblError.setText("Kunde navn mangler!");
-            return;
+        if (checkBoxUdlejning.isSelected()) {
+            if (txfKundeNavn.getText().isBlank()) {
+                lblError.setText("Kunde navn mangler!");
+                return;
+            }
         }
 
         String betalingsform = comboBoxBetalingsform.getSelectionModel().getSelectedItem().toString();
