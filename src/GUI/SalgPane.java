@@ -152,12 +152,17 @@ public class SalgPane extends GridPane {
 
         Salg salg = Storage.getSalgs().get(i);
 
-        if (Integer.parseInt(txfProcentRabat.getText()) != 0) {
+        if (Integer.parseInt(txfProcentRabat.getText()) != 0 || produktPris.getPris() != pris) {
             ProduktPris produktPris1 = new ProduktPris(pris, produktPris.getProdukt(), produktPris.getPrisListe(), produktPris.getKlip());
             Controller.createSalgsLinje(antal, produktPris1, salg);
         } else {
             Controller.createSalgsLinje(antal, produktPris, salg);
         }
+
+//        if (produktPris.getPris() != pris) {
+//            ProduktPris produktPris1 = new ProduktPris()
+//        }
+
 
         Controller.tilføjProduktMedProduktPant(produktPris, salgsLinje, produktPrisListe, antal);
 
@@ -200,19 +205,16 @@ public class SalgPane extends GridPane {
     public void updateControlsAntal() {
         ProduktPris produktPris = lvwProdukterIGrupper.getSelectionModel().getSelectedItem();
         int rabat = 0;
-        int antal = 1;
+
 
         if (!txfProcentRabat.getText().isBlank()) {
             rabat = Integer.parseInt(txfProcentRabat.getText());
         }
 
-        if (!txfAntal.getText().isBlank()) {
-            antal = Integer.parseInt(txfAntal.getText());
-        }
         if (rabat == 0 || rabat > 100 || rabat < 0) {
-            txfPris.setText(String.valueOf((produktPris.getPris() * antal)));
+            txfPris.setText(String.valueOf((produktPris.getPris())));
         } else {
-            txfPris.setText(String.valueOf((produktPris.getPris() * antal) * (100 - rabat) / 100));
+            txfPris.setText(String.valueOf((produktPris.getPris()) * (100 - rabat) / 100));
         }
 
 
