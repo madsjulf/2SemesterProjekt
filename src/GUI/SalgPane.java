@@ -2,7 +2,6 @@ package GUI;
 
 import Controller.Controller;
 import Storage.Storage;
-import javafx.beans.InvalidationListener;
 import javafx.beans.value.ChangeListener;
 import javafx.collections.ObservableList;
 import javafx.geometry.Insets;

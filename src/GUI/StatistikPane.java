@@ -9,15 +9,9 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
-import javafx.util.converter.LocalDateStringConverter;
-import model.Produkt;
-import model.ProduktGruppe;
 import model.Salg;
-import model.SalgsLinje;
 
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Date;
 
 public class StatistikPane extends GridPane {
     private final DatePicker startDate = new DatePicker();
