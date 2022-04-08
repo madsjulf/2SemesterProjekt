@@ -10,8 +10,6 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
-import model.Kunde;
-import model.ProduktPris;
 import model.Salg;
 import model.SalgsLinje;
 
